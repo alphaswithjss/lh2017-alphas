@@ -183,7 +183,11 @@
 Goal of jet substructure community
 Application of new techniques beyond tagging
 
-Landscape of $\alpha_s$ measurements
+AIM:  Achieve something like 10\% precision to start to answer other questions
+
+\subsection{Landscape of $\alpha_s$ measurements}
+
+\subsection{Role of Jet Substructure}
 
 World average ~1\% uncertainty
 ATLAS and CMS fixed order ~2.5\% from t tbar xsec, also 3-jet/2-jet ratio
@@ -194,13 +198,22 @@ Difference between resummation (e+e- thrust, ...) and world average is ~5%
 	Big difference from nonperturbative treatment
 	(not sure how that would work with jet substructure)
 Parton shower values $\alpha_s$ differ by ~5\% to 10\%
-AIM:  Achieve something like 10\% precision to start to answer other questions
 
-\section{Groomed Jet Mass}
+\section{Grooming Away Soft Complications}
+
+\subsection{Mitigating Nonperturbative Effects (e+e- and pp)}
+
+\subsection{Process Independence at Hadron Colliders (pp)}
+
+e.g. PDF, 3-jet over 2-jet, ECF extractions
+
+\subsection{Improved Detector Resolution (LHC) }
+
+\section{Case Study: Groomed Jet Mass}
 
 Soft drop mass is target (or one of its relatives)
 
-\subsection{Review of Soft Drop}
+\subsection{Soft Drop Declustering}
 
 	Grooming needed to help pileup from LHC
 	Grooming also gives different sensitivity to NP effects
@@ -215,40 +228,48 @@ Soft drop mass is target (or one of its relatives)
 	beta = 0 mass is baseline
 
 
-\subsection{Review of Analytic Calculations}
+\subsection{Method 1 Analytic Calculation}
+
+\subsection{Method 2 Analytic Calculations}
+
 
 (calculated at NNLL, good enough to start extraction)
 
+\subsection{Concrete Benefits of Grooming}
+
+
+\section{Idealized (? - theory no uncertain) Performance at the LHC}
+
+\subsection{Strategy to Constrain Quark/Gluon Fraction}
+
+\subsection{Estimate of Experimental Resolution}
+
+	Pileup:  there are studies of this with current level of pileup, not a big deal yet
+	Resolution achievable, uncertainty?
+	How to we think this will be done in this study (can we use fast simulation?)
+	Statistical uncertainties at high pT?
+	Ben has a toy simulation
+
+\subsection{Fit from Soft Drop Jet Mass}
+
+Fit Methodology:
+	Which fix range (minimizing theory and experimental uncertainties)?
+	Constraining quark vs gluon fraction (varying SD parameters)?
+	Zeroth-order feasibility study
+	
+	Plot is for distribution folded over PDFs (can we get rid of that?)
+
+	Choice of jet radius (varying resummation scale)
+
+
+
+
+
+
+
+
 \section{Assessing Theoretical Uncertainties}
 
-\section{Assessing Experimental Uncertainties}
-
-\section{Fit Strategy}
-
-\section{Potential Performance of Alternative Methods}
-
-Parton shower study
-
-\subsection{Cross Check with Parton Shower}
-
-\subsection{Single-emission Observables}
-
-\subsection{Track-based Observables}
-
-\section{Conclusions}
-
-\appendix
-
-\section{notes}
-
-\begin{verbatim}
-
-
-
-
-
-Theory issues:
-	Understanding of theory issues/uncertainties
 	Treat NP effects (shape function?)
 	Finite zcut effects, resummation?  power corrections?
 	Matching to fixed-order?
@@ -257,56 +278,55 @@ Theory issues:
 		Efficiency of matching using NLO, making grid is painful
 		Get help from FOMC expert
 		LO matching is tree-level, e.g. MadGraph, PDFs...
-	Understanding scales at which alpha_s is being probed (as a function of zcut and beta)
+	Understanding scales at which $\alpha_s$ is being probed (as a function of zcut and beta)
 		3-jet / 2-jet probes TeV
 		But jet shapes probe lower scale than scale of the jet (which scale)?
-	Study:  NLL (any angularity, any beta) and LO (two partons in the jet), but systematically improvable
 
-Experimental considerations:
-	What can we do now?  In the next 10-15 years?
+	Do we need shape function (or just a cut value)?
+
+\subsection{Scale Variation}
+
+\subsection{Nonperturbative Shape Function}
+
+\subsection{Fixed-Order Corrections}
+
+\subsection{Finite $z_{\rm cut}$ Corrections}
+
+
+\section{Alternative Observables}
+
+\subsection{Soft Drop Angularities and Angles}
+
+\subsection{Single-emission Observables}
+
+\subsection{Track-based Observables}
+
+\section{Estimated Sensitivity from Parton Showers}
+
+\subsection{Soft Drop Parameter Scan}
+
+\subsection{Alternative Observables}
+
+Parton shower study (?)
+
+	Compare to analytic or parton shower study (do a closure test)
+
+	Use Z + jet or dijets?
+
+
+
 	Tracking observables more sensitive
-	Pileup:  there are studies of this with current level of pileup, not a big deal yet
-	Resolution achievable, uncertainty?
-	How to we think this will be done in this study (can we use fast simulation?)
-	Statistical uncertainties at high pT?
-	Ben has a toy simulation
+
+\section{Prospects at Lepton Colliders}
+
 	Make a statement on e+e- (LEP) as well (can it do better than thrust?)
 		Probes lower scales, so still interesting
 
-Fit Methodology:
-	Which fix range (minimizing theory and experimental uncertainties)?
-	Constraining quark vs gluon fraction (varying SD parameters)?
-	Zeroth-order feasibility study
-
-Questions:
-	Plot is for distribution folded over PDFs (can we get rid of that?)
 	Limit our scope to e+e- is an option (but likely to work)
-	Compare to analytic or parton shower study (do a closure test)
-	Do we need shape function (or just a cut value)?
+
 	If we do e+e-, has to be compared to thrust
-	pp has a range of jet energies
-	alpha_s just changes the slope in resummation regime
-	slope on log scale is alpha_s z_cut C
-	What alpha_s do you use on hard process?
-		(We want to work with normalized distributions, which drops a factor of alpha_s)
-	Fixed order NLO is challenging, inefficient, not as relevant in resummation regime
-	Use Z + jet or dijets?
-	What gluons increase lever arm?
-	Choice of jet radius (varying resummation scale)
-	ATLAS and CMS may or may be doing measurements in dijets
-	Higgs + jet :-)  For a given quark/gluon fraction, gluons are best (?)
-	Can we play uncertainties off each other
-	Use different etas to probe quark/gluon fraction
 
-Tasks:
-	(Substructure) Observables: Jesse/Gregory/Ian
-	Theory (Analytic and MC): Jesse/Gregory/Daniel/Frederic/Andrzej/Peter/Maria/Grigorious/Johannes
-	Experiment:  Ben/Phillipe/Shuman
-	Method (and Phase Space Dependence):  Ben/Andrzej/Shuman
-	
-
-
-\end{verbatim}
+\section{Conclusions}
 
 \begin{acknowledgments}
 
