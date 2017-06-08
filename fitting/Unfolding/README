@@ -1,0 +1,12 @@
+#FOR ROOT6 (recommended)
+
+svn co https://svnsrv.desy.de/public/unfolding/RooUnfold/trunk RooUnfold
+cd RooUnfold
+make
+mkdir plots
+cp ../*.cxx examples/.
+#Then, you can run of the scripts like
+root -b
+.L examples/TotalUncert_scanqg.cxx
+RooUnfoldExample()
+
