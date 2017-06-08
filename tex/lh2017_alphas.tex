@@ -1,0 +1,325 @@
+\documentclass[11pt,letterpaper]{article}
+\pdfoutput=1
+\usepackage{jheppub}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{xspace}
+
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[caption=false]{subfig}
+\usepackage{url}
+\usepackage{bbold}
+\usepackage{slashed}
+\usepackage{array}
+
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{paralist}
+
+\newcommand{\GeV}{\text{GeV}}
+\newcommand{\TeV}{\text{TeV}}
+\newcommand{\SO}{\text{SO}}
+\newcommand{\SU}{\text{SU}}
+\newcommand{\SM}{\text{SM}}
+
+\newcommand{\U}{\text{U}}
+\newcommand{\CKM}{\text{CKM}}
+\newcommand{\eff}{\text{eff}}
+
+\newcommand{\genang}[2]{{\lambda^{#1}_{#2}}}
+
+
+\newcommand{\ev}{\text{event}}
+\newcommand{\jet}{\text{jet}}
+\newcommand{\jets}{\text{jets}}
+\newcommand{\subj}{\text{subjet}}
+\newcommand{\subjs}{\text{subjets}}
+\newcommand{\cut}{\text{cut}}
+\newcommand{\trim}{\text{trim}}
+\newcommand{\Ecut}{E_{{\rm cut}}}
+
+\newcommand{\ptc}{p_{T{\rm cut}}}
+\newcommand{\ptsubc}{p_{T{\rm subcut}}}
+
+\newcommand{\sub}{\text{sub}}
+\newcommand{\miss}{\text{miss}}
+
+\newcommand{\pythia}{\textsc{Pythia~8}\xspace}
+\newcommand{\herwig}{\textsc{Herwig++}\xspace}
+\newcommand{\eventtwo}{\textsc{Event2}\xspace}
+\newcommand{\vincia}{\textsc{Vincia}\xspace}
+\newcommand{\sherpa}{\textsc{Sherpa}\xspace}
+
+\newcommand{\FastJet}{\textsc{FastJet}\xspace}
+\newcommand{\MadGraph}{\textsc{MadGraph}\xspace}
+
+\newcommand{\df}{\text{d}}
+\newcommand{\vev}[1]{\langle #1 \rangle}
+
+
+\DeclareRobustCommand{\Sec}[1]{Sec.~\ref{#1}}
+\DeclareRobustCommand{\Secs}[2]{Secs.~\ref{#1} and \ref{#2}}
+\DeclareRobustCommand{\Secss}[3]{Secs.~\ref{#1}, \ref{#2}, and \ref{#3}}
+\DeclareRobustCommand{\App}[1]{App.~\ref{#1}}
+\DeclareRobustCommand{\Tab}[1]{Table~\ref{#1}}
+\DeclareRobustCommand{\Tabs}[2]{Tables~\ref{#1} and \ref{#2}}
+\DeclareRobustCommand{\Fig}[1]{Fig.~\ref{#1}}
+\DeclareRobustCommand{\Figs}[2]{Figs.~\ref{#1} and \ref{#2}}
+\DeclareRobustCommand{\Figss}[3]{Figs.~\ref{#1}, \ref{#2}, and \ref{#3}}
+\DeclareRobustCommand{\Eq}[1]{Eq.~(\ref{#1})}
+\DeclareRobustCommand{\Eqs}[2]{Eqs.~(\ref{#1}) and (\ref{#2})}
+\DeclareRobustCommand{\Eqss}[3]{Eqs.~(\ref{#1}), (\ref{#2}), and (\ref{#3})}
+\DeclareRobustCommand{\Ref}[1]{Ref.~\cite{#1}}
+\DeclareRobustCommand{\Refs}[1]{Refs.~\cite{#1}}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\nn}{\nonumber}
+
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\topfraction}{0.90}
+\renewcommand{\bottomfraction}{0.90}
+\renewcommand{\floatpagefraction}{0.65}
+
+%% Reference commands %%
+\newcommand{\mb}[1]{\boldsymbol{#1}}
+\newcommand{\bm}[1]{\boldsymbol{#1}}
+\newcommand{\mbo}[1]{\boldsymbol{\overline{#1}}}
+
+\usepackage{xspace}
+
+
+\def\Tr{\mathop{\rm Tr}}
+\newcommand{\rep}[1]{\mathbf{#1}}
+\newcommand{\conjrep}[1]{\overline{\mathbf{#1}}}
+
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\e}{\epsilon}
+\newcommand{\D}{\Delta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\th}{\theta}
+\newcommand{\bq}{\bar{q}}
+\newcommand{\zcut}{z_{\rm cut}}
+
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\beq}{\begin{eqnarray}}
+\newcommand{\eeq}{\end{eqnarray}}
+
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Ft}{\widetilde{\mathcal{F}}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Gt}{\widetilde{\mathcal{G}}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\HHt}{\widetilde{\mathcal{H}}}
+\newcommand{\ord}[1]{\mathcal{O}\!\left(#1\right)}
+
+\newcommand*\numcircledmod[1]{#1 \!\!\! \bigcirc}
+
+\newcommand{\Njet}{\widetilde{N}_{\rm jet}}
+\newcommand{\dN}[1]{\Delta_{#1}}
+\newcommand{\dNpm}{\Delta_{2\pm}}
+\newcommand{\dNp}{\Delta_{2+}}
+\newcommand{\dNm}{\Delta_{2-}}
+\newcommand{\dNtm}{\Delta_{3-}}
+
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\as}{\alpha_s}
+\renewcommand{\angle}{\theta}
+
+%\definecolor{darkgreen}{rgb}{0,0.5,0}
+%\newcommand{\jdt}[1]{\textbf{\textcolor{darkgreen}{(#1 --jdt)}}}
+
+%\definecolor{darkblue}{rgb}{0,0,0.5}
+%\newcommand{\gs}[1]{\textbf{\textcolor{darkblue}{(#1 --gs)}}}
+
+
+\begin{document}
+
+
+\title{Towards Extracting the Strong Coupling Constant from Jet Substructure }
+
+\author[a]{Disha Bhatia?,}
+\author[a]{Grigorios Chachamis,}
+\author[a]{Suman Chatterjee?,}
+\author[a]{Frederic Dreyer,}
+\author[a]{Maria Vittoria Garzelli,}
+\author[a]{Philippe Gras,}
+\author[a]{Andrew Larkoski,}
+\author[a]{Daniel Maitre,}
+\author[a]{Simone Marzani, }
+\author[a]{Ian Moult,}
+\author[a]{Ben Nachman,}
+\author[a]{Andrzej Siodmok,}
+\author[a]{Andreas Papaefstathiou,}
+\author[a]{Peter Richardson,}
+\author[a]{Tousik Samui,}
+\author[a]{Gregory Soyez,}
+\emailAdd{gregory.soyez@cea.fr}
+\author[a]{and Jesse Thaler}
+\emailAdd{jthaler@mit.edu}
+
+\affiliation[a]{Les Houches}
+
+\abstract{YADA}
+
+\maketitle
+
+\section{Introduction}
+
+Goal of jet substructure community
+Application of new techniques beyond tagging
+
+Landscape of $\alpha_s$ measurements
+
+World average ~1\% uncertainty
+ATLAS and CMS fixed order ~2.5\% from t tbar xsec, also 3-jet/2-jet ratio
+	But these are PDF dependent.
+	Would get PDF insensitive from jets potentially.
+Difference between resummation (e+e- thrust, ...) and world average is ~5%
+	So LHC measurement at 5\% would start to probe into this
+	Big difference from nonperturbative treatment
+	(not sure how that would work with jet substructure)
+Parton shower values $\alpha_s$ differ by ~5\% to 10\%
+AIM:  Achieve something like 10\% precision to start to answer other questions
+
+\section{Groomed Jet Mass}
+
+Soft drop mass is target (or one of its relatives)
+
+\subsection{Review of Soft Drop}
+
+	Grooming needed to help pileup from LHC
+	Grooming also gives different sensitivity to NP effects
+		In standard thrust fits, whole distribution shifts from NP
+		Degenerate with $\alpha_s$ shift, hard to disentangle
+		Grooming pushes NP effects to separate region.
+		NP region, resummation region, fixed order regime
+	Grooming remove NGLs and other contamination
+	Question:  constrain quark/gluon fraction (adjust $z_cut$)?
+	Need to decide beta and zcut values
+	Need to matching to fixed order
+	beta = 0 mass is baseline
+
+
+\subsection{Review of Analytic Calculations}
+
+(calculated at NNLL, good enough to start extraction)
+
+\section{Assessing Theoretical Uncertainties}
+
+\section{Assessing Experimental Uncertainties}
+
+\section{Fit Strategy}
+
+\section{Potential Performance of Alternative Methods}
+
+Parton shower study
+
+\subsection{Cross Check with Parton Shower}
+
+\subsection{Single-emission Observables}
+
+\subsection{Track-based Observables}
+
+\section{Conclusions}
+
+\appendix
+
+\section{notes}
+
+\begin{verbatim}
+
+
+
+
+
+Theory issues:
+	Understanding of theory issues/uncertainties
+	Treat NP effects (shape function?)
+	Finite zcut effects, resummation?  power corrections?
+	Matching to fixed-order?
+		Universality in resummation region...
+		...but process-dependence in fixed order region
+		Efficiency of matching using NLO, making grid is painful
+		Get help from FOMC expert
+		LO matching is tree-level, e.g. MadGraph, PDFs...
+	Understanding scales at which alpha_s is being probed (as a function of zcut and beta)
+		3-jet / 2-jet probes TeV
+		But jet shapes probe lower scale than scale of the jet (which scale)?
+	Study:  NLL (any angularity, any beta) and LO (two partons in the jet), but systematically improvable
+
+Experimental considerations:
+	What can we do now?  In the next 10-15 years?
+	Tracking observables more sensitive
+	Pileup:  there are studies of this with current level of pileup, not a big deal yet
+	Resolution achievable, uncertainty?
+	How to we think this will be done in this study (can we use fast simulation?)
+	Statistical uncertainties at high pT?
+	Ben has a toy simulation
+	Make a statement on e+e- (LEP) as well (can it do better than thrust?)
+		Probes lower scales, so still interesting
+
+Fit Methodology:
+	Which fix range (minimizing theory and experimental uncertainties)?
+	Constraining quark vs gluon fraction (varying SD parameters)?
+	Zeroth-order feasibility study
+
+Questions:
+	Plot is for distribution folded over PDFs (can we get rid of that?)
+	Limit our scope to e+e- is an option (but likely to work)
+	Compare to analytic or parton shower study (do a closure test)
+	Do we need shape function (or just a cut value)?
+	If we do e+e-, has to be compared to thrust
+	pp has a range of jet energies
+	alpha_s just changes the slope in resummation regime
+	slope on log scale is alpha_s z_cut C
+	What alpha_s do you use on hard process?
+		(We want to work with normalized distributions, which drops a factor of alpha_s)
+	Fixed order NLO is challenging, inefficient, not as relevant in resummation regime
+	Use Z + jet or dijets?
+	What gluons increase lever arm?
+	Choice of jet radius (varying resummation scale)
+	ATLAS and CMS may or may be doing measurements in dijets
+	Higgs + jet :-)  For a given quark/gluon fraction, gluons are best (?)
+	Can we play uncertainties off each other
+	Use different etas to probe quark/gluon fraction
+
+Tasks:
+	(Substructure) Observables: Jesse/Gregory/Ian
+	Theory (Analytic and MC): Jesse/Gregory/Daniel/Frederic/Andrzej/Peter/Maria/Grigorious/Johannes
+	Experiment:  Ben/Phillipe/Shuman
+	Method (and Phase Space Dependence):  Ben/Andrzej/Shuman
+	
+
+
+\end{verbatim}
+
+\begin{acknowledgments}
+
+The work of GS is supported in part by the Paris-Saclay IDEX under the
+IDEOPTIMALJE grant, by the French Agence Nationale de la Recherche,
+under grant ANR-15-CE31-0016, and by the ERC Advanced Grant Higgs@LHC
+(No.\ 321133).
+%
+The work of JT is supported by the DOE under grant contract numbers DE-SC-00012567 and DE-SC-00015476.
+
+\end{acknowledgments}
+
+\bibliographystyle{jhep}
+\bibliography{lh2017_2prong}
+
+\end{document}
