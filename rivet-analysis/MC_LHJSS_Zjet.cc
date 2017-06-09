@@ -17,6 +17,19 @@ using namespace fastjet;
 #include <string>
 
 
+  //https://stackoverflow.com/questions/16605967/set-precision-of-stdto-string-when-converting-floating-point-values
+#include <sstream>
+#include <iomanip>
+
+template <typename T>
+std::string to_string_with_precision(const T a_value, const int n = 6)
+{
+  std::ostringstream out;
+  out << std::setprecision(n) << a_value;
+  return out.str();
+}
+
+
 
 namespace Rivet {
   
@@ -60,9 +73,9 @@ namespace Rivet {
     map<string,int> histmap ;
     
     
+    Recluster ca_wta_recluster ;    // Cambridge Aachen reclustering.
     
-    Recluster ca_wta_recluster;
-    SharedPtr<contrib::SoftDrop> softdrop;
+    
     
   public:
     
@@ -85,12 +98,13 @@ namespace Rivet {
       jet_input.vetoNeutrinos();
       jet_input.addVetoPairId(PID::MUON);
       addProjection(jet_input, "JET_INPUT");
-        // mMDT
+      
       ca_wta_recluster = Recluster(JetDefinition(cambridge_algorithm,
-                                                 JetDefinition::max_allowable_R,
-                                                 WTA_pt_scheme),
-                                   false,
-                                   Recluster::keep_only_hardest);
+                                                  JetDefinition::max_allowable_R,
+                                                  WTA_pt_scheme),
+                                    false,
+                                    Recluster::keep_only_hardest);
+      
         // histogram bookings
       auto counthist=0;
       for ( auto Omap : obsmap ){
@@ -99,16 +113,16 @@ namespace Rivet {
             for ( double alpha : alphas ){
                 // plain jet quantities
               string name=Omap.first+
-                         +"_zcut_"+std::to_string((float)zcut)
-                         +"_beta_"+std::to_string((float)beta)
-                         +"_alpha_"+std::to_string((float)alpha);
+              +"_zcut_"+to_string_with_precision((float)zcut)
+              +"_beta_"+to_string_with_precision((float)beta)
+              +"_alpha_"+to_string_with_precision((float)alpha);
               
               histmap.insert({name,counthist});
               counthist++;
               
               
               _obs.push_back(HistogramHolder(bookHisto1D(name,
-                                                         100,-1.,2),
+                                                         100,0.,1.),
                                              bookHisto1D("log_"+name,
                                                          logspace(100,0.0001,1.))));
               
@@ -124,6 +138,7 @@ namespace Rivet {
     
       /// Perform the per-event analysis
     void analyze(const Event& e) {
+      
         // see if we find a Z boson
       const ZFinder& zfinder  = applyProjection<ZFinder>(e, "ZFinder_mm_dressed"   );
       if (zfinder.bosons().size() != 1) return;
@@ -145,7 +160,6 @@ namespace Rivet {
         particles.push_back(p.pseudojet());
       }
       
-      
         // do the anti-kt clustering
       double ptmin_jet = JET_PTMIN;
       JetDefinition jet_def(antikt_algorithm, antiKT_R);
@@ -158,26 +172,26 @@ namespace Rivet {
         // require that the jet is within 1 unit in rapidity of the Z boson
         // if (std::abs(zmom.rap()-orig_jet.rap())>DELTA_RAP_MAX_ZJET) return;///TODO ???
       
-      
       for ( double zcut : zcuts ){
         for ( double beta : betas ){
+          
+
+         
+          auto softdrop=new contrib::SoftDrop(beta,zcut,antiKT_R);
+          softdrop->set_grooming_mode();
+          softdrop->set_reclustering(false); // we'll recluster ourselves with C/A and the WTA axis
+          
+            // recluster the jet to get a broadening-free axis and apply grooming
+          PseudoJet jet = ca_wta_recluster(orig_jet);
+          PseudoJet softdrop_jet = (*softdrop)(jet);
+          
+          delete softdrop;
+          
           for ( double alpha : alphas ){
             for ( auto Omap : obsmap ){
-              
-              softdrop.reset(new contrib::SoftDrop(beta,zcut));
-              softdrop->set_grooming_mode();
-              softdrop->set_reclustering(false); // we'll recluster ourselves with C/A and the WTA axis
-              
-                // recluster the jet to get a broadening-free axis and apply grooming
-              PseudoJet jet = ca_wta_recluster(orig_jet);
-              PseudoJet softdrop_jet = (*softdrop)(jet);
-              
-              
                 // now compute the angularities for the plain and groomed jets
-              compute_and_record(jet,Omap.first,      zcut, beta, alpha, weight);
+                //compute_and_record(jet,Omap.first,      zcut, beta, alpha, weight);
               compute_and_record(softdrop_jet,Omap.first, zcut, beta, alpha, weight);
-              
-              
             }
           }
         }
@@ -218,10 +232,11 @@ namespace Rivet {
             //do something
           assert(1==obsmap.at("Angularity"));
           foreach (const PseudoJet& p, jet.constituents())sumpt+=p.pt();
+          
           foreach (const PseudoJet& p, jet.constituents()){
             double z = p.pt()/sumpt;
-            double theta = sqrt(p.squared_distance(jet));
-            angularity+=pow(z, beta) * pow(theta, alpha);
+            double theta = p.squared_distance(jet);
+            angularity+=z * pow(theta, 0.5*alpha);
           }
           value=angularity;
           break;
@@ -235,21 +250,21 @@ namespace Rivet {
           break;
       }
       string name=obs
-      +"_zcut_"+std::to_string((float)zcut)
-      +"_beta_"+std::to_string((float)beta)
-      +"_alpha_"+std::to_string((float)alpha);
+      +"_zcut_"+to_string_with_precision((float)zcut)
+      +"_beta_"+to_string_with_precision((float)beta)
+      +"_alpha_"+to_string_with_precision((float)alpha);
       
       _obs.at(histmap[name]).h->fill(value,weight);
       
       _obs.at(histmap[name]).h_log->fill(value,weight);
       
-
+      
     };
     
     
-    
-      // Hook for the plugin system
-    DECLARE_RIVET_PLUGIN(MC_LHJSS_Zjet);
-    
   };
+    // Hook for the plugin system
+  DECLARE_RIVET_PLUGIN(MC_LHJSS_Zjet);
+  
+  
 }
