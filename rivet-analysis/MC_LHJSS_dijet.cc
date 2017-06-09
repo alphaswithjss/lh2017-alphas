@@ -37,7 +37,7 @@ namespace Rivet {
 
   /// Standard jet radius used in this analysis (for both kT and anti-kT)
 
-  class MC_LHQG_dijet : public Analysis {
+  class MC_LHJSS_dijet : public Analysis {
   public:
 
     /// parameters
@@ -52,8 +52,8 @@ namespace Rivet {
     const double JET_RAPMAX;          ///< maximal rapidity allowed for jets
     
     /// Constructor
-    MC_LHQG_dijet()
-      : Analysis("MC_LHQG_dijet"),
+    MC_LHJSS_dijet()
+      : Analysis("MC_LHJSS_dijet"),
         JET_MIN_PT_FRACTION(0.8),  // 2nd hardest is at least 0.8 * hardest
         DELTA_RAP_MAX_DIJET(1.0),
         LOG_SCALE_MAX(15.0),
@@ -261,6 +261,6 @@ namespace Rivet {
 
 
   // Hook for the plugin system
-  DECLARE_RIVET_PLUGIN(MC_LHQG_dijet);
+  DECLARE_RIVET_PLUGIN(MC_LHJSS_dijet);
 
 }
