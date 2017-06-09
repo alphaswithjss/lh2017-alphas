@@ -38,6 +38,7 @@
 /// 
 ///  - endpoint: for R=0.8, this is 0.279303 for LO
 ///                                 0.44974  for NLO
+///              to get the raw NLL results, set it to -1
 ///
 ///  - At this stage, the results are weights in each bin, i.e. not
 ///    normalised by the bin width
