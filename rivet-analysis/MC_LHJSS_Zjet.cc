@@ -44,18 +44,23 @@ namespace Rivet {
     
   private:
       /// parameters
-    const double BOSON_PTMIN=500.;     ///< minimal boson pt
+    const double BOSON_PTMIN=0.;     ///< minimal boson pt
     const double JET_PTMIN=500.; ///< min value of jet_pt/boson_pt
-    const double DELTA_RAP_MAX_ZJET=1.0; ///< max rapidity difference between Z and jet
+                                 // const double DELTA_RAP_MAX_ZJET=50.0; ///< max rapidity difference between Z and jet
     const double PARTICLE_RAPMAX=2.5;    ///< maximal rapidity allowed for particles
     const double JET_RAPMAX=2.5;         ///< maximal rapidity allowed for jets
+    const double antiKT_R=0.8;           // Fix the anti-kt radius for now to 0.8.
+    
+      //observables
+    vector<HistogramHolder> _obs;
     const vector<double> zcuts={0.05,0.1,0.2};
     const vector<double> betas={0.,1.,2.};
     const vector<double> alphas={0.5,1.,2.};
-      // Fix the anti-kt radius for now to 0.8.
-    double const antiKT_R=0.8;
-    
     const map<string,int> obsmap = {{"Angularity",1},{"theta_g",2}};
+    map<string,int> histmap ;
+    
+    
+    
     Recluster ca_wta_recluster;
     SharedPtr<contrib::SoftDrop> softdrop;
     
@@ -70,7 +75,7 @@ namespace Rivet {
     void init() {
       FinalState fs(-PARTICLE_RAPMAX, PARTICLE_RAPMAX, 0.0*GeV);
         // for the Z boson (-> mumu)
-      Cut lepton_cut =  Rivet::Cuts::Quantity::pT >= 5.0*GeV; // we already know they have |y|<2.5
+      Cut lepton_cut =  Rivet::Cuts::Quantity::pT >= 0.0*GeV; // we already know they have |y|<2.5
       ZFinder zfinder_mm_dressed(fs, lepton_cut,
                                  PID::MUON, 66.0*GeV, 116.0*GeV, 0.1,
                                  ZFinder::CLUSTERNODECAY, ZFinder::NOTRACK);
@@ -87,21 +92,25 @@ namespace Rivet {
                                    false,
                                    Recluster::keep_only_hardest);
         // histogram bookings
+      auto counthist=0;
       for ( auto Omap : obsmap ){
         for ( double zcut : zcuts ){
           for ( double beta : betas ){
             for ( double alpha : alphas ){
                 // plain jet quantities
-              _obs.push_back(HistogramHolder(bookHisto1D(Omap.first
-                                                          +"_zcut_"+std::to_string((float)zcut)
-                                                          +"_beta_"+std::to_string((float)beta)
-                                                          +"_alpha_"+std::to_string((float)alpha),
-                                                          100,0.,1),
-                                              bookHisto1D("log"+Omap.first
-                                                          +std::to_string((float)zcut)
-                                                          +"_beta_"+std::to_string((float)beta)+"_alpha_"
-                                                          +std::to_string((float)alpha),
-                                                          logspace(100,0.0001,1.))));
+              string name=Omap.first+
+                         +"_zcut_"+std::to_string((float)zcut)
+                         +"_beta_"+std::to_string((float)beta)
+                         +"_alpha_"+std::to_string((float)alpha);
+              
+              histmap.insert({name,counthist});
+              counthist++;
+              
+              
+              _obs.push_back(HistogramHolder(bookHisto1D(name,
+                                                         100,-1.,2),
+                                             bookHisto1D("log_"+name,
+                                                         logspace(100,0.0001,1.))));
               
               
                 // control plots
@@ -147,12 +156,13 @@ namespace Rivet {
       PseudoJet orig_jet = (SelectorNHardest(1)(jets))[0];
       
         // require that the jet is within 1 unit in rapidity of the Z boson
-      if (std::abs(zmom.rap()-orig_jet.rap())>DELTA_RAP_MAX_ZJET) return;///TODO ???
+        // if (std::abs(zmom.rap()-orig_jet.rap())>DELTA_RAP_MAX_ZJET) return;///TODO ???
       
-      for ( auto Omap : obsmap ){
-        for ( double zcut : zcuts ){
-          for ( double beta : betas ){
-            for ( double alpha : alphas ){
+      
+      for ( double zcut : zcuts ){
+        for ( double beta : betas ){
+          for ( double alpha : alphas ){
+            for ( auto Omap : obsmap ){
               
               softdrop.reset(new contrib::SoftDrop(beta,zcut));
               softdrop->set_grooming_mode();
@@ -162,6 +172,7 @@ namespace Rivet {
               PseudoJet jet = ca_wta_recluster(orig_jet);
               PseudoJet softdrop_jet = (*softdrop)(jet);
               
+              
                 // now compute the angularities for the plain and groomed jets
               compute_and_record(jet,Omap.first,      zcut, beta, alpha, weight);
               compute_and_record(softdrop_jet,Omap.first, zcut, beta, alpha, weight);
@@ -170,10 +181,6 @@ namespace Rivet {
             }
           }
         }
-        
-        
-        
-        
       }
     };
     
@@ -183,17 +190,11 @@ namespace Rivet {
         normalize(ho.h);
         normalize(ho.h_log);
       }
-
+      
     };
     
     
   private:
-    
-    vector<HistogramHolder> _obs;
-    
-    
-
-    
     
     
     void compute_and_record(const PseudoJet &jet,
@@ -205,55 +206,44 @@ namespace Rivet {
       
       
       assert(obsmap.find(obs)!=obsmap.end());
-      
+      double value=0;
       
         //{{"Angularity",1},{"theta_g",2}};
       int tmp=obsmap.at(obs);
+      auto angularity=0.;
+      auto sumpt=0.;
+      
       switch (tmp) {
         case 1:
+            //do something
           assert(1==obsmap.at("Angularity"));
-            //do something
+          foreach (const PseudoJet& p, jet.constituents())sumpt+=p.pt();
+          foreach (const PseudoJet& p, jet.constituents()){
+            double z = p.pt()/sumpt;
+            double theta = sqrt(p.squared_distance(jet));
+            angularity+=pow(z, beta) * pow(theta, alpha);
+          }
+          value=angularity;
           break;
-          
-          
         case 2:
-          assert(1==obsmap.at("theta_g"));
             //do something
+          assert(2==obsmap.at("theta_g"));
+          value=jet.structure_of<fastjet::contrib::SoftDrop>().delta_R();
           break;
-          
         default:
           assert(false);
           break;
       }
+      string name=obs
+      +"_zcut_"+std::to_string((float)zcut)
+      +"_beta_"+std::to_string((float)beta)
+      +"_alpha_"+std::to_string((float)alpha);
       
-      /*
-       
-       // init angularity sums to 0
-       for(unsigned int i=0; i<ngas;i++) gas[i]=0.0;
-       
-       // sum over the constituents
-       foreach (const PseudoJet& p, jet.constituents()){
-       double pt = p.pt();
-       double theta = p.squared_distance(jet);
-       for(unsigned int i=0; i<ngas;i++)
-       gas[i]+=pow(pt, _kappa_betas[i].first) * pow(theta, 0.5*_kappa_betas[i].second);
-       }
-       
-       // normalise and fill histograms
-       for(unsigned int i=0; i<ngas;i++){
-       gas[i]/=(pow(jet.pt(), _kappa_betas[i].first) * pow(R, _kappa_betas[i].second));
-       
-       // loop over all ptcuts we're satisfying
-       for (unsigned int iQ=0;iQ<nQ;++iQ){
-       unsigned int offset = ngas*(iQ*2*nRADII+R_offset);
-       _gas[offset+i].h->fill(gas[i], weight);
-       // for the log binning make sure we avoid taking log(0) and put
-       // that in the most -ve bin.
-       _gas[offset+i].h_log->fill(gas[i]>0 ? log(gas[i]) : 1e-5-LOG_SCALE_MAX, weight);
-       }
-       }
-       }
-       */
+      _obs.at(histmap[name]).h->fill(value,weight);
+      
+      _obs.at(histmap[name]).h_log->fill(value,weight);
+      
+
     };
     
     
