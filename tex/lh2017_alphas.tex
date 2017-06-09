@@ -180,304 +180,58 @@
 
 \maketitle
 
+%%==============
 \section{Introduction}
+%%==============
 
-\info{Ben, Ian, Jesse, Grigorios, Maria}
+\input{sections/introduction.tex}
 
-Goal of jet substructure community
-
-Application of new techniques beyond tagging
-
-AIM:  Achieve something like 10\% precision to start to answer other questions
-
-\subsection{Cite Dump}
-
-PDG \cite{Olive:2016xmw}
-
-mMDT \cite{Dasgupta:2013ihk,Dasgupta:2013via}
-
-filtering/pruning/trimming \cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th}
-
-Soft Drop \cite{Larkoski:2014wba}
-
-Cambridge/Aachen \cite{Wobisch:1998wt,Dokshitzer:1997in}
-
-Calculation 1 \cite{Frye:2016okc,Frye:2016aiz}
-
-Calculation 2 \cite{Marzani:2017mva}
-
-AKT \cite{Cacciari:2008gp}, FastJet \cite{Cacciari:2011ma}
-
-Boost Reports \cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv}
-
-Sudakov Safety \cite{Larkoski:2013paa,Larkoski:2015lea}, $z_g$ \cite{Larkoski:2015lea}
-
-\subsection{Landscape of $\alpha_s$ measurements}
-
-World average ~1\% uncertainty
-
-ATLAS and CMS fixed order ~2.5\% from t tbar xsec, also 3-jet/2-jet ratio.  But these are PDF dependent.
-
-Difference between resummation (e+e- thrust, ...) and world average is ~5\%.  	So LHC measurement at 5\% would start to probe into this
-
-Parton shower values $\alpha_s$ differ by ~5\% to 10\%
-
-
-\subsection{Role of Jet Substructure}
-
-	Would get PDF insensitive from jets potentially.
-	
-	Big difference from nonperturbative treatment
-
-	Complementary phase space regime (collinear versus wide-angle)
-
+%%==============
 \section{Grooming Away Soft Complications}
 \label{sec:softcomplications}
+%%==============
 
-\info{Andrew, Simone}
+\input{sections/softcomplications.tex}
 
-
-Generic result of grooming is removing wide-angle soft radiation.  What impact does this have?
-
-\subsection{Mitigating Nonperturbative Effects (e+e- and pp)}
-
-Comparison to shape function in thrust.  Grooming gives different sensitivity to NP effects.
-
-In standard thrust fits, whole distribution shifts from NP.  Degenerate with $\alpha_s$ shift, hard to disentangle.
-
-Grooming pushes NP effects to separate region.  Separation of NP region, resummation region, fixed order regime (at high enough jet $p_T$).
-
-\subsection{Process Independence at Hadron Colliders (pp)}
-
-compare to issue of PDF, 3-jet over 2-jet, ECF extractions
-
-Related:  Grooming remove NGLs and other contamination
-
-
-\subsection{Improved Detector Resolution (LHC)}
-
-Cites to pileup study.
-
-Grooming needed to help pileup from LHC
-
+%%==============
 \section{Case Study: Groomed Jet Mass}
+%%==============
 
-\info{Andrew, Simone}
+\input{sections/casestudy.tex}
 
-Soft drop mass is most accurate jet substructure observable to date.  Review soft drop, and current calculations
-
-\subsection{Soft Drop Declustering}
-
-Review of soft drop
-
-\subsection{Method 1 (name?) Analytic Calculation}
-
-Andrew, et al.
-
-\subsection{Method 2 (name?)  Analytic Calculation}
-
-Simone and Gregory, et al.
-
-(calculated at NNLL, good enough to start extraction)
-
-\subsection{Concrete Benefits of Grooming}
-
-Show that grooming does what's advertised in \Sec{sec:softcomplications}.
-
-
+%%==============
 \section{Idealized Performance at the LHC}
+%%==============
 
-\info{Ben, Andrzej, Jesse, Gregory, Grigorios, Frederic}
+\input{sections/lhc.tex}
 
-\subsection{Extraction of Theory Templates}
-
-	Theory Templates.
-
-	Ben is doing this.
-
-	Current best NNLO + NLO for dijets, but for time, drop both first Ns
- 
- Can do NLO + LO on days timescale (even if theory uncertainty is too large)
-
- Right now, assume known quark/gluon function, relax later.
-
-
-\subsection{Estimate of Experimental Resolution}
-
-	Parametrized Experimental Resolution?
-
-	Ben has a toy simulation
-	Resolution achievable, uncertainty?
-	How to we think this will be done in this study (can we use fast simulation, or parametrization?)
-	Statistical uncertainties at high pT?
-	Pileup:  there are studies of this with current level of pileup, not a big deal yet
-
-	Uncertainty worse at low and high mass, need to derive parametrized uncertainty
-	
-	Trade off with pT (rate versus NP control)
-
-
-\subsection{Fit in Pure Quark/Gluon Samples}
-
-Fit Methodology:
-	Which fix range (minimizing theory and experimental uncertainties)?
-	Constraining quark vs gluon fraction (varying SD parameters)?
-	Zeroth-order feasibility study
-	
-	Plot is for distribution folded over PDFs (can we get rid of that?)
-
-	Choice of jet radius (varying resummation scale)
-
-Assume (for this section) limited by experimental uncertainties
-
-
-
-\subsection{Constraining Quark/Gluon Fraction with Data}
-
-	Question:  constrain quark/gluon fraction (adjust $z_cut$)?
-	Need to decide beta and zcut values
-	Need to matching to fixed order
-	beta = 0 mass is baseline
-	
-	
-	Another study to mitigate quark/gluon fraction uncertainties
-	Sensitivitity to PDF only to the extent of getting quark/gluon fraction
-	Can mitigate that with fit.
-
+%%==============
 \section{Assessing Theoretical Uncertainties}
+%%==============
 
-\info{Simone, Andrew, Frank, Ian, Gregory, Frederic}
+\input{sections/theoryuncerts}
 
-Above analysis was with no (or small uncertainties).  What are leading uncertainties?  Estimate.
-
-\subsection{Perturbative Scale Variations}
-
-	Understanding scales at which $\alpha_s$ is being probed (as a function of zcut and beta)
-		3-jet / 2-jet probes TeV
-		But jet shapes probe lower scale than scale of the jet (which scale)?
-
-	Perturbative Scale Variation (NLL/NNLL)
-
-
-\subsection{Nonperturbative Effects from Shape Function}
-
-	Treat NP effects (shape function?)  	Do we need shape function (or just a cut value)?
-
-	Need to think about $\Omega_0$ issue (is it a shape-function-like shift?  Or just parametrically correct?)
-
-
-\subsection{Finite $z_{\rm cut}$ Corrections}
-
-	Finite zcut effects.  resummation vs.  power corrections?
-
-\subsection{Fixed-Order Corrections}
-
-	Matching to fixed-order?
-		Universality in resummation region...
-		...but process-dependence in fixed order region
-		Efficiency of matching using NLO, making grid is painful
-		Get help from FOMC expert
-		LO matching is tree-level, e.g. MadGraph, PDFs...
-		Matching to Fixed Order (remove the region from the fit, or figure out efficient calculations strategy.)
-
-	Does peak give $\alpha_s$ information?
-	
-\subsection{Sensitivity to Initial State Effects }
-
-	Parton Distribution Functions, 	Initial State Radiation, Underlying event.
-
+%%==============
 \section{Alternative Observables}
+%%==============
 
-\info{Gregory, Jesse, Ian}
+\input{sections/alternatives}
 
-Beyond Soft Drop Mass?
-
-\subsection{Additional Soft Drop Observables}
-
-Angularities and $R_g$.
-
-\subsection{Single-emission Observables}
-
-Possible Dump this
-
-\subsection{Track-based Observables}
-
-Insensitivity to pileup, improved angular resolution.
-	Tracking observables more sensitive
-
-
+%%==============
 \section{Estimated Sensitivity from Parton Showers}
-\info{Andrzej, Johannes, Maria, Frederic, Peter, Tousik}
+%%==============
 
+\input{sections/partonshowerstudy.tex}
 
-Estimated Sensitivity in Parton Shower MC
-
-Adjust $\alpha_s$ in the final state PS and see the fit (make sure you see the same thing)
-
-\subsection{Samples}
-
-	Use pure Z + quark, pure Z+ gluon, and  dijet
-	
-	MadGraph hard scattering, interfaced with Pythia/Herwig
-	
-	13 TeV
-	PDF choice?  (default per generator, or from MadGraph)
-	Parton-level in MadGraph Born-level ($p_t > 450~\GeV$)
-	Start with 100k events.
-	
-	
-	$pT > 500~\GeV$, anti-$k_t$ $R = 0.8$, $|eta| < 2.5$
-
-	
-	
-	Measure Pythia $\alpha_s$  with Herwig?
-	
-	Observables in RIVET
-
-\subsection{Observables}
-
-
-Observables:
--- Baseline:  mMDT mass (zcut = 0.1, beta = 0)
--- Sweeps:  zcut = 0.05, 0.1, 0.2
--- beta = 0, 1, 2
--- Angularity:  alpha = 0.5, 1.0, 2.0
--- $R_g$
--- Plus track based
--- No single emission for this study
-
-\subsection{Extracting Parton Shower Templates}
-
-	Use templates, e.g. $\theta_g$ distirbution as a function $\alpha_s$
-
-
-\subsection{Consistency Check for Soft Drop Mass}
-	Compare to analytic or parton shower study (do a closure test)
-
-	Try different ME matching prescriptions, see if they close
-
-	Plot of $\alpha_s$ versus log likelihood (statistical ssensitivity)
-
-\subsection{Test of Alternative Observables}
-
-Make sure that you measuring something correlated with $\alpha_s$
-
-
-
+%%==============
 \section{Prospects at Lepton Colliders}
+%%==============
 
-\info{Jesse}
+\input{sections/epluseminus.tex}
 
-	Look at e+e- case of jet shapes there (no quark fraction issue)
-
-	Make a statement on e+e- (LEP) as well (can it do better than thrust?)
-		Probes lower scales, so still interesting
-
-	Limit our scope to e+e- is an option, though could just be statement, no study
-
-	If we do e+e-, has to be compared to thrust
-
+%%==============
 \section{Conclusions}
+%%==============
 
 \info{All}
 
