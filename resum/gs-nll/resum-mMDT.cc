@@ -393,12 +393,12 @@ void weights_mMDT(double pt, double R, double zcut, double beta,
   weights_q_nlo  .resize(logrhos.size()-1);
   weights_g_nlo  .resize(logrhos.size()-1);
   for (unsigned int i=0; i<logrhos.size()-1; ++i){
-    weights_q_resum[i]=(res_q[i+1]-res_q[i]);
-    weights_g_resum[i]=(res_g[i+1]-res_g[i]);
-    weights_q_lo   [i]=(lo_q [i+1]-lo_q [i]);
-    weights_g_lo   [i]=(lo_g [i+1]-lo_g [i]);
-    weights_q_nlo  [i]=(nlo_q[i+1]-nlo_q[i]); 
-    weights_g_nlo  [i]=(nlo_g[i+1]-nlo_g[i]); 
+    weights_q_resum[i]=(res_q[i]-res_q[i+1]);
+    weights_g_resum[i]=(res_g[i]-res_g[i+1]);
+    weights_q_lo   [i]=(lo_q [i]-lo_q [i+1]);
+    weights_g_lo   [i]=(lo_g [i]-lo_g [i+1]);
+    weights_q_nlo  [i]=(nlo_q[i]-nlo_q[i+1]); 
+    weights_g_nlo  [i]=(nlo_g[i]-nlo_g[i+1]); 
   }
 
 }
