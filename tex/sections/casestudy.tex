@@ -6,6 +6,30 @@ Soft drop mass is most accurate jet substructure observable to date.  Review sof
 
 Review of soft drop
 
+
+The Soft Drop grooming procedure~\cite{Larkoski:2014wba} takes a jet
+with momentum $p_t$ and radius $R$. It re-clusters its constituents
+using the Cambridge/Aachen (C/A) algorithm \cite{Dokshitzer:1997in,
+  Wobisch:1998wt} and iteratively performs the following steps:
+\begin{enumerate}
+ \item it de-clusters the jet into 2 subjets $j \to j_1 + j_2$;
+ \item it checks the condition 
+\begin{equation}\label{eq:sd-condition}
+\frac{\min (p_{t1} , p_{t2})}{p_{t1}+p_{t2}} > \zcut \left(
+  \frac{\theta_{12}}{R}\right)^\beta\,;
+\end{equation}
+\item if the jet passes the condition, the recursion stops; if not the
+  softer subjet is removed and the algorithms goes back to step 1 with
+  the hardest of the two subjets. 
+ \end{enumerate}
+In the case $\beta=0$ Soft Drop essentially reduces to mMDT~\cite{Dasgupta:2013ihk},
+ albeit without any actual mass-drop condition. Moreover, while the
+ original MDT~\cite{Butterworth:2008iy} algorithm imposed a cut on the ratio of angular distances
+ to masses, a so-called $\ycut$, the mMDT variant instead cuts on
+ momentum fractions~\cite{Dasgupta:2013ihk} (see
+ e.g. \cite{Dasgupta:2013ihk,Dasgupta:2016ktv} for a comparison
+ between $\ycut$ and $\zcut$).
+
 \subsection{Method 1 (name?) Analytic Calculation}
 
 Andrew, et al.
@@ -14,8 +38,10 @@ Andrew, et al.
 
 Simone and Gregory, et al.
 
+Do we want a comparison plot of the two calculations?
 (calculated at NNLL, good enough to start extraction)
 
 \subsection{Concrete Benefits of Grooming}
 
 Show that grooming does what's advertised in \Sec{sec:softcomplications}.
+Reduced sensitivity to NP effects but also better agreement with MC? 
