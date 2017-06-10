@@ -335,7 +335,7 @@ public:
 
 //------------------------------------------------------------------------
 // compute the weights for a given pt
-void weights_mMDT(double pt, double R, double zcut, double beta,
+void weights_mMDT(double pt, double R, double zcut,
                   double alphasMZ, double muR, double muC, double mufr,
                   const vector<double> & logrhos,
                   double endpoint,
