@@ -1,0 +1,3 @@
+root -b
+.L jessescan.C++
+mymain()
