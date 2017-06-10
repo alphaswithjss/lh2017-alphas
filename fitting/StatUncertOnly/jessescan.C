@@ -23,6 +23,7 @@
 #include "TGraphErrors.h"
 #include "TLine.h"
 #include "TMath.h"
+#include "TRandom3.h"
 
 TH1F* mycopy(TH1F* input){
   TH1F* output = new TH1F("","",100,0.05,0.2);
@@ -158,6 +159,11 @@ void mymain() {
    //test alpha_s
    printf("alpha_s = %f\n", alpha_s(150,alpha_s_mZ_standard));  
 
+   double zcut = 0.1;
+   double gfrac1 = 0.99;
+   double gfrac2 = 0.01;
+   double myalphas = 0.1;
+
    //all calls here are for pt=500
 
    //Let's plot the soft-drop mass distribution
@@ -172,8 +178,8 @@ void mymain() {
 
    for (int i=1; i<=gluons->GetNbinsX(); i++){
       double e2 = gluons->GetXaxis()->GetBinCenter(i);
-      gluons->SetBinContent(i, soft_drop_mass(e2,CA,Bg,0.1,0.10,500.0,0.000001));
-      quarks->SetBinContent(i, soft_drop_mass(e2,CF,Bq,0.1,0.10,500.0,0.000001));    
+      gluons->SetBinContent(i, soft_drop_mass(e2,CA,Bg,zcut,myalphas,500.0,0.000001));
+      quarks->SetBinContent(i, soft_drop_mass(e2,CF,Bq,zcut,myalphas,500.0,0.000001));    
    }
 
    TCanvas *c1 = new TCanvas("","",500,500);
@@ -196,7 +202,7 @@ void mymain() {
    l.SetNDC();
    l.SetTextColor(1);
    l.DrawLatex(0.2,0.85,"#bf{#scale[0.5]{Softdrop @ MLL, A. Larkoski et al. 1402.2657}}"); 
-   l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = 0.1}}");    
+   l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+"}}");    
    TLegend* leg = new TLegend(.7,.75,0.85,.95);
    leg->SetTextFont(42);
    leg->SetHeader("");
@@ -220,8 +226,8 @@ void mymain() {
       TH1F* quark_template = new TH1F(TString::Format("0.2%f",as),TString::Format("0.2%f",as),bins.size()-1,&bins[0]);
       for (int i=1; i<=gluon_template->GetNbinsX(); i++){
         double e2 = gluon_template->GetXaxis()->GetBinCenter(i);
-        gluon_template->SetBinContent(i, soft_drop_mass(e2,CA,Bg,as,0.10,500.0,0.000001)); 
-        quark_template->SetBinContent(i, soft_drop_mass(e2,CF,Bq,as,0.10,500.0,0.000001));  
+        gluon_template->SetBinContent(i, soft_drop_mass(e2,CA,Bg,zcut,as,500.0,0.000001)); 
+        quark_template->SetBinContent(i, soft_drop_mass(e2,CF,Bq,zcut,as,500.0,0.000001));  
         gluon_template->SetBinError(i, 0.); 
         quark_template->SetBinError(i, 0.);  
       }
@@ -229,13 +235,18 @@ void mymain() {
       alpha_s_maps_quark[as]=quark_template;
    }
    //Now, the psuedo-experiments.
+   TRandom3 *myrand = new TRandom3(2345);
    TH1F* gluons_toy = new TH1F("","",bins.size()-1,&bins[0]);
    TH1F* quarks_toy = new TH1F("","",bins.size()-1,&bins[0]);
    for (int ntoy = 0; ntoy < ntoys; ntoy++){
-    double e2_toy = gluons->GetRandom();
-    gluons_toy->Fill(e2_toy);
-    e2_toy = quarks->GetRandom();
-    quarks_toy->Fill(e2_toy);    
+    double e1_toyg = gluons->GetRandom();
+    double e1_toyq = quarks->GetRandom();
+    double e2_toyg = gluons->GetRandom();
+    double e2_toyq = quarks->GetRandom();
+    if (myrand->Uniform(0,1) > gfrac1) gluons_toy->Fill(e1_toyq);
+    else gluons_toy->Fill(e1_toyg);
+    if (myrand->Uniform(0,1) > gfrac2) quarks_toy->Fill(e2_toyq);
+    else quarks_toy->Fill(e2_toyg);  
    }
    TH2F* chi2plot = new TH2F("","",100,0.05,0.2,99,0,1);
    TH2F* chi2plotq = new TH2F("","",100,0.05,0.2,99,0,1);
@@ -263,7 +274,7 @@ void mymain() {
    gPad->SetLogx(0);
    gPad->SetRightMargin(0.15);
    //gPad->SetLogz();
-   chi2plot->GetZaxis()->SetRangeUser(0.05,1);
+   chi2plot->GetZaxis()->SetRangeUser(0.01,1);
    chi2plot->GetXaxis()->SetTitle("#alpha_{s}");
    chi2plot->GetYaxis()->SetTitleOffset(1.6);
    chi2plot->GetZaxis()->SetTitleOffset(1.5);
@@ -271,8 +282,8 @@ void mymain() {
    chi2plot->GetZaxis()->SetTitle("#chi^{2} compatibility (probability)");
    chi2plot->Draw("colz");
    l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ MLL, 1402.2657}}"); 
-   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = 0.1, #alpha_{s} = 0.1, Pure q/g samples, 100k events}}");     
-   chi2plotq->GetZaxis()->SetRangeUser(0.05,1);
+   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",myalphas)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   chi2plotq->GetZaxis()->SetRangeUser(0.01,1);
    chi2plotq->Draw("colzsame");
    TLine *myline = new TLine(0.1,0,0.1,1);
    myline->SetLineStyle(3);
@@ -283,8 +294,8 @@ void mymain() {
     double maxprobg = 0;
     double maxprobq = 0;
     for (int j=1; j<=chi2plot->GetNbinsY(); j++){
-      if (j==1) chi2plot_combinedq->SetBinContent(i,pow(chi2plotq->GetBinContent(i,j),2));
-      if (j==chi2plot->GetNbinsY()) chi2plot_combinedg->SetBinContent(i,pow(chi2plot->GetBinContent(i,j),2));
+      if (j==chi2plot->GetYaxis()->FindBin(gfrac2)) chi2plot_combinedq->SetBinContent(i,pow(chi2plotq->GetBinContent(i,j),2));
+      if (j==chi2plot->GetYaxis()->FindBin(gfrac1)) chi2plot_combinedg->SetBinContent(i,pow(chi2plot->GetBinContent(i,j),2));
       if (chi2plot->GetBinContent(i,j) > maxprobg) maxprobg = chi2plot->GetBinContent(i,j);
       if (chi2plotq->GetBinContent(i,j) > maxprobq) maxprobq = chi2plotq->GetBinContent(i,j);
     }
@@ -310,15 +321,15 @@ void mymain() {
    chi2plot_combinedg_copy->Draw("same");
    chi2plot_combinedq_copy->Draw("same");
    l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ MLL, 1402.2657}}"); 
-   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = 0.1, #alpha_{s} = 0.1, Pure q/g samples, 100k events}}");     
+   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",myalphas)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
    
    TLegend* leg2 = new TLegend(.5,.6,0.85,.93);
    leg2->SetTextFont(42);
    leg2->SetHeader("");
    leg2->SetNColumns(1);
    leg2->AddEntry(chi2plot_combined_copy,"Unknown Combined","l");
-   leg2->AddEntry(chi2plot_combinedg_copy,"Known Pure Gluon","l");
-   leg2->AddEntry(chi2plot_combinedq_copy,"Known Pure Quark","l");   
+   leg2->AddEntry(chi2plot_combinedg_copy,"Known Gluon","l");
+   leg2->AddEntry(chi2plot_combinedq_copy,"Known Quark","l");   
    leg2->SetFillStyle(0);
    leg2->SetFillColor(0);
    leg2->SetBorderSize(0);
