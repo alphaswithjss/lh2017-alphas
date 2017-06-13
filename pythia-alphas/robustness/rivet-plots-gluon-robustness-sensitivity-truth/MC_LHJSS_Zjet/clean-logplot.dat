@@ -1,8 +1,8 @@
 # BEGIN PLOT
-LegendOnly=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-robustness.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
-DrawOnly=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-robustness.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+LegendOnly=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-robustness.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+DrawOnly=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2 //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-robustness.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 Title=Angularity, $\alpha$ = 2 $z_{cut}$ = 0.1 $\beta$ = 1
-RatioPlotReference=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+RatioPlotReference=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 Rebin=5
 RatioPlot=1
 LogX=0
@@ -14,13 +14,13 @@ YLabel=$1/\sigma \text{d}\sigma/\text{d}e_\alpha$
 Legend=1
 # END PLOT
 
-# BEGIN HISTO1D //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+# BEGIN HISTO1D //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 LineColor=red
 LineStyle=solid
 NormalizeToSum=1
-Path=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+Path=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as0.9.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 ScaledBy=1.0
-Title=gluon-partn-as0.9
+Title=gluon-truth-as0.9
 XLabel=
 YLabel=
 # xlow	 xhigh	 val	 errminus	 errplus
@@ -176,13 +176,13 @@ YLabel=
 1.490000e+01	1.500000e+01	0.000000e+00	0.000000e+00	0.000000e+00
 # END HISTO1D
 
-# BEGIN HISTO1D //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+# BEGIN HISTO1D //home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 LineColor=blue
 LineStyle=solid
 NormalizeToSum=1
-Path=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-partn-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
+Path=//home/frederic/Work/Software/LesHouches2017/lh2017-alphas/pythia-alphas/robustness/gluon-truth-as1.1.yoda/MC_LHJSS_Zjet/log_Angularity_zcut_0.1_beta_1_alpha_2
 ScaledBy=1.0
-Title=gluon-partn-as1.1
+Title=gluon-truth-as1.1
 XLabel=
 YLabel=
 # xlow	 xhigh	 val	 errminus	 errplus
