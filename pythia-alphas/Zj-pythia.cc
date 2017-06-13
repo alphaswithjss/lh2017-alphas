@@ -23,7 +23,7 @@ using namespace std;
 
 // default definitions
 #define PRINT_FREQ       1000
-#define NEVS             1000
+#define NEVS             1000.0
 #define DEFAULT_SEED     -1
 #define NPIX             33
 
@@ -65,9 +65,13 @@ int main(int argc, char** argv) {
     // set up the quark or gluon channels
     if (!cmdline.present("-gluon")){
       pythia.readString("WeakBosonAndParton:qg2gmZq = on");
+      pythia.readString("23:onMode = off");
+      pythia.readString("23:onIfAny = 13");
     }
     if (!cmdline.present("-quark")){
       pythia.readString("WeakBosonAndParton:qqbar2gmZg = on");
+      pythia.readString("23:onMode = off");
+      pythia.readString("23:onIfAny = 13");
     }
   } else if (cmdline.present("-dijets")) {
     // Alternatively use dijets
@@ -77,6 +81,8 @@ int main(int argc, char** argv) {
     read_from_lhe = true;
     pythia.readString("Beams:frameType = 4");
     pythia.readString("Beams:LHEF = "+fn_in);
+    pythia.readString("23:onMode = off");
+    pythia.readString("23:onIfAny = 13");
   }
   if (!read_from_lhe) {
     pythia.settings.flag("Random:setSeed", true);
@@ -107,8 +113,8 @@ int main(int argc, char** argv) {
   pythia.settings.flag("SpaceShower:QEDshowerByL", false);
 
   pythia.init();
-  if (read_from_lhe)
-    nEvents = pythia.mode("Main:numberOfEvents");
+  if (read_from_lhe & !cmdline.present("-nev"))
+    nEvents = 1e9;
 
   // Begin event loop. Generate event. Skip if error.
   for (int iEvent = 0; iEvent < nEvents; ++ iEvent) {
