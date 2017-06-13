@@ -96,9 +96,10 @@ public:
   Resum_mMDT(){}
 
   // ctor with proper initialisation
-  Resum_mMDT(double zcut, double ptR_in, double alphasMZ_in, double muR_in, double kt_freeze=1.0)
+  Resum_mMDT(double zcut, double alpha_in, double ptR_in, double alphasMZ_in, double muR_in, double kt_freeze=1.0)
     : alphasMZ(alphasMZ_in), muR(muR_in){
     ptR = ptR_in;
+    alpha = alpha_in;
     
     // get the alphas value (use the 2-loop expansion independently of
     // the choice for the resummation
@@ -157,7 +158,9 @@ public:
  
     // we include finite z corrections   
     if (Lrho>Lc){
-      double as_int = int_alphas(Lrho, Lc);
+      // arguments are the k^2 scales at z=1
+      // for alpha=2, kt^2=m^2 at z=1
+      double as_int = int_alphas(2.0/alpha*Lrho, 2.0/alpha*Lc);
       Sq += as_int*int_Pqtoq_nosing();
       Sg += as_int*int_Pgtog_nosing();
       
@@ -170,6 +173,9 @@ public:
 
   // first order expansion in alphas
   FlavourMatrix R_LO(double rho) const{
+    // no support for alpha!=2
+    if (abs(alpha-2.0)>0.0001) return FlavourMatrix();
+
     double rho_natural = exp(cfg_q.Bi);
     double Lrho_natural = log(1.0/rho_natural);
     double Lrho;
@@ -211,6 +217,9 @@ public:
   // terms.  The other alphas^2 contribution coming from the expansion
   // of the exponential will be taken care when we do the integration
   FlavourMatrix R_NLO(double rho) const{
+    // no support for alpha!=2
+    if (abs(alpha-2.0)>0.0001) return FlavourMatrix();
+
     double rho_natural = exp(cfg_q.Bi);
     double Lrho_natural = log(1.0/rho_natural);
     double Lrho;
@@ -309,15 +318,17 @@ public:
   // plain jet mass Sudakov
   //......................................................................
   double Rplain(double Lrho, double Lrho0, const ConfigBase &cfg) const{
-    return Lrho<=Lrho0 ? 0.0 : cfg.triangle(0, 2, Lrho0, Lrho, 0.0);
+    return Lrho<=Lrho0 ? 0.0 : cfg.triangle(0, alpha, Lrho0, Lrho, 0.0);
   }
   double Rplain_LO(double Lrho, double Lrho0, const ConfigBase &cfg) const{
+    assert(abs(alpha-2.0)<0.0001);
     double as = cfg.alphas_ref;
     double CR = cfg.CR;
     double tmp=Lrho-Lrho0;
     return Lrho<=Lrho0 ? 0.0 : as*CR/(2.0*M_PI)*tmp*tmp;
   }
   double Rplain_NLO(double Lrho, double Lrho0, const ConfigBase &cfg) const{
+    assert(abs(alpha-2.0)<0.0001);
     if (Lrho<=Lrho0) return 0.0;
     double as = cfg.alphas_ref;
     double CR = cfg.CR;
@@ -329,13 +340,14 @@ public:
   double alphasMZ, muR;
   double rhomax;
 
-  double ptR, zc, Lc, Lm;
+  double ptR, zc, Lc, Lm, alpha;
   ConfigBase cfg_q, cfg_g;
 };
 
 //------------------------------------------------------------------------
 // compute the weights for a given pt
 void weights_mMDT(double pt, double R, double zcut,
+                  double alpha,
                   double alphasMZ, double muR, double muC, double mufr,
                   const vector<double> & logrhos,
                   double endpoint,
@@ -345,7 +357,7 @@ void weights_mMDT(double pt, double R, double zcut,
                   vector<double> &weights_g_lo,
                   vector<double> &weights_q_nlo, 
                   vector<double> &weights_g_nlo){
-  Resum_mMDT mmdt_resum(zcut, pt*R, alphasMZ, muR, mufr);
+  Resum_mMDT mmdt_resum(zcut, alpha, pt*R, alphasMZ, muR, mufr);
   mmdt_resum.rhomax = endpoint;
 
   // resummation-scale uncertainty
@@ -363,7 +375,9 @@ void weights_mMDT(double pt, double R, double zcut,
   vector<double> lo_g ; lo_g .reserve(logrhos.size());
   vector<double> nlo_g; nlo_g.reserve(logrhos.size());
 
-  for (double lrho : logrhos){
+  //for (double lrho : logrhos){
+  for (unsigned int i=0;i<logrhos.size(); ++i){
+    double lrho = logrhos[i];
     double rho = exp(-lrho) * muC;
 
     FlavourMatrix R    = exp(-mmdt_resum.R(rho)); // resummed
