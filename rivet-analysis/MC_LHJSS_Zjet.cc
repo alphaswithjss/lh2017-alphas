@@ -243,7 +243,7 @@ namespace Rivet {
             double theta = p.squared_distance(jet);
             angularity+=z * pow(theta, 0.5*alpha);
           }
-          value=angularity/pow(antikT_R,alpha);
+          value=angularity/pow(antiKT_R,alpha);
           break;
         case 2:
             //do something
