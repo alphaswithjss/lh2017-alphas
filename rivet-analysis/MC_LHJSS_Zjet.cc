@@ -124,8 +124,13 @@ namespace Rivet {
               _obs.push_back(HistogramHolder(bookHisto1D(name,
                                                          100,0.,1.),
                                              bookHisto1D("log_"+name,
-                                                         logspace(100,0.0001,1.))));
-              
+                                                         150,0.0,15.0)));
+
+              // _obs.push_back(HistogramHolder(bookHisto1D(name,
+              //                                            100,0.,1.),
+              //                                bookHisto1D("log_"+name,
+              //                                            logspace(100,0.0001,1.))));
+
               
                 // control plots
                 //h_delta_phi_Zjet.push_back(bookHisto1D("deltaphi_Zjet"+Qlab+Rlab, 100, 0.0, pi));
@@ -238,7 +243,7 @@ namespace Rivet {
             double theta = p.squared_distance(jet);
             angularity+=z * pow(theta, 0.5*alpha);
           }
-          value=angularity;
+          value=angularity/pow(antikT_R,alpha);
           break;
         case 2:
             //do something
@@ -256,7 +261,7 @@ namespace Rivet {
       
       _obs.at(histmap[name]).h->fill(value,weight);
       
-      _obs.at(histmap[name]).h_log->fill(value,weight);
+      _obs.at(histmap[name]).h_log->fill(value>0 ? log(1./value) : 20.0 ,weight);
       
       
     };
