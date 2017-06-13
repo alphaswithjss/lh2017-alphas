@@ -1,15 +1,6 @@
-/// 
-/// Code to generate events for Jet Information project.
-/// Frédéric Dreyer, Patrick Komiske, Eric Metodiev, Jesse Thaler
-/// MIT, 2017
+/// Frederic Dreyer
 ///
-/// Events.cc generates pythia events for a given input process and
-/// saves ECFG outputs and jet images.
-///
-/// usage:
-///   ./events [-nev D] [-seed I] [-pthatmin D] [-noUE,noISR,noFSR,parton]
-///            [-R D] [-rapmax D] [-ptjetmin D] [-out S,out-img S,out-ecfg S]
-///            [-nmax I] [-npixel I] [-process I,uds,cb,gluon,W,Z,top,higgs]
+/// small program for pythia showering of lhe files, with output to hepmc
 ///            
 
 
