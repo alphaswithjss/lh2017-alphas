@@ -1,4 +1,40 @@
-\info{Ben, Ian, Jesse, Grigorios, Maria}
+%\info{Ben, Ian, Jesse, Grigorios, Maria}
+
+Within the context of Quantum Chromodynamics (QCD), the strong coupling constant ($\alpha_s$) is responsible for the strength of interactions between quarks and gluons.  However, all observable consequences of QCD are due to emergent phenomena of the strong force including most of the visible energy-density in the universe and the formation of collimated streams of particles known as \textit{jets}.   In high energy collider experiments, jets are proxies for quarks and gluons and their multiplicity and kinematics in purely hadronic final states can be predicted to high order in $\alpha_s$ in perturbation theory with e.g. NNLOJET~\cite{Currie:2016bfm,Currie:2017ctp} and NLOJet++~\cite{Nagy:2001fj,Nagy:2003tz}.  As a result, measurements of jet multiplicities, energies, and angles can be used to extract $\alpha_s$~\cite{ATLAS:2015yaa,Aaboud:2017fml,Khachatryan:2014waa,CMS:2014mna,Chatrchyan:2013txa}.  In these extractions, the collinear region defining the internal structure of jets is ignored due to the lack of precision calculations.  Jets are not in one-to-one correspondence with quarks and gluons and their structure is also governed by $\alpha_s$.  
+
+The world-average value for $\alpha_s$ at the $Z$ boson mass ($m_Z$) is $0.118\pm 0.0013$, a $1.1\%$ total uncertainty~\cite{Olive:2016xmw}.  The most precise single input to the world-average is the $\alpha_s$ value from Lattice QCD calculations.   The various inputs to the world-average are sensitive to different regimes of QCD.  Fig.~\ref{fig:propaganda}.  blah blah as a result, a measurement of $\alpha_s$ to $\sim 10\%$ would provide important input to understanding resummation blah blah.  Also discuss pros and cons.
+
+\begin{itemize}
+\item Laying the groundwork for high precision ($\mathcal{O}(1\%)$) extractions of $\alpha_s$ for the full LHC dataset or a future $e^+e^-$ machine.
+\item Competitive measurements with existing LHC extractions of $\alpha_s$ (5\%)
+\item Probing the tension between thrust (and friends) extractions with lattice (10\%)
+\item Parton shower MC (15\%)
+\end{itemize}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width = 0.6\columnwidth]{figures/alphas_propaganda.pdf}
+\end{center}
+\caption{Various values of $\alpha_s$, including the world-average shown as a black line with a grey band~\cite{Olive:2016xmw}.  The point labeled \textit{Thrust} is from LEP data and the measurement using the CMS top cross-section measurement is the first NNLO extraction at the LHC.  The other points are the $\alpha_s$ parameter value used in the final state shower in various Monte Carlo programs.  Herwig and Sherpa use the world-average by default while the default or A14 tunes of Pythia employ a higher value.  The order at which $\alpha_s$ is utilized is not the same in all cases and is given in the $\overline{MS}$ scheme. }
+\label{fig:propaganda}
+\end{figure}
+
+Grooming in general (broader appeal; also try to avoid the use of the word soft drop).
+
+Then in pp we have to use jets, so that means jet substructure.  Grooming also removes UE, etc.  Also complementary to other pp extraction methods.
+
+Goal of this study: in addition to alpha s itself, we want to demonstrate the broader applicability of grooming techniques for precision QCD; in contrast, most applications so far are for tagging.  Make a connection to the top mass.  Therefore, we begin with a general introduction to these grooming techniques blah blah and then blah blah.
+
+(mention our simultaneous q/g fraction extraction - this is new independent of JSS)
+
+\begin{comment}
+=====
+
+A new class of jet substructure observables have been introduced that are amenable to precision calculations and therefore introduce the possibility of an $\alpha_s$ extraction from the radiation pattern within a jet for the first time.  Precision jet substructure is an active field of research with a general understanding of infrared and collinear (IRC) safe observables at leading logarithm (LL) as well as analytic control over a variety of many other infrared~\cite{Larkoski:2013paa,Larkoski:2015lea} or collinear~\cite{Elder:2017bkd,Krohn:2012fg,Waalewijn:2012sv,Chang:2013rca} unsafe observables.  Many results have also been extended to next-to-leading logarithm (NLL), including the jet mass~\cite{} and other jet shapes~\cite{}.  However, until recently most of these NLL results ignored the contribution from \textit{non-global logarithms} (NGLs).  These contributions from radiation that connects the intra- and inter-jet regions formally arise at NLL and are difficult to calculate in perturbation theory.  By studying the analytic structure of various jet grooming techniques, it was observed that one could remove the sensitivity to NGLs through a modification of existing grooming procedures~\cite{Dasgupta:2013ihk,Dasgupta:2013via}.  Since that time, an entire class of grooming techniques have been constructed with this property, known as \textit{soft drop}~\cite{Larkoski:2014wba}.  --> Grooming in general.
+
+Paragraph that introduces soft drop and the recent calculations~\cite{Frye:2016okc,Frye:2016aiz}, \cite{Marzani:2017mva}
+
+Jet substructure has proven to be a powerful set of techniques for tagging blah blah~\cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv}.  This study suggests blah blah.  This paper is organized as follows.  
 
 Goal of jet substructure community
 
@@ -8,7 +44,7 @@ AIM:  Achieve something like 10\% precision to start to answer other questions
 
 \subsection{Cite Dump}
 
-PDG \cite{Olive:2016xmw}
+PDG 
 
 mMDT \cite{Dasgupta:2013ihk,Dasgupta:2013via}
 
@@ -24,17 +60,8 @@ Calculation 2 \cite{Marzani:2017mva}
 
 AKT \cite{Cacciari:2008gp}, FastJet \cite{Cacciari:2011ma}
 
-Boost Reports \cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv}
-
 Sudakov Safety \cite{Larkoski:2013paa,Larkoski:2015lea}, $z_g$ \cite{Larkoski:2015lea}
 
-\begin{figure}
-\begin{center}
-\includegraphics[width = 0.6\columnwidth]{figures/alphas_propaganda.pdf}
-\end{center}
+\end{comment}
 
-\caption{Ben's propaganda plot}
 
-\label{fig:propaganda}
-
-\end{figure}
