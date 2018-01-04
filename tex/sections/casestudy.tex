@@ -54,9 +54,7 @@ From the point of view of fitting for $\alpha_s$, a good observable is one whose
 \label{fig:robustnessschematic}
 \end{figure}
 
-The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs Herwig 7.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and Pythia 8.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities $e_\alpha=\sum_iz_i\theta_i^\alpha$ were studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in 0.05,0.1,0.2\}$.  
-
-Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show BLAH.
+The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs Herwig 7.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and Pythia 8.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities $e_\alpha=\sum_iz_i\theta_i^\alpha$ were studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in \{0.05,0.1,0.2\}$.  
 
 \begin{figure}[h!]
 \begin{center}
@@ -82,6 +80,8 @@ Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show BLAH.
 \label{fig:differentialseparation}
 \end{figure}
 
+Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show the distribution of the normalized squared jet mass ($e_2$) for quark and gluon jets.  To the left of the low-mass peak, the shape of the $e_2$ distribution is nearly flat for quarks and nearly linear (in the log-space) for gluons.  Increasing $\alpha_s$ shifts the quark distribution up but has nearly no impact on the shape of the distribution below the peak.  The size of the peak is significantly impacted by the value of $\alpha_s$.  In contrast, the slope of the distribution for gluons changes with the variations in $\alpha_s$.  Figure~\ref{fig:sensitivity} shows the same $e_2$ distribution, but now with variations in the modeling of non-perturbative effects.  The low-mass peak for quarks is entirely due to hadronization effects.  According to the Herwig 7 MC, the impact of hadronization is much smaller for gluon jets.  Figure~\ref{fig:differentialseparation} shows the distribution of the differential separation power (integrand of Eq.~\ref{eq:seppower}), using the variation with $\alpha_s$ as the sensitivity and the change from turning off hadronization as the robustness.  For quark jets, Figs.~\ref{fig:sensitivity} and~\ref{fig:robustness} showed that the biggest variations with $\alpha_s$ occurred at low mass which is also where non-perturbative effects are largest.  This corresponds to the peak in the blue and red distributions in Fig.~\ref{fig:differentialseparation} occurring in nearly the same location.  In contrast, the peaks are more well-separated in Fig.~\ref{fig:differentialseparation} for gluon jets and the blue is shifted to higher mass values where there is more perturbative control.  
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width = 0.6\columnwidth]{figures/robseptradeoff.pdf}
@@ -89,3 +89,5 @@ Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show BLAH.
 \caption{The tradeoff between sensitivity and robustness for the 36 angularities studied in this section.  Stars represent quark jets and triangles represent gluon jets.}
 \label{fig:robseptradeoff}
 \end{figure}
+
+A summary of the sensitivity-robustness tradeoff for many angularities is presented in Fig.~\ref{fig:robseptradeoff}.  As already observed for the jet mass, gluons tend to have a superior sensitivity and robustness compared with quarks.  This is not surprising, as gluons have more perturbative radiation than quarks ($C_A>C_F$).  The jet mass has $(\Delta_\text{sensitivity},\Delta_\text{robustnes})=(?,?)$.  The angularities with the highest quark and gluon sensitivity and robustness are ?, ?, and ?.   Conclusion + transition sentence(s).
