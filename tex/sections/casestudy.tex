@@ -1,41 +1,62 @@
 %\info{Andrew, Simone}
 
-\subsection{Analytics}
+In this section, we study the sensitivity of the groomed mass to variations in the value of $\alpha_s$. We begin with a discussion based on the analytic formulae. We then discuss the issue of normalized vs. unnormalized distributions. Finally, we perform a Monte Carlo study, highlighting the interplay between the sensitivity of different parts of the distribution to variations in the value of $\alpha_s$ and non-perturbative effects.
 
-\info{IAN}
 
-Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{sec:templates} where we will show the templates (could then just give a ref).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Analytic Understanding}\label{sec:analytic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{comment}
-The Soft Drop grooming procedure~\cite{Larkoski:2014wba} takes a jet
-with momentum $p_t$ and radius $R$. It re-clusters its constituents
-using the Cambridge/Aachen (C/A) algorithm \cite{Dokshitzer:1997in,
-  Wobisch:1998wt} and iteratively performs the following steps:
-\begin{enumerate}
- \item it de-clusters the jet into 2 subjets $j \to j_1 + j_2$;
- \item it checks the condition 
-\begin{equation}\label{eq:sd-condition}
-\frac{\min (p_{t1} , p_{t2})}{p_{t1}+p_{t2}} > \zcut \left(
-  \frac{\theta_{12}}{R}\right)^\beta\,;
-\end{equation}
-\item if the jet passes the condition, the recursion stops; if not the
-  softer subjet is removed and the algorithms goes back to step 1 with
-  the hardest of the two subjets. 
- \end{enumerate}
-In the case $\beta=0$ Soft Drop essentially reduces to mMDT~\cite{Dasgupta:2013ihk},
- albeit without any actual mass-drop condition. Moreover, while the
- original MDT~\cite{Butterworth:2008iy} algorithm imposed a cut on the ratio of angular distances
- to masses, a so-called $\ycut$, the mMDT variant instead cuts on
- momentum fractions~\cite{Dasgupta:2013ihk} (see
- e.g. \cite{Dasgupta:2013ihk,Dasgupta:2016ktv} for a comparison
- between $\ycut$ and $\zcut$).
- \end{comment}
+To get an understanding of the sensitivity of the groomed mass distribution to both the value of $\alpha_s$, as well as the quark and gluon composition, it is enlightening to study the LL distribution. Here, for simplicity, we consider only the leading logs in the observable, in the resummation region. Complete expressions, can be found in \cite{Larkoski:2014wba,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva}. The LL result for the cumulant distribution for $\beta=0$ in the resummation region takes the form
+\begin{align}
+\Sigma(\ecf{2}{2})=\exp\left[ - \frac{\alpha_s C_i}{\pi} \log(\zcut) \log (\ecf{2}{2}) \right]\,.
+\end{align}
+This highlights that for $\beta=0$, the groomed jet mass is a single logarithmic observable, and therefore does not exhibit the standard Sudakov behavior.
+Differentiating, we obtain the spectrum
+\begin{align}
+\ecf{2}{2}  \frac{d\sigma}{d \ecf{2}{2}}=   - \frac{\alpha_s C_i}{\pi} \log(\zcut)   \exp\left[ - \frac{\alpha_s C_i}{\pi}  \log(\zcut) \log (\ecf{2}{2}) \right]
+\end{align}
+Here we immediately see several interesting consequences. In the resummation region, the slope by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
 
-Notes (order not meaningful): Plot of the two calculations for softdrop mass?  Show plots of the ATLAS and CMS measurements?  Actually, I'm not sure we can show CMS since it is only preliminary.  Say something about mass versus $k_t$?
+%Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{sec:templates} where we will show the templates (could then just give a ref).
+%
+%\begin{comment}
+%The Soft Drop grooming procedure~\cite{Larkoski:2014wba} takes a jet
+%with momentum $p_t$ and radius $R$. It re-clusters its constituents
+%using the Cambridge/Aachen (C/A) algorithm \cite{Dokshitzer:1997in,
+%  Wobisch:1998wt} and iteratively performs the following steps:
+%\begin{enumerate}
+% \item it de-clusters the jet into 2 subjets $j \to j_1 + j_2$;
+% \item it checks the condition 
+%\begin{equation}\label{eq:sd-condition}
+%\frac{\min (p_{t1} , p_{t2})}{p_{t1}+p_{t2}} > \zcut \left(
+%  \frac{\theta_{12}}{R}\right)^\beta\,;
+%\end{equation}
+%\item if the jet passes the condition, the recursion stops; if not the
+%  softer subjet is removed and the algorithms goes back to step 1 with
+%  the hardest of the two subjets. 
+% \end{enumerate}
+%In the case $\beta=0$ Soft Drop essentially reduces to mMDT~\cite{Dasgupta:2013ihk},
+% albeit without any actual mass-drop condition. Moreover, while the
+% original MDT~\cite{Butterworth:2008iy} algorithm imposed a cut on the ratio of angular distances
+% to masses, a so-called $\ycut$, the mMDT variant instead cuts on
+% momentum fractions~\cite{Dasgupta:2013ihk} (see
+% e.g. \cite{Dasgupta:2013ihk,Dasgupta:2016ktv} for a comparison
+% between $\ycut$ and $\zcut$).
+% \end{comment}
+%
+%Notes (order not meaningful): Plot of the two calculations for softdrop mass?  Show plots of the ATLAS and CMS measurements?  Actually, I'm not sure we can show CMS since it is only preliminary.  Say something about mass versus $k_t$?
+%
 
-\subsection{Parton Shower Monte Carlo Studies}
 
-\info{BEN}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parton Shower Monte Carlo Study}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 From the point of view of fitting for $\alpha_s$, a good observable is one whose probability distribution changes significantly with variations in $\alpha_s$.  However, many observables that significantly change with $\alpha_s$ are also very sensitive to non-perturbative effects, such as the multiplicity inside jets.  In this section, many angularities are studied to quantify the tradeoff between the sensitivity to $\alpha_s$ and the robustness to non-perturbative effects.  Given two probability distributions $f$ and $g$, define the separation power $\Delta(f,g)$~\cite{Harrison:1998yr} as
 
@@ -54,7 +75,7 @@ From the point of view of fitting for $\alpha_s$, a good observable is one whose
 \label{fig:robustnessschematic}
 \end{figure}
 
-The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs Herwig 7.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and Pythia 8.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities $e_\alpha=\sum_iz_i\theta_i^\alpha$ were studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in \{0.05,0.1,0.2\}$.  
+The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs Herwig 7.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and Pythia 8.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities (as defined in Sec.~\ref{sec:shape_def}), with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in \{0.05,0.1,0.2\}$.  
 
 \begin{figure}[h!]
 \begin{center}
@@ -91,3 +112,90 @@ Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show the distribution of 
 \end{figure}
 
 A summary of the sensitivity-robustness tradeoff for many angularities is presented in Fig.~\ref{fig:robseptradeoff}.  As already observed for the jet mass, gluons tend to have a superior sensitivity and robustness compared with quarks.  This is not surprising, as gluons have more perturbative radiation than quarks ($C_A>C_F$).  The jet mass has $(\Delta_\text{sensitivity},\Delta_\text{robustnes})=(?,?)$.  The angularities with the highest quark and gluon sensitivity and robustness are ?, ?, and ?.   Conclusion + transition sentence(s).
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Issue of Casimir Scaling}
+\label{sec:casimir}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+While we have illustrated that the groomed jet mass observable provides a sensitivity to $\alpha_s$ particularly for gluon jets, one problem that is immediately clear from \Sec{sec:analytic} is that the leading behavior of the distributions is always dominated by the product $\alpha_s C_i$. While this is broken at higher perturbative orders, it implies that at lowest order there is a complete degeneracy of the value of $\alpha_s$ and the quark vs. gluon fraction of jets. This problem is not faced at $e^+e^-$ colliders.
+
+There are a variety of different approaches to overcome this problem, each with their own advantages and disadvantages. First, we note that the quark and gluon fractions are perturbatively calculable given the pdfs. Therefore, perturbatively calculating the quark and gluon fractions inputs the most possible information, and should correspondingly lead to the best sensitivity for $\alpha_s$. However, it has the downside that it also introduces sensitivity to the pdfs, which in principle should be fitted along with $\alpha_s$. This difficulty also enters into other extractions at the LHC, for example the $3$-$2$ jet rate or the EEC. However, a hope using jet substructure was that the sensitivity to the pdfs could be minimized.
+
+A second approach is to simultaneously fit for the quark (or gluon) fraction. Due to the fact that the two fractions must add to unity, this introduces a single additional parameter (see Fig.~\ref{fig:analyticbanana}). The degeneracy between the quark and gluon fraction and $\alpha_s$ is broken by higher order effects. Furthermore, different $\ecf{2}{\alpha}$ have different dependence on $\alpha_s$ and $C_i$ at higher orders. Therefore, the measurement of multiple angularities would allow the degeneracy to be broken. However, from a theoretical perspective, this significantly complicates the analysis, and we do not believe that precise predictions will be made in the near future, except for $\alpha=2$, and perhaps $\alpha=1$. In our study in \Sec{sec:ben_study} we will consider both approaches.
+
+It would be interesting to understand other approaches to disentangling the quark and gluon fractions and $\alpha_s$, however, we expect that this will be a limiting aspect of $\alpha_s$ extractions at the LHC.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width = 0.4\columnwidth]{figures/Degeneracy}
+\end{center}
+\caption{The slope of the probability distribution of $\ecf{2}{2}$ (as a function of $\log(\ecf{2}{2})$) is proportional to $\alpha_s(C_Af_g+C_F(1-f_g))$, which is plotted above.  The degeneracy between $\alpha_s$ and $f_g$ (gluon fraction) are represented by the banana-shaped isocontours. }
+\label{fig:analyticbanana}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Normalized vs. Unnormalized Distributions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In addition to the complication of quark and gluon fractions, another issue which appears for the extraction of $\alpha_s$ from jet substructure, as compared to $e^+e^-$ event shapes is the issue of normalization.\footnote{We thank Gavin Salam for interesting discussions regarding the issue of normalization.} Unlike in $e^+e^-$, the born dijet cross section in $pp$ is sensitive to the value of $\alpha_s$. This implies that the rate itself, in particular, the absolute quark and gluon jet rates carries information regarding $\alpha_s$. 
+
+Here we will focus on using the normalized distribution. We do this for three reasons. First, we would like this to be a true measurement of $\alpha_s$ from the jet substructure, and not be dominated by the overall rate. Second, and more importantly, it is currently only possible to perform the experimental measurement of the groomed mass precisely for the normalized distribution.  Experimentally, the absolute rate is determined by the acceptance from kinematic requirements on the jet $p_\text{T}$.  The sophisticated in-situ jet energy scale and resolution program carried out for small-radius jets~\cite{Aad:2014bia,Aaboud:2017jcu,Khachatryan:2016kdb,CMS-DP-2016-020} has not yet reached the same level of maturity for groomed large-radius jets.  However, this is simply a matter of time and efforts have already started in this direction~\cite{ATLAS-CONF-2017-063}.  A key challenge that still remains is to fully understand the correlations in the calibrations and uncertainties between the jet energy and the jet substructure observables.  Finally, the use of normalized distributions minimizes the sensitivity to the parton distribution functions.  As discussed in Sec.~\ref{sec:pertsimplicity}, grooming renders the quark and gluon angularity distributions universal.  Therefore, the measured distribution only depends on the fraction of gluon jets $f_g$ that pass the event selection.  In contrast, the total cross-section depends on the relative proportions of all possible partonic initial states.  This introduces a source of uncertainty that is not present for the normalized cross-section.  For example, the initial state could be one of $qq$, $qg$ or $gg$.  The relative proportions can be parameterized by two numbers $f_{qg}$ and $f_{gg}$ where $f_{qg}+f_{gg}=1-f_{qq}$.   Figure~\ref{fig:pdf} shows the uncertainty in the $f_{qg}$ and $f_{gg}$ from leading order PDFs.  Fixing $f_g$, which carries all of the PDF sensitivity for the shape measurement, has little effect on the uncertainty in $f_{qg}$ and $f_{gg}$.  This results in the residual PDF sensitivity from also measuring the total cross-section in addition to the shape of the angularity distribution.
+
+
+
+
+
+One issue with using purely the normalized jet shape is that since the mass distribution starts at $\cO(\alpha_s)$. In other words, the slope of the groomed mass distribution is $\cO(\alpha_s)$. This implies that to have an $\cO(\alpha_s^2)$ uncertainty on the slope, one should have an NNLO calculation for a jet with two constituents.  In particular, this requires $2\to 3$ matrix elements. For the case of $e^+e^-$ this level of accuracy has been achieved, where the NNLO corrections to $e^+e^-\to 3$ jets are known, and are used in the extractions of $\alpha_s$. Due to recent progress in the calculation of the relevant amplitudes, we believe this is realistic.
+
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width = 0.5\columnwidth]{figures/PDFs.pdf}
+\end{center}
+\caption{The fraction of $qg$ and $gg$ initial states for leading order dijet production simulated with MG5\_aMC 2.6.0~\cite{Alwall:2014hca} using the NNPDF 2.3~\cite{Ball:2012cx} parton distribution function (PDF) set.  The ellipses correspond to the uncertainty from the 100 error PDF sets.  For the red dashed line, the fraction of out-going gluon jets $f_g$ is constrained to be the same for all variations (and equal to the nominal PDF set).}
+\label{fig:pdf}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%

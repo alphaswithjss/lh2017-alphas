@@ -1,0 +1,57 @@
+
+In this section we briefly review the definitions of the observables and grooming procedures that we will focus on in this paper.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Observables}\label{sec:shape_def}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The simplest class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions. There has been significant theoretical study of these objects, and their perturbative behavior is understood to relatively high accuracy. Here we give definitions for both jets in $e^+e^-$ as well as in $pp$.
+
+\ijm{copied in, need to rewrite a bit}
+
+For a set of particles $\{i\}$, in a jet $J$, the two energy correlation functions in $e^+e^-$ collisions are defined as
+\begin{align}\label{eq:eee2}
+\left.\ecf{2}{\alpha}\right|_{e^+e^-}&=\frac{1}{E_J^2}\sum_{i<j\in J} E_i E_j\left(
+\frac{2p_i\cdot p_j}{E_i E_j}
+\right)^{\alpha/2}\,, 
+\end{align}
+For jets produced in $pp$ collisions, the energy correlation functions are simply modified as
+\begin{align}\label{eq:ppe2}
+\left.\ecf{2}{\alpha}\right|_{pp}&=\frac{1}{p_{TJ}^2}\sum_{i<j\in J} p_{Ti} p_{Tj}R_{ij}^\alpha\,, 
+\end{align}
+Here $R_{ij}$ is the distance between particles $i$ and $j$ in the pseudorapidity-azimuth angle plane.  For jets that are central ($p_{TJ} \sim E_J$) and if all emissions in the jet are collinear, the definitions of the two- and three-point energy correlation functions for jets in $pp$ collisions are equivalent to those for $e^+e^-$ collisions.
+
+The angular exponent $\alpha$ in the definition of the energy correlation functions is a parameter that controls sensitivity to wide-angle emissions.  For jets that consist of massless particles, the two-point energy correlation function in $e^+e^-$ collisions reduces to a function of the jet mass, $m_J$, if $\alpha=2$:
+\begin{equation}
+\left.\ecf{2}{2}\right|_{e^+e^-} = \frac{m_J^2}{E_J^2}\,.
+\end{equation} 
+
+Throughout this paper, we will primarily restrict ourselves to the case of $\alpha=2$. This is the case for which the theory understanding is best, and which has been perturbatively calculated to NNLL. It is, however, and interesting question as to whether other values of $\alpha$ could provide improved sensitivity to $\alpha_s$. Another benchmark value is $\alpha=1$, which corresponds to a broadening or $k_T$ type measure.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Grooming Techniques}\label{sec:groom_tech}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Starting from a jet identified with an IRC safe jet algorithm (such as anti-$k_t$ \cite{Cacciari:2008gp}), the soft drop algorithm is defined using Cambridge/Aachen (C/A) reclustering \cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.  Specializing to the case of $\beta=0$, where Soft Drop is equivalent to Modified Mass Drop \cite{Dasgupta:2013ihk}, the algorithm proceeds as follows:
+\begin{enumerate}
+
+\item Recluster the jet using the C/A clustering algorithm, producing an angular-ordered branching history for the jet.
+
+\item Step through the branching history of the reclustered jet.  At each step, check the soft drop condition
+\begin{align}\label{eq:sd_cut}
+\frac{\min\left[ p_{Ti}, p_{Tj}  \right]}{p_{Ti}+p_{Tj}}> \zcut \left(   \frac{R_{ij}}{R}\right)^\beta \,.
+\end{align}
+Here, $\zcut$ is a parameter defining the scale below which soft radiation is removed.  If the soft drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
+
+\item The soft drop procedure terminates once the soft drop condition is satisfied.
+
+\end{enumerate}
+
+For $\beta=0$ non-global logarithms are removed from the distribution.  
+
+
+
+
+
