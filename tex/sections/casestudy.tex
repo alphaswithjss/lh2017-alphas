@@ -62,7 +62,7 @@ From the point of view of fitting for $\alpha_s$, a good observable is one whose
 
 \begin{align}
 \label{eq:seppower}
-\Delta(f,g)=\frac{1}{2}\int d\lambda \frac{(f(\lambda)-g(\lambda))^2}{f(\lambda)+g(\lambda)}.
+\Delta(f,g)=\frac{1}{2}\int d\lambda \frac{(f(\lambda)-g(\lambda)^2}{f(\lambda)+g(\lambda)}.
 \end{align}
 
 \noindent As defined by Eq.~\ref{eq:seppower}, the separation power is a number in $[0,1]$ where $\Delta=1$ if and only if $f=g$ a.e.  If $f$ is the nominal probability distribution of some observable and $g$ the distribution of the same observable with a different value of $\alpha_s$, we would like $\Delta(f,g)$ close to 1 (sensitivity).  In contrast, if $g$ is the same as $f$ with some variation in the non-perturbative effects, then we would like $\Delta(f,g)$ to be close to $0$ (robustness).  The plane used to study the tradeoff between sensitivity and robustness is shown in Fig.~\ref{fig:robustnessschematic}.  Not all information about $\alpha_s$ sensitivity is captured by a single point in Fig.~\ref{fig:robustnessschematic} because sensitivity to non-perturbative effects could be in regions of low $\alpha_s$ sensitivity and vice versa.  Therefore, it is also useful to study the integrand of Eq.~\ref{eq:seppower} as a function of the angularity $\lambda$.
@@ -97,7 +97,7 @@ The sensitivity-robustness tradeoff is studied using (formally) leading logarith
 \begin{center}
 \includegraphics[width = 0.99\columnwidth]{figures/differentialseparation.pdf}
 \end{center}
-\caption{The integrand of Eq.~\ref{eq:seppower} for the normalized squared jet mass ($e_2$) for quark jets (left) and gluon jets (right).  Higher values of the mass are on the left.  In $f$ from Eq.~\ref{eq:seppower} is the same for red and blue, but for blue (sensitivity), $\alpha_s$ is varied by 10\% and for red (robustness), hadronization is turned off.}
+\caption{The integrand of Eq.~\ref{eq:seppower} for the normalized squared jet mass ($e_2$) for quark jets (left) and gluon jets (right).  Higher values of the mass are on the left.  In $f$ from Eq.~\ref{eq:seppower} is the same for red and blue, but for blue (robustness), $\alpha_s$ is varied by 10\% and for red (robustness), hadronization is turned off.}
 \label{fig:differentialseparation}
 \end{figure}
 
@@ -130,7 +130,7 @@ A summary of the sensitivity-robustness tradeoff for many angularities is presen
 
 While we have illustrated that the groomed jet mass observable provides a sensitivity to $\alpha_s$ particularly for gluon jets, one problem that is immediately clear from \Sec{sec:analytic} is that the leading behavior of the distributions is always dominated by the product $\alpha_s C_i$. While this is broken at higher perturbative orders, it implies that at lowest order there is a complete degeneracy of the value of $\alpha_s$ and the quark vs. gluon fraction of jets. This problem is not faced at $e^+e^-$ colliders.
 
-There are a variety of different approaches to overcome this problem, each with their own advantages and disadvantages. First, we note that the quark and gluon fractions are perturbatively calculable given the pdfs. Therefore, perturbatively calculating the quark and gluon fractions inputs the most possible information, and should correspondingly lead to the best sensitivity for $\alpha_s$. However, it has the downside that it also introduces sensitivity to the pdfs, which in principle should be fitted along with $\alpha_s$. This difficulty also enters into other extractions at the LHC, for example the $3$-$2$ jet rate or the EEC. However, a hope of using jet substructure was that the sensitivity to the pdfs could be minimized.
+There are a variety of different approaches to overcome this problem, each with their own advantages and disadvantages. First, we note that the quark and gluon fractions are perturbatively calculable given the pdfs. Therefore, perturbatively calculating the quark and gluon fractions inputs the most possible information, and should correspondingly lead to the best sensitivity for $\alpha_s$. However, it has the downside that it also introduces sensitivity to the pdfs, which in principle should be fitted along with $\alpha_s$. This difficulty also enters into other extractions at the LHC, for example the $3$-$2$ jet rate or the EEC. However, a hope using jet substructure was that the sensitivity to the pdfs could be minimized.
 
 A second approach is to simultaneously fit for the quark (or gluon) fraction. Due to the fact that the two fractions must add to unity, this introduces a single additional parameter (see Fig.~\ref{fig:analyticbanana}). The degeneracy between the quark and gluon fraction and $\alpha_s$ is broken by higher order effects. Furthermore, different $\ecf{2}{\alpha}$ have different dependence on $\alpha_s$ and $C_i$ at higher orders. Therefore, the measurement of multiple angularities would allow the degeneracy to be broken. However, from a theoretical perspective, this significantly complicates the analysis, and we do not believe that precise predictions will be made in the near future, except for $\alpha=2$, and perhaps $\alpha=1$. In our study in \Sec{sec:ben_study} we will consider both approaches.
 
