@@ -16,7 +16,7 @@ Differentiating, we obtain the spectrum
 \begin{align}
 \ecf{2}{2}  \frac{d\sigma}{d \ecf{2}{2}}=   - \frac{\alpha_s C_i}{\pi} \log(\zcut)   \exp\left[ - \frac{\alpha_s C_i}{\pi}  \log(\zcut) \log (\ecf{2}{2}) \right]
 \end{align}
-Here we immediately see several interesting consequences. In the resummation region, the slope by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
+Here we immediately see several interesting consequences. In the resummation region, the slope is set by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
 
 %Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{sec:templates} where we will show the templates (could then just give a ref).
 %
@@ -75,7 +75,7 @@ From the point of view of fitting for $\alpha_s$, a good observable is one whose
 \label{fig:robustnessschematic}
 \end{figure}
 
-The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs Herwig 7.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and Pythia 8.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities (as defined in Sec.~\ref{sec:shape_def}), with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in \{0.05,0.1,0.2\}$.  
+The sensitivity-robustness tradeoff is studied using (formally) leading logarithm PS MC programs \herwig.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \pythia.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C.  Results are presented for separately for quark and gluon jets, simulated with $Z+q$ and $Z+g$.  A variety of angularities (as defined in Sec.~\ref{sec:shape_def}), with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively.  Additionally, various grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\text{cut}\in \{0.05,0.1,0.2\}$.  
 
 \begin{figure}[h!]
 \begin{center}
@@ -89,7 +89,7 @@ The sensitivity-robustness tradeoff is studied using (formally) leading logarith
 \begin{center}
 \includegraphics[width = 0.99\columnwidth]{figures/robustness.pdf}
 \end{center}
-\caption{The distribution of the normalized squared jet mass ($e_2$) for quark jets (left) and gluon jets (right).  Higher values of the mass are on the left.  The blue line shows the default particle-level simulation that includes the standard cluster hadronization model.  The red curve has hadronization turned off and the green curve has hadronization, but with the Herwig model for multiple parton interactions (MPI) turned off. \textbf{Maybe cut the x-axis at high values?  Maybe comment what the picture looks like for Pythia?}}
+\caption{The distribution of the normalized squared jet mass ($e_2$) for quark jets (left) and gluon jets (right).  Higher values of the mass are on the left.  The blue line shows the default particle-level simulation that includes the standard cluster hadronization model.  The red curve has hadronization turned off and the green curve has hadronization, but with the \herwig model for multiple parton interactions (MPI) turned off. \textbf{Maybe cut the x-axis at high values?  Maybe comment what the picture looks like for Pythia?}}
 \label{fig:robustness}
 \end{figure}
 
