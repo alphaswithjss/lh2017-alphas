@@ -16,7 +16,7 @@ Differentiating, we obtain the spectrum
 \begin{align}
 \ecf{2}{2}  \frac{d\sigma}{d \ecf{2}{2}}=   - \frac{\alpha_s C_i}{\pi} \log(\zcut)   \exp\left[ - \frac{\alpha_s C_i}{\pi}  \log(\zcut) \log (\ecf{2}{2}) \right]
 \end{align}
-Here we immediately see several interesting consequences. In the resummation region, the slope is set by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
+Here we immediately see several interesting consequences. In the resummation region, the slope of the distribution when plotted against $\log\ecf{2}{2}$ is set by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
 
 %Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{sec:templates} where we will show the templates (could then just give a ref).
 %
@@ -113,6 +113,7 @@ Figures~\ref{fig:sensitivity} and~\ref{fig:robustness} show the distribution of 
 
 A summary of the sensitivity-robustness tradeoff for many angularities is presented in Fig.~\ref{fig:robseptradeoff}.  As already observed for the jet mass, gluons tend to have a superior sensitivity and robustness compared with quarks.  This is not surprising, as gluons have more perturbative radiation than quarks ($C_A>C_F$).  The jet mass has $(\Delta_\text{sensitivity},\Delta_\text{robustnes})=(?,?)$.  The angularities with the highest quark and gluon sensitivity and robustness are ?, ?, and ?.   Conclusion + transition sentence(s).
 
+The usual mass (zcut = 0.1, beta = 0, alpha = 2, which is 33) is pretty good for gluons but not very good for quarks.  The best configurations seem to be 19 and 20.  These correspond to alpha = 1, zcut = 0.05, and beta = 1 or 2.  This is like kT with different grooming parameters so is maybe not so surprising as the scale of alphas is set by kT.  Seems to also have better robustness.  Would it be possible to get the Fig. 5-7 versions of those?  Might be worth including or at least putting in an appendix.  (also interesting that the version with beta = 0 is strictly much worse, in these metrics).
 
 
 
