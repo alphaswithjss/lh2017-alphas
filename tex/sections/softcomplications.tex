@@ -15,7 +15,7 @@ Each of these will be discussed in more detail in the following sections.  Combi
 \subsection{Mitigating Nonperturbative Effects ($e^+e^-$ and $pp$)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-One of the primary complications of $\alpha_s$ extractions using event shapes is the issue of non-perturbative corrections, which cannot currently be calculated from first principles. Since event shape observables probe singular regions of the phase space, they are necessarily sensitive to non-perturbative corrections.  For $e^+e^-$ dijet event shapes, such as thrust, these non-perturbative corrections can be given operator definitions in the dijet limit. Although these operators cannot be calculated, they can be modeled using so called shape functions \cite{Korchemsky:1999kt,Korchemsky:2000kp,Hoang:2007vb,Ligeti:2008ac}. These shape functions can be systematically expanded in moments, and for moderately large values of the observable, only the first moment, $\Omega_1$ is required. This moment can be shown to be universal for a wide range of observables \cite{Lee:2006fn,Lee:2007jr}, and can therefore be extracted from data along with $\alpha_s$ \cite{Abbate:2010xh,Abbate:2012jh,Hoang:2015hka}. However, this moment is highly correlated with $\alpha_s$, see \Fig{fig:correlation_firstmoment} introducing  uncertainties into the extraction. Furthermore, there is disagreement over whether the use of a single shape function moment is applicable in the region where $\alpha_s$ fits are performed. Therefore, observables with different, and preferably suppressed  non-perturbative effects could provide valuable complementary information for $\alpha_s$ extractions.
+One of the primary complications of $\alpha_s$ extractions using event shapes is the issue of non-perturbative (NP) corrections, which cannot currently be calculated from first principles. Since event shape observables probe singular regions of the phase space, they are necessarily sensitive to non-perturbative corrections.  For $e^+e^-$ dijet event shapes, such as thrust, these non-perturbative corrections can be given operator definitions in the dijet limit. Although these operators cannot be calculated, they can be modeled using so called shape functions \cite{Korchemsky:1999kt,Korchemsky:2000kp,Hoang:2007vb,Ligeti:2008ac}. These shape functions can be systematically expanded in moments, and for moderately large values of the observable, only the first moment, $\Omega_1$ is required. This moment can be shown to be universal for a wide range of observables \cite{Lee:2006fn,Lee:2007jr}, and can therefore be extracted from data along with $\alpha_s$ \cite{Abbate:2010xh,Abbate:2012jh,Hoang:2015hka}. However, this moment is highly correlated with $\alpha_s$, see \Fig{fig:correlation_firstmoment} introducing  uncertainties into the extraction. Furthermore, there is disagreement over whether the use of a single shape function moment is applicable in the region where $\alpha_s$ fits are performed~\cite{}. Therefore, observables with different, and preferably suppressed  non-perturbative effects could provide valuable complementary information for $\alpha_s$ extractions.
 
 \begin{figure}
 \begin{center}
@@ -29,9 +29,9 @@ One of the primary complications of $\alpha_s$ extractions using event shapes is
 Using a scaling argument, it is a straightforward exercise to compute the value of the groomed angularities at which non-perturbative effects are expected to be important. This was considered in  \cite{Frye:2016aiz}
 where it was shown that non-perturbative effects become important when
 \begin{align}
-\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{\alpha-1}{1+\beta}}  \frac{\lamqcd}{Q}\,.
+\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{\alpha-1}{1+\beta}}  \frac{\lamqcd}{Q}\,,
 \end{align}
-If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
+\noindent where $Q$ is the BLAH.  If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
 \begin{align}
 \left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \frac{\lamqcd}{Q}\,,
 \end{align} 
@@ -84,9 +84,9 @@ The jet mass was calculated in \cite{Jouttenus:2013hs} for $H+$ jet with a veto 
 
 In \Ref{Frye:2016aiz} it was shown that for $\ecf{2}{\alpha} \ll \zcut \ll 1$,  we can express the cross section for the groomed angularity as
 \begin{align}\label{eq:fac_pp_e2}
-\frac{d\sigma^{pp}}{d\ecf{2}{\alpha}}=\sum\limits_{k=q,\bar q, g}D_k(p_T^{\text{min}}, y_\text{max}, \zcut, R) S_{C,k}(\zcut, \ecf{2}{\alpha})\otimes J_k (\ecf{2}{\alpha})\,.
+\frac{d\sigma^{pp}}{d\ecf{2}{\alpha}}=\sum\limits_{k=q,\bar q, g}D_k(p_T^{\text{min}}, y_\text{max}, \zcut, R) S_{C,k}(\zcut, \ecf{2}{\alpha})\otimes J_k (\ecf{2}{\alpha})\,,
 \end{align}
-Here the $D_k$ depend on the parton flavor, and can be interpreted as the quark and gluon fractions. While the quark and gluon fractions are generally not IRC safe quantities, in this limit they are well defined, 
+\noindent where $S_{C,k}$ is the soft function and $J_k$ is the jet function.  The function $D_k$ depends on the parton flavor, and can be interpreted as the quark and gluon fractions. While the quark and gluon fractions are generally not IRC safe quantities, in this limit they are well defined, 
 \begin{align}
 f_J=\sum\limits_{i\in J_{\text{SD}}} f_i\,,
 \end{align}
