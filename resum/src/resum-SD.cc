@@ -75,9 +75,11 @@ public:
   Resum_SD(){}
 
   // ctor with proper initialisation
-  Resum_SD(double zcut, double beta_in, double ptR_in, double alphasMZ_in, double muR_in, double kt_freeze=1.0)
+  Resum_SD(double zcut, double beta_in, double alpha_in, double ptR_in, double alphasMZ_in, double muR_in, double kt_freeze=1.0)
     : alphasMZ(alphasMZ_in), muR(muR_in){
     ptR = ptR_in;
+    alpha = alpha_in;
+    assert(alpha>0);
     
     // get the alphas value (use the 2-loop expansion independently of
     // the choice for the resummation
@@ -167,12 +169,13 @@ public:
 
   // radiator
   double R_SD(double Lrho, const ConfigBase &cfg) const{
-    return ((Lrho>-cfg.Bi) ? cfg.triangle(  0.0, 2.0, -cfg.Bi, Lrho, 0.0) : 0.0)
-         - ((Lrho>Lc)      ? cfg.triangle(-beta, 2.0,      Lc, Lrho, 0.0) : 0.0);
+    return ((Lrho>-cfg.Bi) ? cfg.triangle(  0.0, alpha, -cfg.Bi, Lrho, 0.0) : 0.0)
+         - ((Lrho>Lc)      ? cfg.triangle(-beta, alpha,      Lc, Lrho, 0.0) : 0.0);
   }
 
   // LO expansion of the radiator
   double R_SD_LO(double Lrho, const ConfigBase &cfg) const{
+    if (abs(alpha-2.0)>0.001){ return 0.0; }
     double B = cfg.Bi;
     return cfg.alphas_ref*cfg.CR/M_PI*
       (((Lrho>-B) ? (Lrho+B) *(Lrho+B) *0.5 : 0.0)
@@ -181,6 +184,7 @@ public:
 
   // NLO expansion of the radiator
   double R_SD_NLO(double Lrho, const ConfigBase &cfg) const{
+    if (abs(alpha-2.0)>0.001){ return 0.0; }
     double B = cfg.Bi;
     double K = cfg.Keff;
     return cfg.alphas_ref*cfg.alphas_ref*cfg.CR/M_PI*
@@ -197,10 +201,24 @@ public:
     ConfigBase cfg = cfg_base;
     cfg.set_two_loops(false);
 
+    if (abs(alpha-1.0)<1e-4){
+      // z t = rho
+      // z = zc t^beta
+      //   => t = (rho/zc)^{1/(a+b)}
+      double Ltmax = (Lrho>Lc) ? (Lrho-Lc)/(alpha+beta) : 0.0;
+      return (Lrho>-cfg.Bi) ? cfg.line(Ltmax, Lrho, Lrho+cfg.Bi, Lrho, 0.0) : 0.0;
+    }
+
     // the intersection between the mass line and the SD line is at 
     //  log(1/z theta) = (Lc+(1+b) Lrho)/(2+b)
-    double Lktmax = (Lrho>Lc) ? (Lc+(1.0+beta)*Lrho)/(2.0+beta) : Lrho;
-    double result = (Lrho>-cfg.Bi) ? cfg.delta_kt_line(2.0, 0.5*(Lrho-cfg.Bi), Lktmax, 0.0) : 0.0;
+    // for alpha!=2, we have
+    //  z theta^a = rho
+    //  z = zc theta^b
+    //  => t = (rho/zc)^{1/(a+b)}
+    //  => kt = zc (rho/zc)^{(1+b)/(a+b)}
+    //        = zc^((a-1)/(a+b)) rho^((1+b)/(a+b))
+    double Lktmax = (Lrho>Lc) ? ((alpha-1.0)*Lc+(1.0+beta)*Lrho)/(alpha+beta) : Lrho;
+    double result = (Lrho>-cfg.Bi) ? cfg.delta_kt_line(alpha, 0.5*(Lrho-cfg.Bi), Lktmax, 0.0) : 0.0;
     
     // restore 2-loop contributions
     //cfg.set_two_loops(true);
@@ -210,6 +228,7 @@ public:
 
   // LO expansion of the emittor
   double Rp_SD_LO(double Lrho, const ConfigBase &cfg) const{
+    if (abs(alpha-2.0)>0.001){ return 0.0; }
     double B = cfg.Bi;
     return cfg.alphas_ref*cfg.CR/M_PI*
       (((Lrho>-B) ? (Lrho+B) : 0.0) - ((Lrho>Lc) ? (Lrho-Lc)*2.0/(2.0+beta) : 0.0));
@@ -220,6 +239,7 @@ public:
   // Note: no K required for our use of R' (as a NLL contribution to
   // the Sudakov)
   double Rp_SD_NLO(double Lrho, const ConfigBase &cfg) const{
+    if (abs(alpha-2.0)>0.001){ return 0.0; }
     double B = cfg.Bi;
     return cfg.alphas_ref*cfg.alphas_ref*cfg.CR/M_PI*b0*
       (((Lrho>-B) ? 0.5*(Lrho+B)*(3*Lrho-B) : 0.0)
@@ -245,13 +265,13 @@ public:
   double alphasMZ, muR;
   double rhomax;
 
-  double ptR, Lc, beta;
+  double ptR, Lc, beta, alpha;
   ConfigBase cfg_q, cfg_g;
 };
 
 //------------------------------------------------------------------------
 // compute the weights for a given pt
-void weights_SD(double pt, double R, double zcut, double beta,
+void weights_SD(double pt, double R, double zcut, double beta, double alpha,
                 double alphasMZ, double muR, double muC, double mufr,
                 const vector<double> & logrhos,
                 double endpoint,
@@ -261,7 +281,7 @@ void weights_SD(double pt, double R, double zcut, double beta,
                 vector<double> &weights_g_lo,
                 vector<double> &weights_q_nlo, 
                 vector<double> &weights_g_nlo){
-  Resum_SD sd_resum(zcut, beta, pt*R, alphasMZ, muR, mufr);
+  Resum_SD sd_resum(zcut, beta, alpha, pt*R, alphasMZ, muR, mufr);
   sd_resum.rhomax = endpoint;
 
   // resummation-scale uncertainty
@@ -279,8 +299,9 @@ void weights_SD(double pt, double R, double zcut, double beta,
   vector<double> res_g; res_g.reserve(logrhos.size());
   vector<double> lo_g ; lo_g .reserve(logrhos.size());
   vector<double> nlo_g; nlo_g.reserve(logrhos.size());
-
-  for (int i=0; i<logrhos.size(); i++){
+  
+  //for (double lrho : logrhos){
+  for (unsigned int i=0;i<logrhos.size(); ++i){
     double lrho = logrhos[i];
     double rho = exp(-lrho) * muC;
 
@@ -325,12 +346,12 @@ void weights_SD(double pt, double R, double zcut, double beta,
   weights_q_nlo  .resize(logrhos.size()-1);
   weights_g_nlo  .resize(logrhos.size()-1);
   for (unsigned int i=0; i<logrhos.size()-1; ++i){
-    weights_q_resum[i]=(res_q[i+1]-res_q[i]);
-    weights_g_resum[i]=(res_g[i+1]-res_g[i]);
-    weights_q_lo   [i]=(lo_q [i+1]-lo_q [i]);
-    weights_g_lo   [i]=(lo_g [i+1]-lo_g [i]);
-    weights_q_nlo  [i]=(nlo_q[i+1]-nlo_q[i]); 
-    weights_g_nlo  [i]=(nlo_g[i+1]-nlo_g[i]); 
+    weights_q_resum[i]=(res_q[i]-res_q[i+1]);
+    weights_g_resum[i]=(res_g[i]-res_g[i+1]);
+    weights_q_lo   [i]=(lo_q [i]-lo_q [i+1]);
+    weights_g_lo   [i]=(lo_g [i]-lo_g [i+1]);
+    weights_q_nlo  [i]=(nlo_q[i]-nlo_q[i+1]); 
+    weights_g_nlo  [i]=(nlo_g[i]-nlo_g[i+1]); 
   }
 
 }

@@ -20,6 +20,7 @@
 #include "TLine.h"
 #include "TMath.h"
 #include "TRandom3.h"
+#include "TMarker.h"
 
 using namespace std;
 double alphamax = 0.15;
@@ -35,9 +36,13 @@ TH1F* mycopy(TH1F* input){
 TH1F* mycopy2(TH1F* input){
 
   vector<double> bins2;
-  for (double xx = 3.; xx < 8; xx+=0.25){
-    bins2.push_back(xx);
+  bins2.push_back(input->GetXaxis()->GetBinCenter(1)-0.5*input->GetXaxis()->GetBinWidth(1));
+  for (int i=1; i<=input->GetNbinsX(); i++){
+    bins2.push_back(input->GetXaxis()->GetBinCenter(i)+0.5*input->GetXaxis()->GetBinWidth(i));
   }
+  //for (double xx = 3.; xx < 8; xx+=0.25){
+  //  bins2.push_back(xx);
+  //}
 
   TH1F* output = new TH1F("","",bins2.size()-1,&bins2[0]);
   for (int i=1; i<=input->GetNbinsX(); i++){
@@ -159,17 +164,14 @@ int main() {
   double gfrac1 = 0.8;
   double gfrac2 = 0.2;
 
-  const int nzcuts = 3;
-  const int nbetas = 2;
-  double zcuts[nzcuts] = {0.05,0.1,0.2};
-  double betas[nbetas] = {0,1.};
+  int myseed = 0; //2345
 
-  vector<double> bins;
-  for (double xx = 3.; xx < 8; xx+=0.25){
-    bins.push_back(xx);
-  }
-  //std::reverse(bins.begin(), bins.end());  
-  const std::vector<double> logrhos = bins;
+  const int nzcuts = 1; //3
+  const int nbetas = 1; //2
+  const int nalphas = 3;
+  double zcuts[nzcuts] = {0.1};//{0.05,0.1,0.2};
+  double betas[nbetas] = {1.}; //0.,1.
+  double alphas[nalphas] = {0.5,1.,2.};
 
   std::vector<double> weights_q_resum;
   std::vector<double> weights_g_resum;
@@ -185,6 +187,34 @@ int main() {
   double muC = 1.;
   double mufr = 1.; //GeV
   double endpoint = 0.279303; //1/4 for g -> qq; this is the maximal mass / pTR.  Small correction from that for not small angle approx.
+  double LambdaNP = 3.; // GeV
+
+  std::cout << " Let's calculate the bounds " << std::endl;
+
+  vector<double> mylogmaxs;
+  vector<double> mylogmins;
+  for (int iz = 0; iz<nzcuts; iz++){
+    for (int ib = 0; ib<nbetas; ib++){
+      for (int ia = 0; ia<nalphas; ia++){   
+        double mylogmax = -3. + log(zcuts[iz]/0.1) + (alphas[ia]-2.)*log(R);
+        double mylogmin = ((alphas[ia]+betas[ib]) / (1. + betas[ib]))*log(LambdaNP / (pt*R)) + ((1. - alphas[ia])/(1. + betas[ib])) * log(zcuts[iz]) + alphas[ia]*log(R);
+        mylogmaxs.push_back(mylogmax);
+        mylogmins.push_back(mylogmin);
+        std::cout << zcuts[iz] << " " << betas[ib] << " " << alphas[ia] << " " << mylogmin << " " << mylogmax << std::endl;
+      }
+    }
+  }
+
+  vector<vector<double> > bins;
+  for (unsigned int i=0; i<mylogmaxs.size(); i++){
+    vector<double> bins_hold;
+    for (double xx = -mylogmaxs[i]; xx < -mylogmins[i]; xx+=fabs(mylogmaxs[i]-mylogmins[i])/20.){
+      bins_hold.push_back(xx);
+    }    
+    bins.push_back(bins_hold);
+  }
+  //std::reverse(bins.begin(), bins.end());  
+  //const std::vector<double> logrhos = bins;
 
   TLatex l  = TLatex(); 
   l.SetNDC();
@@ -194,18 +224,25 @@ int main() {
   //gPad->SetLogx();
   gPad->SetBottomMargin(0.15);
   gPad->SetLeftMargin(0.15);
+  gPad->SetTopMargin(0.1);
   gStyle->SetOptStat(0);
 
   vector<TH2F*> all_histosq;
   vector<TH2F*> all_histosg;
 
+  int mycounter = -1;
    for (int iz = 0; iz<nzcuts; iz++){
     for (int ib = 0; ib<nbetas; ib++){
+      for (int ia = 0; ia<nalphas; ia++){
+
+        mycounter++;
+        const std::vector<double> logrhos = bins[mycounter];
 
       double zcut = zcuts[iz];
       double beta = betas[ib];
+      double alpha = alphas[ia];
 
-      weights_SD(pt, R, zcut, beta, alphasMZ, muR, muC, mufr,
+      weights_SD(pt, R, zcut, beta, alpha, alphasMZ, muR, muC, mufr,
               logrhos, endpoint, 
               weights_q_resum,
               weights_g_resum,
@@ -215,7 +252,7 @@ int main() {
               weights_g_nlo);  
 
       if (beta==0){
-          weights_mMDT(pt, R, zcut, alphasMZ, muR, muC, mufr,
+          weights_mMDT(pt, R, zcut, alpha, alphasMZ, muR, muC, mufr,
                   logrhos, endpoint, 
                   weights_q_resum,
                   weights_g_resum,
@@ -225,8 +262,8 @@ int main() {
                   weights_g_nlo);  
       }    
    
-       TH1F* ungluons = new TH1F("","",bins.size()-1,&bins[0]);
-       TH1F* unquarks = new TH1F("","",bins.size()-1,&bins[0]);
+       TH1F* ungluons = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
+       TH1F* unquarks = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
        for (int i=1; i<=ungluons->GetNbinsX(); i++){
           ungluons->SetBinContent(i, weights_g_resum[i-1]);
           unquarks->SetBinContent(i, weights_q_resum[i-1]);    
@@ -245,33 +282,46 @@ int main() {
        gluons->GetXaxis()->SetTitle("-log((m/Rp_{T})^{2})");
        gluons->GetYaxis()->SetTitle("d#sigma / dlog(#rho)");
        gluons->SetLineColor(2);
+       gluons->SetLineWidth(3);
+       quarks->SetLineWidth(3);       
        gluons->Draw();
        quarks->SetLineColor(4);
        quarks->SetLineStyle(3);
        quarks->Draw("same");
-       l.DrawLatex(0.2,0.85,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
-       l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.2f",zcut)+" , #beta =" +TString::Format("%0.2f",beta)+"}}");    
-       TLegend* leg = new TLegend(.7,.75,0.85,.95);
+
+       //l.DrawLatex(0.16,0.95,"#bf{#scale[0.95]{Softdrop @ NLL, 1704.02210 }}"); 
+       l.DrawLatex(0.16,0.93,"#bf{#scale[0.7]{p_{T} = 500 GeV, #alpha = "+TString::Format("%0.2f",alpha)+", z_{cut} = "+TString::Format("%0.2f",zcut)+" and #beta = "+TString::Format("%0.1f",beta)+"}}"); 
+
+       //l.DrawLatex(0.2,0.85,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
+       //l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.2f",zcut)+" , #beta =" +TString::Format("%0.2f",beta)+"}}");    
+       TLegend* leg = new TLegend(.7,.7,0.85,.9);
        leg->SetTextFont(42);
        leg->SetHeader("");
        leg->SetNColumns(1);
-       leg->AddEntry(gluons,"gluons","l");
-       leg->AddEntry(quarks,"quarks","l");
+       leg->AddEntry(gluons,"#scale[1.5]{gluons}","l");
+       leg->AddEntry(quarks,"#scale[1.5]{quarks}","l");
        leg->SetFillStyle(0);
        leg->SetFillColor(0);
        leg->SetBorderSize(0);
        leg->Draw();    
-       c1->Print("PDFs_"+TString::Format("%0.2f",zcut)+"_"+TString::Format("%0.2f",beta)+".pdf");
+       c1->Print("PDFs_alpha_"+TString::Format("%0.2f",alpha)+"zcut"+TString::Format("%0.2f",zcut)+"_beta_"+TString::Format("%0.2f",beta)+TString::Format("%i",myseed)+".pdf");
     }
   }
+}
 
+  mycounter = -1;
  for (int iz = 0; iz<nzcuts; iz++){
   for (int ib = 0; ib<nbetas; ib++){
+    for (int ia = 0; ia<nalphas; ia++){
+
+        mycounter++;
+        const std::vector<double> logrhos = bins[mycounter];
 
       double zcut = zcuts[iz];
       double beta = betas[ib];
+      double alpha = alphas[ia];
 
-      weights_SD(pt, R, zcut, beta, alphasMZ, muR, muC, mufr,
+      weights_SD(pt, R, zcut, beta, alpha, alphasMZ, muR, muC, mufr,
               logrhos, endpoint, 
               weights_q_resum,
               weights_g_resum,
@@ -281,7 +331,7 @@ int main() {
               weights_g_nlo);  
 
       if (beta==0){
-          weights_mMDT(pt, R, zcut, alphasMZ, muR, muC, mufr,
+          weights_mMDT(pt, R, zcut, alpha, alphasMZ, muR, muC, mufr,
                   logrhos, endpoint, 
                   weights_q_resum,
                   weights_g_resum,
@@ -291,8 +341,8 @@ int main() {
                   weights_g_nlo);  
       }    
    
-       TH1F* gluons = new TH1F("","",bins.size()-1,&bins[0]);
-       TH1F* quarks = new TH1F("","",bins.size()-1,&bins[0]);
+       TH1F* gluons = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
+       TH1F* quarks = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
        for (int i=1; i<=gluons->GetNbinsX(); i++){
           gluons->SetBinContent(i, weights_g_resum[i-1]);
           quarks->SetBinContent(i, weights_q_resum[i-1]);    
@@ -305,10 +355,10 @@ int main() {
    std::map<double,TH1F*> alpha_s_maps;
    std::map<double,TH1F*> alpha_s_maps_quark;
    for (double as = 0.05; as<alphamax; as+=0.001){
-      TH1F* gluon_template = new TH1F(TString::Format("0.2%f",as),TString::Format("0.2%f",as),bins.size()-1,&bins[0]);
-      TH1F* quark_template = new TH1F(TString::Format("0.2%f",as),TString::Format("0.2%f",as),bins.size()-1,&bins[0]);
+      TH1F* gluon_template = new TH1F(TString::Format("0.2%f",as),TString::Format("0.2%f",as),bins[mycounter].size()-1,&bins[mycounter][0]);
+      TH1F* quark_template = new TH1F(TString::Format("0.2%f",as),TString::Format("0.2%f",as),bins[mycounter].size()-1,&bins[mycounter][0]);
     
-      weights_SD(pt, R, zcut, beta, as, muR, muC, mufr,
+      weights_SD(pt, R, zcut, beta, alpha, as, muR, muC, mufr,
               logrhos, endpoint, 
               weights_q_resum,
               weights_g_resum,
@@ -318,7 +368,7 @@ int main() {
               weights_g_nlo);  
 
       if (beta==0){
-          weights_mMDT(pt, R, zcut, as, muR, muC, mufr,
+          weights_mMDT(pt, R, zcut, alpha, as, muR, muC, mufr,
                   logrhos, endpoint, 
                   weights_q_resum,
                   weights_g_resum,
@@ -339,9 +389,10 @@ int main() {
    }
 
    //Now, the psuedo-experiments.
-   TRandom3 *myrand = new TRandom3(2345);
-   TH1F* gluons_toy = new TH1F("","",bins.size()-1,&bins[0]);
-   TH1F* quarks_toy = new TH1F("","",bins.size()-1,&bins[0]);
+   TRandom3 *myrand = new TRandom3(0); //try 0?
+   TH1F* gluons_toy = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
+   TH1F* quarks_toy = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
+   //ntoys*=100;
    for (int ntoy = 0; ntoy < ntoys; ntoy++){
     double e1_toyg = gluons->GetRandom();
     double e1_toyq = quarks->GetRandom();
@@ -352,24 +403,56 @@ int main() {
     if (myrand->Uniform(0,1) > gfrac2) quarks_toy->Fill(e2_toyq);
     else quarks_toy->Fill(e2_toyg);  
    }
+   for (int i=1; i<=gluons_toy->GetNbinsX(); i++){
+    //std::cout << i << " " << gluons_toy->GetBinContent(i) << " " << ntoys*(gluons->GetBinContent(i)*gfrac1/gluons->Integral()+(1.-gfrac1)*quarks->GetBinContent(i)/quarks->Integral()) << std::endl;
+    double myn1 = ntoys*(gluons->GetBinContent(i)*gfrac1/gluons->Integral()+(1.-gfrac1)*quarks->GetBinContent(i)/quarks->Integral());
+    double myn2 = ntoys*(gluons->GetBinContent(i)*gfrac2/gluons->Integral()+(1.-gfrac2)*quarks->GetBinContent(i)/quarks->Integral());
+    gluons_toy->SetBinContent(i,myrand->Poisson(myn1));
+    quarks_toy->SetBinContent(i,myrand->Poisson(myn2));
+    gluons_toy->SetBinError(i,sqrt(gluons_toy->GetBinContent(i)));
+    quarks_toy->SetBinError(i,sqrt(quarks_toy->GetBinContent(i)));
+   }   
+   /*
+   for (int i=1; i<=gluons_toy->GetNbinsX(); i++){
+    std::cout << i << " " << gluons_toy->GetBinContent(i) << " " << ntoys*(gluons->GetBinContent(i)*gfrac1/gluons->Integral()+(1.-gfrac1)*quarks->GetBinContent(i)/quarks->Integral()) << std::endl;
+    gluons_toy->SetBinContent(i,ntoys*(gluons->GetBinContent(i)*gfrac1/gluons->Integral()+(1.-gfrac1)*quarks->GetBinContent(i)/quarks->Integral()));
+    quarks_toy->SetBinContent(i,ntoys*(gluons->GetBinContent(i)*gfrac2/gluons->Integral()+(1.-gfrac2)*quarks->GetBinContent(i)/quarks->Integral()));
+    gluons_toy->SetBinError(i,10);
+    quarks_toy->SetBinError(i,10);
+   }
+   exit(1);
+   */
 
    TH2F* chi2plot = new TH2F("","",100,0.05,alphamax,99,0,1);
    TH2F* chi2plotq = new TH2F("","",100,0.05,alphamax,99,0,1);
    TH1F* chi2plot_combined = new TH1F("","",100,0.05,alphamax);
    TH1F* chi2plot_combinedq = new TH1F("","",100,0.05,alphamax);
    TH1F* chi2plot_combinedg = new TH1F("","",100,0.05,alphamax);
-   for (double gfrac = 0.; gfrac <= 1; gfrac +=0.01){
+   for (double gfrac = 0.; gfrac <= 1.0001; gfrac +=0.01){
      for (double as = 0.05; as<alphamax; as+=0.001){
-      TH1F* mixture = new TH1F("","",bins.size()-1,&bins[0]);
+      TH1F* mixture = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
       for (int i=1; i<=mixture->GetNbinsX(); i++){
         mixture->SetBinContent(i,gfrac * alpha_s_maps[as]->GetBinContent(i) / alpha_s_maps[as]->Integral() + (1.-gfrac) * alpha_s_maps_quark[as]->GetBinContent(i) / alpha_s_maps_quark[as]->Integral());
+      }
+
+      if (1==2 && (fabs(gfrac - gfrac1) < 0.0001) && (fabs(as - 0.1) < 0.0001)){
+
+        std::cout << "HERE " << std::endl;
+        std::cout << chi2(gluons_toy,mixture) << std::endl;
+        gluons_toy->Scale(1./gluons_toy->Integral());
+        mixture->Scale(1./mixture->Integral());
+        for (int q=1; q<=gluons_toy->GetNbinsX(); q++){
+          std::cout << "   " << q << " " << gluons_toy->GetBinContent(q) << " " << mixture->GetBinContent(q) << " " << alpha_s_maps[as]->GetBinContent(q) << " " << gluons->GetBinContent(q) <<" " << alpha_s_maps_quark[as]->GetBinContent(q) << " " << quarks->GetBinContent(q) << std::endl;
+        }
+        exit(1);
+
       }
       chi2plot->SetBinContent(chi2plot->GetXaxis()->FindBin(as),chi2plot->GetYaxis()->FindBin(gfrac),chi2(gluons_toy,mixture));
      }
    }
-   for (double gfrac = 0.; gfrac <= 1; gfrac +=0.01){
+   for (double gfrac = 0.; gfrac <= 1.0001; gfrac +=0.01){
      for (double as = 0.05; as<alphamax; as+=0.001){
-      TH1F* mixture = new TH1F("","",bins.size()-1,&bins[0]);
+      TH1F* mixture = new TH1F("","",bins[mycounter].size()-1,&bins[mycounter][0]);
       for (int i=1; i<=mixture->GetNbinsX(); i++){
         mixture->SetBinContent(i,gfrac * alpha_s_maps[as]->GetBinContent(i) / alpha_s_maps[as]->Integral() + (1.-gfrac) * alpha_s_maps_quark[as]->GetBinContent(i) / alpha_s_maps_quark[as]->Integral());
       }
@@ -379,22 +462,40 @@ int main() {
 
    gPad->SetLogx(0);
    gPad->SetRightMargin(0.15);
+   gPad->SetTopMargin(0.12);
    //gPad->SetLogz();
    chi2plot->GetZaxis()->SetRangeUser(0.01,1);
    chi2plot->GetXaxis()->SetTitle("#alpha_{s}");
    chi2plot->GetYaxis()->SetTitleOffset(1.6);
    chi2plot->GetZaxis()->SetTitleOffset(1.5);
+   chi2plot->GetXaxis()->SetNdivisions(505);
    chi2plot->GetYaxis()->SetTitle("Gluon Fraction");
    chi2plot->GetZaxis()->SetTitle("#chi^{2} compatibility (probability)");
    chi2plot->Draw("colz");
-   l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
-   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",alphasMZ)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   //l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
+   //l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.2f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",alphasMZ)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   
+   //l.DrawLatex(0.16,0.95,"#bf{#scale[0.95]{Softdrop @ NLL, 1704.02210 }}"); 
+   l.DrawLatex(0.16,0.95,"#bf{#scale[0.7]{p_{T} = 500 GeV, f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   l.DrawLatex(0.16,0.9,"#bf{#scale[0.7]{#alpha = "+TString::Format("%0.2f",alpha)+", z_{cut} = "+TString::Format("%0.2f",zcut)+" and #beta = "+TString::Format("%0.1f",beta)+"}}"); 
+
    chi2plotq->GetZaxis()->SetRangeUser(0.01,1);
    chi2plotq->Draw("colzsame");
    TLine *myline = new TLine(0.1,0,0.1,1);
    myline->SetLineStyle(3);
    myline->Draw();
-   c1->Print("jesseplot_"+TString::Format("%0.1f",zcut)+"_"+TString::Format("%0.3f",zcut)+".pdf");
+   TMarker *m = new TMarker(0.1, 0.2, 23); 
+   m->SetMarkerColor(2);
+   m->SetMarkerSize(1.5);
+   m->Draw();
+
+   TMarker *m2 = new TMarker(0.1, 0.8, 22); 
+   m2->SetMarkerColor(2);
+   m2->SetMarkerSize(1.5);
+   m2->Draw();
+
+   gPad->RedrawAxis();
+   c1->Print("banana_alpha_"+TString::Format("%0.2f",alpha)+"beta_"+TString::Format("%0.2f",beta)+"_zcut_"+TString::Format("%0.2f",zcut)+TString::Format("%i",myseed)+".pdf");
 
    all_histosq.push_back(chi2plotq);
    all_histosg.push_back(chi2plot);
@@ -424,15 +525,24 @@ int main() {
    chi2plot_combined_copy->GetXaxis()->SetTitle("#alpha_{s}");
    chi2plot_combined_copy->GetYaxis()->SetTitleOffset(1.6);
    chi2plot_combined_copy->GetYaxis()->SetTitle("p(alpha_{s})");
+   chi2plot_combined_copy->GetXaxis()->SetNdivisions(505);
    chi2plot_combined_copy->Draw();
    chi2plot_combinedg_copy->SetLineColor(2);
    chi2plot_combinedq_copy->SetLineColor(4);
+   chi2plot_combinedq_copy->SetLineWidth(3);
+   chi2plot_combined_copy->SetLineWidth(3);
+   chi2plot_combinedg_copy->SetLineWidth(3);   
    chi2plot_combinedg_copy->Draw("same");
    chi2plot_combinedq_copy->Draw("same");
-   l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
-   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",alphasMZ)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+
+   //l.DrawLatex(0.16,0.95,"#bf{#scale[0.95]{Softdrop @ NLL, 1704.02210 }}"); 
+   l.DrawLatex(0.16,0.95,"#bf{#scale[0.7]{p_{T} = 500 GeV, f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   l.DrawLatex(0.16,0.9,"#bf{#scale[0.7]{#alpha = "+TString::Format("%0.2f",alpha)+", z_{cut} = "+TString::Format("%0.2f",zcut)+" and #beta = "+TString::Format("%0.1f",beta)+"}}");  
+
+   //l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
+   //l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.2f",zcut)+", #alpha_{s} = "+TString::Format("%0.1f",alphasMZ)+", f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
    
-   TLegend* leg2 = new TLegend(.5,.6,0.85,.93);
+   TLegend* leg2 = new TLegend(.2,.6,0.55,.85);
    leg2->SetTextFont(42);
    leg2->SetHeader("");
    leg2->SetNColumns(1);
@@ -444,8 +554,9 @@ int main() {
    leg2->SetBorderSize(0);
    leg2->Draw();    
 
-   c1->Print("jesseplot2"+TString::Format("%0.1f",zcut)+"_"+TString::Format("%0.3f",zcut)+".pdf");
+   c1->Print("palpha_alpha_"+TString::Format("%0.1f",alpha)+"beta_"+TString::Format("%0.1f",beta)+"_zcut_"+TString::Format("%0.3f",zcut)+TString::Format("%i",myseed)+".pdf");
  }
+}
 }
 
 TH1F* chi2plot_combinedq = new TH1F("","",100,0.05,alphamax);
@@ -482,32 +593,38 @@ for (int i=0; i<all_histosq.size(); i++){
    TH1F* chi2plot_combinedg_copy = mycopy(chi2plot_combinedg);
    TH1F* chi2plot_combinedq_copy = mycopy(chi2plot_combinedq);
 
+   gPad->SetTopMargin(0.12);
    chi2plot_combined_copy->SetLineColor(1);
    chi2plot_combined_copy->GetYaxis()->SetRangeUser(0.0,chi2plot_combinedg_copy->GetMaximum()*1.2);
    chi2plot_combined_copy->GetXaxis()->SetTitle("#alpha_{s}");
    chi2plot_combined_copy->GetYaxis()->SetTitleOffset(1.6);
    chi2plot_combined_copy->GetYaxis()->SetTitle("p(alpha_{s})");
+   chi2plot_combined_copy->GetXaxis()->SetNdivisions(505);
    chi2plot_combined_copy->Draw();
    chi2plot_combinedg_copy->SetLineColor(2);
    chi2plot_combinedq_copy->SetLineColor(4);
+   chi2plot_combinedq_copy->SetLineWidth(3);
+   chi2plot_combined_copy->SetLineWidth(3);
+   chi2plot_combinedg_copy->SetLineWidth(3);
    chi2plot_combinedg_copy->Draw("same");
    chi2plot_combinedq_copy->Draw("same");
-   l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ NLL, 1704.02210 }}"); 
-   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, sum over z_{cut}, #beta, f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
-   
-   TLegend* leg2 = new TLegend(.5,.6,0.85,.93);
+   //l.DrawLatex(0.16,0.95,"#bf{#scale[0.95]{Softdrop @ NLL, 1704.02210 }}"); 
+   l.DrawLatex(0.16,0.95,"#bf{#scale[0.7]{p_{T} = 500 GeV, f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   l.DrawLatex(0.16,0.9,"#bf{#scale[0.7]{sum over z_{cut} and #beta, #alpha_{s} = "+TString::Format("%0.1f",alphasMZ)+"}}");        
+
+   TLegend* leg2 = new TLegend(.2,.6,0.55,.85);
    leg2->SetTextFont(42);
    leg2->SetHeader("");
    leg2->SetNColumns(1);
-   leg2->AddEntry(chi2plot_combined_copy,"Unknown Combined","l");
-   leg2->AddEntry(chi2plot_combinedg_copy,"Known Gluon","l");
-   leg2->AddEntry(chi2plot_combinedq_copy,"Known Quark","l");   
+   leg2->AddEntry(chi2plot_combined_copy,"#scale[1.5]{Unknown Combined}","l");
+   leg2->AddEntry(chi2plot_combinedg_copy,"#scale[1.5]{Uknown Gluon}","l");
+   leg2->AddEntry(chi2plot_combinedq_copy,"#scale[1.5]{Uknown Quark}","l");   
    leg2->SetFillStyle(0);
    leg2->SetFillColor(0);
    leg2->SetBorderSize(0);
    leg2->Draw();  
 
-   c1->Print("BLAH.pdf");  
+   c1->Print("combination"+TString::Format("%i",myseed)+".pdf");  
 
 }
 

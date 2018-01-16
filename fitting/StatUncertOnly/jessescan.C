@@ -159,61 +159,89 @@ void mymain() {
    //test alpha_s
    printf("alpha_s = %f\n", alpha_s(150,alpha_s_mZ_standard));  
 
-   double zcut = 0.1;
-   double gfrac1 = 0.99;
-   double gfrac2 = 0.01;
+   double gfrac1 = 0.8;
+   double gfrac2 = 0.2;
    double myalphas = 0.1;
 
-   //all calls here are for pt=500
+   const int nzcuts = 3;
+   const int nbetas = 1;
+   double zcuts[nzcuts] = {0.05,0.1,0.2};
+   double betas[nbetas] = {0.};
 
-   //Let's plot the soft-drop mass distribution
    vector<double> bins;
    bins.push_back(0.05);
    while (bins[bins.size()-1] > 1e-4){
     bins.push_back(bins[bins.size()-1]/1.1);
    }
    std::reverse(bins.begin(), bins.end());
-   TH1F* gluons = new TH1F("","",bins.size()-1,&bins[0]);
-   TH1F* quarks = new TH1F("","",bins.size()-1,&bins[0]);
 
-   for (int i=1; i<=gluons->GetNbinsX(); i++){
-      double e2 = gluons->GetXaxis()->GetBinCenter(i);
-      gluons->SetBinContent(i, soft_drop_mass(e2,CA,Bg,zcut,myalphas,500.0,0.000001));
-      quarks->SetBinContent(i, soft_drop_mass(e2,CF,Bq,zcut,myalphas,500.0,0.000001));    
-   }
+   TLatex l  = TLatex(); 
+   l.SetNDC();
+   l.SetTextColor(1);
 
    TCanvas *c1 = new TCanvas("","",500,500);
    gPad->SetLogx();
    gPad->SetBottomMargin(0.15);
    gPad->SetLeftMargin(0.15);
    gStyle->SetOptStat(0);
-   gluons->GetYaxis()->SetNdivisions(505);
-   gluons->GetXaxis()->SetTitleOffset(1.4);
-   gluons->GetYaxis()->SetTitleOffset(1.6);
-   gluons->GetYaxis()->SetRangeUser(0,gluons->GetMaximum()*1.5);
-   gluons->GetXaxis()->SetTitle("log((m/p_{T})^{2})");
-   gluons->GetYaxis()->SetTitle("d#sigma / dlog(e_{2})");
-   gluons->SetLineColor(2);
-   gluons->Draw();
-   quarks->SetLineColor(4);
-   quarks->SetLineStyle(3);
-   quarks->Draw("same");
-   TLatex l  = TLatex(); 
-   l.SetNDC();
-   l.SetTextColor(1);
-   l.DrawLatex(0.2,0.85,"#bf{#scale[0.5]{Softdrop @ MLL, A. Larkoski et al. 1402.2657}}"); 
-   l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+"}}");    
-   TLegend* leg = new TLegend(.7,.75,0.85,.95);
-   leg->SetTextFont(42);
-   leg->SetHeader("");
-   leg->SetNColumns(1);
-   leg->AddEntry(gluons,"gluons","l");
-   leg->AddEntry(quarks,"quarks","l");
-   leg->SetFillStyle(0);
-   leg->SetFillColor(0);
-   leg->SetBorderSize(0);
-   leg->Draw();    
-   c1->Print("PDFs.pdf");
+
+   vector<TH2F*> all_histosq;
+   vector<TH2F*> all_histosg;
+
+   for (int iz = 0; iz<nzcuts; iz++){
+    for (int ib = 0; ib<nbetas; ib++){
+
+      double zcut = zcuts[iz];
+      double beta = betas[ib];
+   
+       TH1F* gluons = new TH1F("","",bins.size()-1,&bins[0]);
+       TH1F* quarks = new TH1F("","",bins.size()-1,&bins[0]);
+       for (int i=1; i<=gluons->GetNbinsX(); i++){
+          double e2 = gluons->GetXaxis()->GetBinCenter(i);
+          gluons->SetBinContent(i, soft_drop_mass(e2,CA,Bg,zcut,myalphas,500.0,0.000001));
+          quarks->SetBinContent(i, soft_drop_mass(e2,CF,Bq,zcut,myalphas,500.0,0.000001));    
+       }
+
+       gluons->GetYaxis()->SetNdivisions(505);
+       gluons->GetXaxis()->SetTitleOffset(1.4);
+       gluons->GetYaxis()->SetTitleOffset(1.6);
+       gluons->GetYaxis()->SetRangeUser(0,gluons->GetMaximum()*1.5);
+       gluons->GetXaxis()->SetTitle("log((m/p_{T})^{2})");
+       gluons->GetYaxis()->SetTitle("d#sigma / dlog(e_{2})");
+       gluons->SetLineColor(2);
+       gluons->Draw();
+       quarks->SetLineColor(4);
+       quarks->SetLineStyle(3);
+       quarks->Draw("same");
+       l.DrawLatex(0.2,0.85,"#bf{#scale[0.5]{Softdrop @ MLL, A. Larkoski et al. 1402.2657}}"); 
+       l.DrawLatex(0.2,0.8,"#bf{#scale[0.5]{p_{T} = 500 GeV, z_{cut} = "+TString::Format("%0.1f",zcut)+"}}");    
+       TLegend* leg = new TLegend(.7,.75,0.85,.95);
+       leg->SetTextFont(42);
+       leg->SetHeader("");
+       leg->SetNColumns(1);
+       leg->AddEntry(gluons,"gluons","l");
+       leg->AddEntry(quarks,"quarks","l");
+       leg->SetFillStyle(0);
+       leg->SetFillColor(0);
+       leg->SetBorderSize(0);
+       leg->Draw();    
+       c1->Print("PDFs_"+TString::Format("%0.1f",zcut)+"_"+TString::Format("%0.3f",zcut)+".pdf");
+    }
+  }
+
+ for (int iz = 0; iz<nzcuts; iz++){
+  for (int ib = 0; ib<nbetas; ib++){
+
+    double zcut = zcuts[iz];
+    double beta = betas[ib];
+
+   TH1F* gluons = new TH1F("","",bins.size()-1,&bins[0]);
+   TH1F* quarks = new TH1F("","",bins.size()-1,&bins[0]);
+   for (int i=1; i<=gluons->GetNbinsX(); i++){
+      double e2 = gluons->GetXaxis()->GetBinCenter(i);
+      gluons->SetBinContent(i, soft_drop_mass(e2,CA,Bg,zcut,myalphas,500.0,0.000001));
+      quarks->SetBinContent(i, soft_drop_mass(e2,CF,Bq,zcut,myalphas,500.0,0.000001));    
+   }
 
    //Now, let's start with statistical uncertainty.
    int ntoys = 100000;
@@ -288,7 +316,10 @@ void mymain() {
    TLine *myline = new TLine(0.1,0,0.1,1);
    myline->SetLineStyle(3);
    myline->Draw();
-   c1->Print("jesseplot.pdf");
+   c1->Print("jesseplot_"+TString::Format("%0.1f",zcut)+"_"+TString::Format("%0.3f",zcut)+".pdf");
+
+   all_histosq.push_back(chi2plotq);
+   all_histosg.push_back(chi2plot);
 
    for (int i=1; i<=chi2plot->GetNbinsX(); i++){
     double maxprobg = 0;
@@ -335,7 +366,70 @@ void mymain() {
    leg2->SetBorderSize(0);
    leg2->Draw();    
 
-   c1->Print("jesseplot2.pdf");
+   c1->Print("jesseplot2"+TString::Format("%0.1f",zcut)+"_"+TString::Format("%0.3f",zcut)+".pdf");
+ }
+}
+
+TH1F* chi2plot_combinedq = new TH1F("","",100,0.05,0.2);
+TH1F* chi2plot_combinedg = new TH1F("","",100,0.05,0.2);
+TH1F* chi2plot_combined = new TH1F("","",100,0.05,0.2);
+
+for (int ii=1; ii<=chi2plot_combined->GetNbinsX(); ii++){
+  chi2plot_combinedq->SetBinContent(ii,1);
+  chi2plot_combinedg->SetBinContent(ii,1);
+  chi2plot_combined->SetBinContent(ii,1);
+}
+
+for (int i=0; i<all_histosq.size(); i++){
+  for (int j=0; j<all_histosg.size(); j++){
+    for (int ii=1; ii<=all_histosq[i]->GetNbinsX(); ii++){
+        double maxprobg = 0;
+        double maxprobq = 0;
+        for (int jj=1; jj<=all_histosq[i]->GetNbinsY(); jj++){
+          if (jj==all_histosq[i]->GetYaxis()->FindBin(gfrac2)) chi2plot_combinedq->SetBinContent(ii,chi2plot_combinedq->GetBinContent(ii)*pow(all_histosq[i]->GetBinContent(ii,jj),2));
+          if (jj==all_histosg[j]->GetYaxis()->FindBin(gfrac1)) chi2plot_combinedg->SetBinContent(ii,chi2plot_combinedg->GetBinContent(ii)*pow(all_histosg[j]->GetBinContent(ii,jj),2));
+          if (all_histosg[j]->GetBinContent(ii,jj) > maxprobg) maxprobg = all_histosg[j]->GetBinContent(ii,jj);
+          if (all_histosq[i]->GetBinContent(ii,jj) > maxprobq) maxprobq = all_histosq[i]->GetBinContent(ii,jj);
+        }
+        chi2plot_combined->SetBinContent(ii,maxprobg*maxprobq*chi2plot_combined->GetBinContent(ii)); 
+       }
+  }
+}
+
+   chi2plot_combined->Scale(1./chi2plot_combined->Integral());
+   chi2plot_combinedg->Scale(1./chi2plot_combinedg->Integral());
+   chi2plot_combinedq->Scale(1./chi2plot_combinedq->Integral());
+
+   TH1F* chi2plot_combined_copy = mycopy(chi2plot_combined);
+   TH1F* chi2plot_combinedg_copy = mycopy(chi2plot_combinedg);
+   TH1F* chi2plot_combinedq_copy = mycopy(chi2plot_combinedq);
+
+   chi2plot_combined_copy->SetLineColor(1);
+   chi2plot_combined_copy->GetYaxis()->SetRangeUser(0.0,chi2plot_combinedg_copy->GetMaximum()*1.2);
+   chi2plot_combined_copy->GetXaxis()->SetTitle("#alpha_{s}");
+   chi2plot_combined_copy->GetYaxis()->SetTitleOffset(1.6);
+   chi2plot_combined_copy->GetYaxis()->SetTitle("p(alpha_{s})");
+   chi2plot_combined_copy->Draw();
+   chi2plot_combinedg_copy->SetLineColor(2);
+   chi2plot_combinedq_copy->SetLineColor(4);
+   chi2plot_combinedg_copy->Draw("same");
+   chi2plot_combinedq_copy->Draw("same");
+   l.DrawLatex(0.2,0.95,"#bf{#scale[0.5]{Softdrop @ MLL, 1402.2657}}"); 
+   l.DrawLatex(0.2,0.92,"#bf{#scale[0.5]{p_{T} = 500 GeV, sum over z_{cut}, #beta, f_{g,1} = "+TString::Format("%0.0f%%",100*gfrac1)+", f_{g,2} = "+TString::Format("%0.0f%%",100*gfrac2)+", 100k events}}");     
+   
+   TLegend* leg2 = new TLegend(.5,.6,0.85,.93);
+   leg2->SetTextFont(42);
+   leg2->SetHeader("");
+   leg2->SetNColumns(1);
+   leg2->AddEntry(chi2plot_combined_copy,"Unknown Combined","l");
+   leg2->AddEntry(chi2plot_combinedg_copy,"Known Gluon","l");
+   leg2->AddEntry(chi2plot_combinedq_copy,"Known Quark","l");   
+   leg2->SetFillStyle(0);
+   leg2->SetFillColor(0);
+   leg2->SetBorderSize(0);
+   leg2->Draw();  
+
+   c1->Print("BLAH.pdf");  
 
 }
 

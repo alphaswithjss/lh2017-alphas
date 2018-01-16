@@ -47,6 +47,7 @@
 ///  - add support for angularities
 ///  - add support for single-emission variants
 void weights_mMDT(double pt, double R, double zcut,
+                  double alpha,
                   double alphasMZ, double muR, double muC, double mufr,
                   const std::vector<double> & logrhos,
                   double endpoint, 
