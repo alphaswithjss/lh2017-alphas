@@ -7,50 +7,20 @@ In this section we briefly review the definitions of the observables and groomin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-The simplest class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions. There has been significant theoretical study of these objects, and their perturbative behavior is understood to relatively high accuracy. Here we give definitions for both jets in $e^+e^-$ as well as in $pp$.
+The simplest class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions. There has been significant theoretical study of these objects, and their perturbative behavior is understood to relatively high accuracy. For a set of constituents $\{i\}$, in a jet $J$, the two-point correlation functions in $pp$ collisions are defined as
 
-\ijm{copied in, need to rewrite a bit}
-
-For a set of particles $\{i\}$, in a jet $J$, the two-point correlation functions in $e^+e^-$ collisions are defined as
-\begin{align}\label{eq:eee2}
-\left.\ecf{2}{\alpha}\right|_{e^+e^-}&=\frac{1}{E_J^2}\sum_{i<j\in J} E_i E_j\left(
-\frac{2p_i\cdot p_j}{E_i E_j}
-\right)^{\alpha/2}\,, 
-\end{align}
-\gs{I am not sure this is relevant here but the definition we used for
-  the LH q/g study in 2015 had $(\theta_{ij}/R)^\alpha$, which is
-  quite different (different normalisation, differnt at large angle,
-  different with non-zero masses). But we're not using it here, so
-  can't we just drop this and focus on the $pp$ definition?}   For
-jets produced in $pp$ collisions, the two-point correlation functions
-are simply modified as
 \begin{align}\label{eq:ppe2}
-\left.\ecf{2}{\alpha}\right|_{pp}&=\frac{1}{p_{TJ}^2}\sum_{i<j\in J} p_{Ti} p_{Tj}R_{ij}^\alpha\,, 
+\left.\ecf{2}{\alpha}\right|_{pp}&=\frac{1}{p_{TJ}^2}\sum_{i<j\in J} p_{Ti} p_{Tj}\left(R_{ij}/R\right)^\alpha\,, 
 \end{align}
-\gs{The definition in the rivet-analysis folder as well as the one
-  I've used in my resummation ocde includes a $1/R^\alpha$
-  normalisation.}  Here $R_{ij}$ is the distance between particles $i$
-and $j$ in the pseudorapidity-azimuth \gs{We're definitely using
-  rapidities, not pseudo-rapidities} angle plane.  For jets that are
-central ($p_{TJ} \sim E_J$) and if all emissions in the jet are
-collinear, the definitions of the two- and three-point energy
-correlation functions for jets in $pp$ collisions are equivalent to
-those for $e^+e^-$ collisions.
-
-The angular exponent $\alpha$ in the definition of the two-point correlation functions is a parameter that controls sensitivity to wide-angle emissions.  For jets that consist of massless particles, the two-point energy correlation function in $e^+e^-$ collisions reduces to a function of the jet mass, $m_J$, if $\alpha=2$:
+where $R_{ij}$ is the distance between particles $i$
+and $j$ in the rapidity-azimuthal angle plane.   The angular exponent $\alpha$ in the definition of the two-point correlation functions is a parameter that controls sensitivity to wide-angle emissions. For jets that are central and if all emissions in the jet are nearly collinear, then two-point energy correlation function reduces to a function of the jet mass ($m$) when $\alpha=2$:
 \begin{equation}
-\left.\ecf{2}{2}\right|_{e^+e^-} = \frac{m_J^2}{E_J^2}\,.
+\ecf{2}{2} \sim \frac{m^2}{R^2p_{T}^2}\,.
 \end{equation} 
 
 Throughout this paper, we will primarily restrict ourselves to the
-case of $\alpha=2$. This is the case for which the theory
-understanding is best, and which has been perturbatively calculated to
-NNLL~\cite{Frye:2016okc,Frye:2016aiz}. \gs{I think the theory
-  understanding is valid for any $\alpha$ (the best way to prove this
-  is that the code resummation code works for any $\alpha$). Note:
-  we've only provided the mass to CMS and ATLAS but it is simply
-  because that is what is measured.} It is, however, and interesting
-question as to whether other values of $\alpha$ could provide improved
+case of $\alpha=2$ as this has been the focus so far from both the theory~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.  However, it is interesting
+to study if other values of $\alpha$ could provide improved
 sensitivity to $\alpha_s$. Another benchmark value is $\alpha=1$,
 which corresponds to $k_T$ (or broadening) instead of mass.
 
@@ -63,15 +33,7 @@ which corresponds to $k_T$ (or broadening) instead of mass.
 Starting from a jet identified with an IRC safe jet algorithm (such as
 anti-$k_t$ \cite{Cacciari:2008gp}), the soft drop algorithm is defined
 using Cambridge/Aachen (C/A) reclustering
-\cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.  Specializing
-to the case of $\beta=0$, where Soft Drop is equivalent to Modified
-Mass Drop Tagger~\cite{Dasgupta:2013ihk}, the algorithm proceeds as
-follows: \gs{The descriptino below is valid for any $\beta$, so I'd
-  just drop the $\beta=0$ part here and mention, below the description
-  ``This generalises the modified Mass Drop
-  Tagger~\cite{Dasgupta:2013ihk} which corresonds to $\beta=0$ in the
-  Soft Drop procedure described above.''}
-\begin{enumerate}
+\cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.  \begin{enumerate}
 
 \item Recluster the jet using the C/A clustering algorithm, producing an angular-ordered branching history for the jet.
 
@@ -79,15 +41,19 @@ follows: \gs{The descriptino below is valid for any $\beta$, so I'd
 \begin{align}\label{eq:sd_cut}
 \frac{\min\left[ p_{Ti}, p_{Tj}  \right]}{p_{Ti}+p_{Tj}}> \zcut \left(   \frac{R_{ij}}{R}\right)^\beta \,.
 \end{align}
-Here, $\zcut$ is a parameter defining the scale below which soft radiation is removed.  If the soft drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
+where $\zcut$ is a parameter defining the scale below which soft radiation is removed.  If the soft drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
 
 \item The soft drop procedure terminates once the soft drop condition is satisfied.
 
 \end{enumerate}
 
-For $\beta=0$ non-global logarithms are removed from the distribution.  
-\gs{This is a bit misleading: NGLs are also formally removed from Soft
-  Drop with $\beta>0$}
+\noindent This procedure generalizes the modified Mass Drop
+  Tagger~\cite{Dasgupta:2013ihk} which corresponds to $\beta=0$ in the
+  Soft Drop procedure described above.  Note that non-global logarithms are formally removed from the soft drop mass distribution, even when $\beta>0$ (though clearly they are resorted as $\beta\rightarrow\infty$).
+
+%Specializingto the case of $\beta=0$, where Soft Drop is equivalent to Modified Mass Drop Tagger~\cite{Dasgupta:2013ihk}, the algorithm proceeds as follows: \gs{The descriptino below is valid for any $\beta$, so I'd just drop the $\beta=0$ part here and mention, below the description ``This generalises the modified Mass Drop Tagger~\cite{Dasgupta:2013ihk} which corresonds to $\beta=0$ in the Soft Drop procedure described above.''}
+
+%For $\beta=0$ non-global logarithms are removed from the distribution.  \gs{This is a bit misleading: NGLs are also formally removed from Soft  Drop with $\beta>0$}
 
 
 

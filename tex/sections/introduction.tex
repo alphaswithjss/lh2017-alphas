@@ -1,16 +1,8 @@
 %\info{Ben, Ian, Jesse, Grigorios, Maria}
 
+Within the context of Quantum Chromodynamics (QCD), the strong coupling constant ($\alpha_s$) is responsible for the strength of interactions between quarks and gluons.  Governed by this fundamental parameter, a plethora of strong force phenomena emerge to create massive hadrons responsible for most of the visible energy-density in the universe and to create collimated sprays of hadrons known as jets that are ubiquitous at high energy particle colliders.  The internal structure of jets (jet substructure) has been extensively exploited to search for new particles at the Large Hadron Collider (LHC).  Now that both the experimental and theoretical tools of jet substructure are reaching a high level of maturity~\cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv,Larkoski:2017jix}, it is time to ask if the radiation pattern inside jets can be used to extract fundamental parameters of the Standard Model, such as $\alpha_s$.
 
-
-
-Within the context of Quantum Chromodynamics (QCD), the strong
-coupling constant ($\alpha_s$) is responsible for the strength of
-interactions between quarks and gluons.  Governed by this fundamental
-parameter, a plethora of strong force phenomena emerge to create
-massive hadrons responsible for most of the visible energy-density in
-the universe and to create collimated sprays of hadrons known as jets
-that are ubiquitous at high energy particle colliders.  The
-uncertainty in $\alpha_s$ is a limiting factor in our predictions for
+There is a strong motivation for making a precise measurement of $\alpha_s$.  The uncertainty in $\alpha_s$ is a limiting factor in our predictions for
 the stability of the universe~\cite{Andreassen:2017rzq} and the
 uncertainty in $\alpha_s$ at a variety of scales sets our
 model-independent sensitivity to strongly interacting particles beyond
@@ -20,14 +12,17 @@ order, the uncertainty on $\alpha_s$, $\sigma_{\alpha_s}$, can be
 limiting in the overall accuracy e.g. numerically,
 $\alpha_s^3\sim \sigma_{\alpha_s}$ so higher order terms can be
 smaller than the leading order correction uncertainty (see
-e.g. $gg\rightarrow H$ at N$^3$LO).  Determinations of $\alpha_s$
+e.g. $gg\rightarrow H$ at N$^3$LO~\cite{Anastasiou:2015ema}).  Determinations of $\alpha_s$
 probe a wide variety of physical phenomena and the consistency between
 methods is a crucial test of the theory and is important for accurate
-predictions at the Large Hadron Collider (LHC) and beyond.
+predictions at the LHC and beyond.
+
+
+
 
 % for the inclusive Higgs cross section at N$^3$LO \cite{Anastasiou:2015ema,Anastasiou:2016cez} \ijm{expalin that this means error is like the size of the pert corrections})
 
-The world-average value for $\alpha_s$ at the $Z$ boson mass\footnote{Unless otherwise specified, $\alpha_s$ is always reported at the $Z$ boson mass.  \textbf{Should we discuss scales?}} ($m_Z$) is $0.118\pm 0.0013$, a $1.1\%$ total uncertainty~\cite{Olive:2016xmw}.  There has been significant discussion in the community about the challenges and validity of various methods to extract $\alpha_s$, see for instance Refs.~\cite{Bethke:2011tr,Pich:2013sqa,Moch:2014tta,dEnterria:2015kmd,Olive:2016xmw,Salam:2017qdl,Altarelli:2013bpa}.  The most precise (and dominant) input to the world-average is the $\alpha_s$ value from lattice QCD calculations combined with measurements of $B$-hadron mass differences, with an uncertainty that is less than $1\%$.   After the lattice, the most precise determination is from measurements and calculations of thrust and the $C$-parameter in $e^+e^-$~\cite{Abbate:2010xh,Hoang:2015hka,Heister:2003aj,Abdallah:2004xe,Abreu:1996mk,Abreu:1999rc,Biebel:1999zt,Adeva:1992gv,Abbiendi:2004qz,Abe:1994mf}.   These methods are sensitive to very different regimes of QCD and interestingly significantly differ with each other beyond $\sim 3\sigma$, at about the 5\% level.  
+The world-average value for $\alpha_s$ at the $Z$ boson mass\footnote{Unless otherwise specified, $\alpha_s$ is always reported at the $Z$ boson mass. } ($m_Z$) is $0.118\pm 0.0013$, a $1.1\%$ total uncertainty~\cite{Olive:2016xmw}.  There has been significant discussion in the community about the challenges and validity of various methods to extract $\alpha_s$, see for instance Refs.~\cite{Bethke:2011tr,Pich:2013sqa,Moch:2014tta,dEnterria:2015kmd,Olive:2016xmw,Salam:2017qdl,Altarelli:2013bpa}.  The most precise (and dominant) input to the world-average is the $\alpha_s$ value from lattice QCD calculations combined with measurements of $B$-hadron mass differences, with an uncertainty that is less than $1\%$.   After the lattice, the most precise determination is from measurements and calculations of thrust and the $C$-parameter in $e^+e^-$~\cite{Abbate:2010xh,Hoang:2015hka,Heister:2003aj,Abdallah:2004xe,Abreu:1996mk,Abreu:1999rc,Biebel:1999zt,Adeva:1992gv,Abbiendi:2004qz,Abe:1994mf}.   These methods are sensitive to very different regimes of QCD and interestingly significantly differ with each other beyond $\sim 3\sigma$, at about the 5\% level.  
 
 %>>> (0.1123-0.1184)/(0.0006**2+0.0015**2)**0.5
 %-3.7758052096000596
@@ -39,9 +34,7 @@ Extractions based on $e^+e^-$ event shapes are sensitive to soft and
 collinear regions of phase space, which are modeled with precision
 using higher order resummation.  Figure~\ref{fig:propaganda} shows
 various values of $\alpha_s$ extracted with next-to-next-to-leading
-order (NNLO) calculations \gs{I guess that the thrust case includes a
-  resummation. We need to mention the resummation accuracy here
-  (probably N$^3$LL).} as well as those used in various Parton Shower
+order (NNLO) calculations including various levels of resummation, such as next-to-next-to-next-to-leading logarithm (N$^3$LL) for the thrust-based extraction, as well as those used in various Parton Shower
 (PS) Monte Carlo (MC) programs\footnote{Note that these do much more
   than the parton shower.  Photons are also included but the impact
   here is quite negligible for electroweak radiation (as opposed to
@@ -51,7 +44,7 @@ QCD (albeit in different ways); interestingly, the values used in the
 \pythia program~\cite{Sjostrand:2006za,Sjostrand:2007gs} which are fit
 to data suggest a higher value of $\alpha_s$ than the lattice result
 by about 15\%.  Another challenge with the event shapes extraction is
-that the non-perturbative corrections are nearly degenerate with
+that the non-perturbative (NP) corrections are nearly degenerate with
 $\alpha_s$.  This is in part because techniques to parametrically
 separate non-perturbative effects from perturbative effects (grooming)
 were not mature at the time of the Large Electron Positron collider
@@ -67,27 +60,22 @@ extraction of $\alpha_s$ using jets at the LHC.
 \end{center}
 \caption{Various values of $\alpha_s$, including the world-average
   shown as a black line with a grey band~\cite{Olive:2016xmw}.  The
-  point labeled \textit{Thrust} is from LEP data and the measurement
+  point labeled \textit{Thrust} is from LEP data~\cite{Abbate:2010xh,Hoang:2015hka,Heister:2003aj,Abdallah:2004xe,Abreu:1996mk,Abreu:1999rc,Biebel:1999zt,Adeva:1992gv,Abbiendi:2004qz,Abe:1994mf} and the measurement
   using the CMS top cross-section measurement is the first NNLO
-  extraction at the LHC.  The other points are the $\alpha_s$
+  extraction at the LHC~\cite{Chatrchyan:2013haa}.  The other points are the $\alpha_s$
   parameter value used in the final state shower in various Monte
-  Carlo programs.  \herwig and \sherpa use the world-average by
-  default while the default or A14 tunes of \pythia employ a higher
+  Carlo programs.  \herwig~\cite{Bellm:2015jjp} and \sherpa~\cite{Gleisberg:2008ta} use the world-average by
+  default while the default~\cite{Skands:2014pea} or A14 tunes (with VAR2 as an A14 uncertainty variation)~\cite{ATL-PHYS-PUB-2014-021} of \pythia~\cite{Sjostrand:2006za,Sjostrand:2014zea} employ a higher
   value.  The order at which $\alpha_s$ is utilized is not the same in
   all cases and is given in the $\overline{\text{MS}}$
-  scheme. \gs{VAR2 not so clear in the Pythia label.}}
+  scheme.}
 \label{fig:propaganda}
 \end{figure}
 
 So far at the LHC, jets have been used mostly as proxies for quarks and gluon four-vectors.  As such, the multiplicity and kinematics of jets in purely hadronic final states can be predicted to high order in $\alpha_s$ in perturbation theory with e.g. NNLOJET~\cite{Currie:2016bfm,Currie:2017ctp} and NLOJet++~\cite{Nagy:2001fj,Nagy:2003tz}.  As a result, measurements of jet multiplicities, energies, and angles can be used to extract $\alpha_s$~\cite{ATLAS:2015yaa,Aaboud:2017fml,Khachatryan:2014waa,CMS:2014mna,Chatrchyan:2013txa}.   Even though these measurements have achieved an uncertainty of $\sim 5\%$, they have not yet been included in the Particle Data Group (PDG) combination~\cite{Olive:2016xmw} as they are using only next-to-leading-order (NLO) theory calculations.  With the recent progress in higher order calculations, this will likely change soon - an extraction using the recent NNLO $t\bar{t}$ cross-section is now included (see Fig.~\ref{fig:propaganda}).
 
 In these extractions, the collinear region defining the internal
-structure of jets is ignored due to the lack of precision calculations
-\gs{I'd rather say ``irrelevant'' (because of the collinear-safety of
-  the jet definition, or because of the finite radius of the jet)
-  instead of ``ignored''? Also, we could mention the work on resumming
-  $\log(1/R)$ which is relevant in that context (arXiv:1411.5182 and
-  arXiv:1602.01110).}.  Jets are not in one-to-one correspondence with
+structure of jets is avoided in part due to the lack of precision calculations\footnote{Though logs of $1/R$ may be important when the jet radius is small~\cite{Dasgupta:2016bnd,Dasgupta:2014yra}.}.  Jets are not in one-to-one correspondence with
 quarks and gluons and their structure is also governed by $\alpha_s$.
 Recent experimental and theoretical advances in jet substructure have
 shown that the radiation pattern inside jets has great physics
