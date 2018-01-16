@@ -18,7 +18,12 @@ A complete extraction of $\alpha_s$ will require matching resummed results to hi
 \begin{center}
 \includegraphics[width = 0.33\columnwidth]{figures/PDFs_alpha_2_00zcut0_10_beta_1_000.pdf}\includegraphics[width = 0.33\columnwidth]{figures/PDFs_alpha_1_00zcut0_10_beta_1_000.pdf}\includegraphics[width = 0.33\columnwidth]{figures/PDFs_alpha_0_50zcut0_10_beta_1_000.pdf}
 \end{center}
-\caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left), $\alpha=1$ (middle), and $\alpha=0.5$ (right).  Note that larger masses are on the left so that the non-perturbative regime is on the right and the fixed-order regime is on the left.}
+\caption{The quark and gluon templates, computed at
+  NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left),
+  $\alpha=1$ (middle), and $\alpha=0.5$ (right).  Note that larger
+  masses are on the left so that the non-perturbative regime is on the
+  right and the fixed-order regime is on the left. \gs{The axes labels
+  are not right}}
 \label{fig:templates}
 \end{figure}
 	
@@ -26,11 +31,26 @@ A complete extraction of $\alpha_s$ will require matching resummed results to hi
 \begin{center}
 \includegraphics[width = 0.45\columnwidth]{figures/banana_alpha_2_00beta_1_00_zcut_0_100.pdf}\includegraphics[width = 0.45\columnwidth]{figures/palpha_alpha_2_0beta_1_0_zcut_0_1000.pdf}
 \end{center}
-\caption{Left: the probability of the minimized $\chi^2$ (assuming $n_\text{bins}-1$ degrees of freedom) from Eq.~\ref{eq:chi2fit} as a function of $f_g$ and $\alpha_s$ for a sample with 80\% gluons and one with 80\% quarks.  Right: The right plot marginalized over $f_g$ and normalized to unity.  The three lines correspond to the pure quark, pure gluon, and the combined fit of the two mixed samples from the left plot ($f_g\in\{0.2,0.8\}$).}
+\caption{Left: the probability of the minimized $\chi^2$ (assuming
+  $n_\text{bins}-1$ degrees of freedom) from Eq.~\ref{eq:chi2fit} as a
+  function of $f_g$ and $\alpha_s$ for a sample with 80\% gluons and
+  one with 80\% quarks.  Right: The right plot marginalized over $f_g$
+  and normalized to unity.  The three lines correspond to the pure
+  quark, pure gluon, and the combined fit of the two mixed samples
+  from the left plot ($f_g\in\{0.2,0.8\}$). \gs{The legend on the
+    right plot is potentially misleading, I'd say ``known $f_g=20\%$''
+    and ``known $f_g=80\%$''. If easily doable, it might also be good
+    to have the extracted alphas (central value+uncertainty).} \gs{Why
+    has the left plot changed that much compared to the previous
+    version?} }
 \label{fig:alpha2fit}
 \end{figure}
 
 One way to improve the situation is to combine multiple $\alpha$ values.  Figure~\ref{fig:morebananas} shows the $f_g,\alpha_s$ fit for $\alpha = 0.5$ and $\alpha=1.0$ (\textbf{for Ben: maybe this is artificially good because the resummation ranges are not ideal? -BPN}).  As in Fig.~\ref{fig:alpha2fit}, there are two banana-shaped regions that correspond to the $f_g=20\%$ and $f_g=80\%$ samples.   The tilt of the bananas is slightly different than the $\alpha=2$ case and so there is a possibility to gain from combining the information in the observables.  In practice, a challenge with this extraction is the need to understand correlations between observables.  At the moment, there are no available calculations of joint distributions of angularities.  Figure~\ref{fig:combo} shows the result of a combined fit that assumes all three distributions are statistically independent.  This is a very strong assumption that is likely not even approximately true.  However, the fact that having different tilts in the $f_g,\alpha_s$ plane is clearly shown and would be a generic feature of a multi-observable fit, even if the size of the gain is not as significant. 
+
+\gs{Varying $z_{\text{cut}}$ and $\beta$ would also change the slope
+  (maybe not in the 2d maps), so we could add something saying that it
+  would be interesting to study those variations as well.} 
 
 \begin{figure}[h!]
 \begin{center}
@@ -51,7 +71,25 @@ One way to improve the situation is to combine multiple $\alpha$ values.  Figure
 \subsection{Estimate of Experimental Resolution}
 \label{sec:resolution}
 
-To keep pace with precise theory predictions, the experimental resolution must be well-understood in order to ensure both precision and accuracy of the measurement.  In order to estimate the impact of detector resolutions on the picture illustrated in Sec.~\ref{sec:templates}, a fast simulation from Delphes 3.x~\cite{deFavereau:2013fsa} was studied using particle-level input from \pythia.x.  The setup uses a CMS-like detector with jets built from particle-flow objects.  There are generically two regimes for determining the experimental resolution.  At high mass, there are well-resolved hard prongs in the jet and so the resolution is set by the jet energy resolution of those `sub-jets'.  In contrast, at low mass, the groomed jet is defined by nearly collinear splittings at which point the angular resolution can dominate.  Figure~\ref{fig:resolution} shows the fractional $e_2^{(2)}$ resolution.  The resolution is smallest at low mass due to the excellent energy resolution of the CMS-like detector.  The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the limit of $\mathcal{O}(\text{few GeV})$.  
+To keep pace with precise theory predictions, the experimental
+resolution must be well-understood in order to ensure both precision
+and accuracy of the measurement.  In order to estimate the impact of
+detector resolutions on the picture illustrated in
+Sec.~\ref{sec:templates}, a fast simulation from Delphes
+3.x~\cite{deFavereau:2013fsa} was studied using particle-level input
+from \pythia.x. \gs{Do not forget to fill in Delphes and Pythia
+  versions.} The setup uses a CMS-like detector with jets built from
+particle-flow objects.  There are generically two regimes for
+determining the experimental resolution.  At high mass, there are
+well-resolved hard prongs in the jet and so the resolution is set by
+the jet energy resolution of those `sub-jets'.  In contrast, at low
+mass, the groomed jet is defined by nearly collinear splittings at
+which point the angular resolution can dominate.
+Figure~\ref{fig:resolution} shows the fractional $e_2^{(2)}$
+resolution.  The resolution is smallest at low mass \gs{at high mass?}
+due to the excellent energy resolution of the CMS-like detector.  The
+resolution at low mass is about 10\% near 15 GeV and reaches 30\% near
+the limit of $\mathcal{O}(\text{few GeV})$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -61,7 +99,16 @@ To keep pace with precise theory predictions, the experimental resolution must b
 \label{fig:resolution}
 \end{figure}
 
-As a check that the estimate resolution is sensible, Fig.~\ref{fig:expres} compares the migration matrix between particle-level and detector-level between Delphes and the recent ATLAS measurement~\cite{Aaboud:2017qwh}.  The migration is qualitatively the same, with an excellent diagonal behavior (low migrations) at high mass and a worse resolution at low mass.  To understand the sensitivity to jet mass scale and resolution uncertainties, pseudo-experiments are conducted by sampling from the templates described in Sec.~\ref{sec:templates}, smearing with the migration matrix shown in Fig.~\ref{fig:expres}, and then unfolding with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and then measuring $\alpha_s$ via Eq.~\ref{eq:chi2fit} but for fixed and known $f_g=0$.  The results of this procedure are shown in Fig.~\ref{fig:expfit}.  There is is little sensitivity to the jet mass resolution while there is a large uncertainty in the measured $\alpha_s$ from an uncertainty in the jet mass scale that exceeds a few percent.  Current jet mass scale uncertainties are below $5\%$ and resolution uncertainties are below 20\%~\cite{}.  The mass scale uncertainty is as small as $2\%$ in various regions of phase space.  Therefore, it seems like a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as the uncertainty on the jet mass reaches the same level of maturity as the jet energy over the next years.
+As a check that the estimate resolution is sensible,
+Fig.~\ref{fig:expres} compares the migration matrix between
+particle-level and detector-level between Delphes and the recent ATLAS
+measurement~\cite{Aaboud:2017qwh}.  The migration is qualitatively the
+same, with an excellent diagonal behavior (low migrations) at high
+mass and a worse resolution at low mass.  To understand the
+sensitivity to jet mass scale and resolution uncertainties,
+pseudo-experiments are conducted by sampling from the templates
+described in Sec.~\ref{sec:templates}, smearing with the migration
+matrix shown in Fig.~\ref{fig:expres}, \gs{left or right?} and then unfolding with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and then measuring $\alpha_s$ via Eq.~\ref{eq:chi2fit} but for fixed and known $f_g=0$.  The results of this procedure are shown in Fig.~\ref{fig:expfit}.  There is little sensitivity to the jet mass resolution while there is a large uncertainty in the measured $\alpha_s$ from an uncertainty in the jet mass scale that exceeds a few percent.  Current jet mass scale uncertainties are below $5\%$ and resolution uncertainties are below 20\%~\cite{}.  The mass scale uncertainty is as small as $2\%$ in various regions of phase space.  Therefore, it seems like a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as the uncertainty on the jet mass reaches the same level of maturity as the jet energy over the next years.
 
 \begin{figure}[h!]
 \begin{center}
