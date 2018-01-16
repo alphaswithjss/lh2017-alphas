@@ -53,34 +53,30 @@ provide valuable complementary information for $\alpha_s$ extractions.
 Using a scaling argument, it is a straightforward exercise to compute the value of the groomed angularities at which non-perturbative effects are expected to be important. This was considered in  \cite{Frye:2016aiz,Dasgupta:2013ihk}
 where it was shown that non-perturbative effects become important when (for $\alpha \geq 1$)
 \begin{align}
-\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{\alpha-1}{1+\beta}}  \frac{\lamqcd}{Q}\,,
+\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{\alpha-1}{1+\beta}}  \frac{\lamqcd R^\alpha}{Q}\,,
 \end{align}
-\noindent where $Q=p_TR$ is the starting scale of jet fragmentation.  If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
+\noindent where $Q=p_TR$ is the starting scale of jet fragmentation.  When $\alpha< 1$, the value is instead $(\lamqcd/p_T)^\alpha$. If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
 \begin{align}
-\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \frac{\lamqcd}{Q}\,,
+\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \frac{\lamqcd R}{p_T}\,,
 \end{align} 
 while the groomed result gives 
 \begin{align}
-\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{1}{1+\beta}}  \frac{\lamqcd}{Q}\,.
+\left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut p_TR}  \right)^{\frac{1}{1+\beta}}  \frac{\lamqcd R}{p_T}\,.
 \end{align}
-\gs{I'd write this with $Q\to p_tR$. The above expression corresponds to a $1/(p_tR^\alpha)$ normalisation in the
-  definition of $e_\alpha$. Also, for $\alpha<1$, it is replaced by $(\lamqcd/(p_tR))^\alpha$.} 
-For $Q\gg \lamqcd$, we see that the grooming significantly supresses
+
+\noindent For $Q\gg \lamqcd$, we see that the grooming significantly suppresses
 the scale of the non-perturbative physics. Furthermore, we observe
 that under the assumption that $\beta \geq 0$, this suppression is
 maximized for $\beta=0$, motivating this choice in our
-studies. \gs{What about -ve $\beta$. We could add sth like ``Negative
-  $\beta$ could also be interesting to study although some specific
-  attention would be needed in the vicinity of the endpoint of the
-  dstribbution ($e+\alpha=c_{\text{cut}}^{-\alpha\beta}$ at LL).''.}
+studies\footnote{Negative values of $\beta$ are also possible and could be interesting to study.  However, one would need to dedicate specific attention in the vicinity of the endpoint of the distribution, which is $\ecf{2}{\alpha}=z_\text{cut}^{-\alpha\beta}$ at LL.}. 
 
 It is important to emphasize, however, that just because the value of the mass at which non-perturbative physics enters is suppressed, this does not by itself imply that there is a larger region over which one has perturbative control. In principle the whole distribution could be shifted to lower values. However, we know that for $\ecf{2}{2} \geq \zcut$, the distribution is parametrically unaffected by the grooming procedure, and is therefore identical to the ungroomed jet mass. 
 
 This shows that the grooming procedure extends the range of perturbative validity by a factor of 
 \begin{align}
-\left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{1}{1+\beta}} \,.
+\left( \frac{\lamqcd}{\zcut p_TR}  \right)^{\frac{1}{1+\beta}} \,.
 \end{align}
-For a $1$ TeV jet, with $\zcut =0.1$ and $\beta=0$ this is an extension by a factor of $\sim 100$!
+For a $1$ TeV jet, with $\zcut =0.1$ and $\beta=0$ this is an extension by a factor of $\sim 100$.
 
 
 In addition to being suppressed, another potentially important feature of the non-perturbative corrections for the groomed jet mass which may provide complementary information as compared with standard event shapes is that the structure of the non-perturbative corrections is quite different. For event shape observables, non-perturbative corrections are typically large already at the Sudakov peak. In the case of a groomed observable, since the non-perturbative corrections are suppressed, and the observable is single logarithmic (exactly true when $\beta=0$), we instead see that the NP corrections appear as a bump on the falling distribution. This is shown in \Fig{fig:shape_function} along with a model using a shape function. Due to the fact that this is a completely different behavior, it may have different correlations as compared with standard event shapes. However, a more complete understanding is required. 
@@ -107,16 +103,12 @@ Finally, while in this section we have so far focused on the effect of the groom
 \label{sec:pertsimplicity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\gs{This should include an explicit Ref to the mMDT paper which was
-  the first to show that this was (i) calculable and (ii) simple.}
-
-In addition to the suppression of non-perturbative corrections arising from the grooming procedure, grooming also significantly simplifies the perturbative resummation in the $pp$ environment. Calculations of the standard jet mass in $pp$ typically suffer from the following two perturbative difficulties
+By studying the analytic behavior of grooming on the jet mass, the authors of Ref.~\cite{Dasgupta:2013ihk} showed that grooming could be designed to enhance the simplicity and calculability of various jet shapes.  In particular, grooming significantly simplifies the perturbative resummation in the $pp$ environment in addition to suppressing NP corrections.  Calculations of the standard jet mass in $pp$ typically suffer from the following two perturbative difficulties
 \begin{itemize}
 \item Global color correlations, which complicate the structure of higher order soft functions.
 \item Non-global logarithms \cite{Dasgupta:2001sh}, which complicate the perturbative structure for non-global measurements.
 \end{itemize}
-The jet mass was calculated in \cite{Jouttenus:2013hs} \gs{also a
-  calculation in arXiv:1207.1640, with no veto.} for $H+$ jet with a
+The jet mass was calculated in \cite{Jouttenus:2013hs} (\cite{arXiv:1207.1640}) for $H+$ jet with(out) a
 veto on additional radiation, supplemented with arguments that
 non-global effects are small. However, these two features highlight
 that the ungroomed jet mass depends significantly on the particular
@@ -145,10 +137,8 @@ It is important to emphasize that this simplification does not occur
 throughout the entire distribution. In particular, for $m \gg Q\zcut$,
 it does not hold. However, this is the fixed order region, where we
 can match to standard fixed order perturbation theory. This matching
-has been performed to NLO for $V+$ jets
-\cite{Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} \gs{Our
-  calculation was for dijets, so I'd say ``for dijets and
-  $V$+jets''.}.  Ideally this would be done using $2\to 3$ matrix
+has been performed to (N)NLO for dijets ($V$+jets)
+\cite{Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva}.  Ideally this would be done using $2\to 3$ matrix
 elements at NNLO, which are just now becoming available
 \cite{Gehrmann:2015bfy,Dunbar:2016aux,Badger:2013yda,Badger:2017jhb,Abreu:2017hqn}.
 
@@ -189,4 +179,4 @@ elements at NNLO, which are just now becoming available
 \subsection{Pileup Resilience}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Arguably the biggest experimental challenge for precision physics at a high luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.  Jet shapes are particularly sensitive to pileup; for example, the jet mass scales as $\mathcal{O}(R^4)$~\cite{Salam:2009jx} for the jet area $A$~\cite{Cacciari:2008gn} (whereas the jet $p_\text{T}$ scales linearly with $A$).  The jet-areas subtraction that works well for $p_\text{T}$ has been extended to event shapes~\cite{Soyez:2012hv}, but must be re-calibrated per observable.  Constituent-based pileup subtraction schemes~\cite{Cacciari:2014gra,Krohn:2013lba,Bertolini:2014bba,Berta:2014eza,Komiske:2017ubm} show great promise and are actively being studied and adapted to the actual experimental settings~\cite{CMS-PAS-JME-14-001,CMS-DP-2015-034,ATLAS-CONF-2017-065,ATL-PHYS-PUB-2017-020,Aad:2015ina}.  However, even without constituent-based subtraction techniques, there is a large reduction in pileup sensitivity to jet substructure from grooming~\cite{CMS-PAS-JME-14-001,Aad:2015rpa,Aad:2015ina} \textbf{(add BOOST 2012 proceedings study to refs)}.  Grooming systematically removes soft and wide-angle radiation, which is exactly the profile characteristic of pileup.   Even with extreme levels of pileup (up to 300 collisions), grooming can preserve the distribution of the jet mass distribution~\cite{JetSubstructureECFA2014}.   Despite the power of grooming for pileup suppression, there is still a residual degradation of resolution with increased levels of pileup which makes precision jet substructure measurements challenging at high instantaneous luminosity.  Track-based observables are robust to pileup because their vertex of origin can be well-distinguished from pileup vertices.  Precision track-based substructure observables have been calculated~\cite{Krohn:2012fg,Waalewijn:2012sv,Chang:2013rca,Elder:2017bkd}, but typically require universal non-perturbative input.  It may be interesting to do a track- and jet substructure-based extraction of $\alpha_s$, but this is left as a possibility for future work.
+Arguably the biggest experimental challenge for precision physics at a high luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.  Jet shapes are particularly sensitive to pileup; for example, the jet mass scales as $\mathcal{O}(R^4)$~\cite{Salam:2009jx} for the jet area $A$~\cite{Cacciari:2008gn} (whereas the jet $p_\text{T}$ scales linearly with $A$).  The jet-areas subtraction that works well for $p_\text{T}$ has been extended to event shapes~\cite{Soyez:2012hv}, but must be re-calibrated per observable.  Constituent-based pileup subtraction schemes~\cite{Cacciari:2014gra,Krohn:2013lba,Bertolini:2014bba,Berta:2014eza,Komiske:2017ubm} show great promise and are actively being studied and adapted to the actual experimental settings~\cite{CMS-PAS-JME-14-001,CMS-DP-2015-034,ATLAS-CONF-2017-065,ATL-PHYS-PUB-2017-020,Aad:2015ina}.  However, even without constituent-based subtraction techniques, there is a large reduction in pileup sensitivity to jet substructure from grooming~\cite{CMS-PAS-JME-14-001,Aad:2015rpa,Aad:2015ina,Altheimer:2013yza}.  Grooming systematically removes soft and wide-angle radiation, which is exactly the profile characteristic of pileup.   Even with extreme levels of pileup (up to 300 collisions), grooming can preserve the distribution of the jet mass distribution~\cite{JetSubstructureECFA2014}.   Despite the power of grooming for pileup suppression, there is still a residual degradation of resolution with increased levels of pileup which makes precision jet substructure measurements challenging at high instantaneous luminosity.  Track-based observables are robust to pileup because their vertex of origin can be well-distinguished from pileup vertices.  Precision track-based substructure observables have been calculated~\cite{Krohn:2012fg,Waalewijn:2012sv,Chang:2013rca,Elder:2017bkd}, but typically require universal non-perturbative input.  It may be interesting to do a track- and jet substructure-based extraction of $\alpha_s$, but this is left as a possibility for future work.
