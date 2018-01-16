@@ -11,24 +11,16 @@ To get an understanding of the sensitivity of the groomed mass distribution to b
 \begin{align}
 \Sigma(\ecf{2}{2})=\exp\left[ - \frac{\alpha_s C_i}{\pi} \log(\zcut) \log (\ecf{2}{2}) \right]\,.
 \end{align}
-This highlights that for $\beta=0$, the groomed jet mass is a single
-logarithmic observable, and therefore does not exhibit the standard
-Sudakov behavior \gs{This seems a bit strong to me, in the sense that
-  it is still a Sudakov behaviour. Why not say sth like ``the groomed
+This highlights that for $\beta=0$, the groomed
   jet mass is a single logarithmic observable, contrasting with the
-  standard double-logarithmic behaviour''}.  Differentiating, we obtain
+  standard double-logarithmic behavior.  Differentiating, we obtain
   the spectrum
 \begin{align}
 \ecf{2}{2}  \frac{d\sigma}{d \ecf{2}{2}}=   - \frac{\alpha_s C_i}{\pi} \log(\zcut)   \exp\left[ - \frac{\alpha_s C_i}{\pi}  \log(\zcut) \log (\ecf{2}{2}) \right]
 \end{align}
-Here we immediately see several interesting consequences. In the resummation region, the slope of the distribution when plotted against $\log\ecf{2}{2}$ is set by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.  
+Here we immediately see several interesting consequences. In the resummation region, the slope of the distribution when plotted against $\log\ecf{2}{2}$ is set by the product $\alpha_s C_i$, where $C_i$ is the Casimir, namely $C_A$ for gluons, and $C_F$ for quarks. We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$. Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$.  We will see that this expectation is indeed born out in our Monte Carlo simulations.   In practice, the MC simulations, and the analytic studies that follow (see Sec.~\ref{sec:ben_study}), also include running-coupling corrections (which violate strict Casimir scaling).
 
-\gs{I think that here would be a good place to say that the analytic
-  expressions we would use in practice include running-coupling
-  corrections --- which violate the strict Casimir scaling --- in
-  which the $e_\alpha$ distribution is expressed as a function of
-  $\alpha_s(p_tR)$.  And this is what will be used in the studies done
-  in Section~5.}
+%\gs{I think that here would be a good place to say that the analytic expressions we would use in practice include running-coupling  corrections --- which violate the strict Casimir scaling --- in which the $e_\alpha$ distribution is expressed as a function of  $\alpha_s(p_tR)$.  And this is what will be used in the studies done in Section~5.}
 
 %Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{sec:templates} where we will show the templates (could then just give a ref).
 %
@@ -78,7 +70,7 @@ From the point of view of fitting for $\alpha_s$, a good observable is one whose
 \end{align}
 
 \noindent As defined by Eq.~\ref{eq:seppower}, the separation power is
-a number in $[0,1]$ where $\Delta=1$ \gs{This should be $\Delta=0$} if and only if $f=g$ i.e.  If $f$ is the nominal probability distribution of some observable and $g$ the distribution of the same observable with a different value of $\alpha_s$, we would like $\Delta(f,g)$ close to 1 (sensitivity).  In contrast, if $g$ is the same as $f$ with some variation in the non-perturbative effects, then we would like $\Delta(f,g)$ to be close to $0$ (robustness).  The plane used to study the tradeoff between sensitivity and robustness is shown in Fig.~\ref{fig:robustnessschematic}.  Not all information about $\alpha_s$ sensitivity is captured by a single point in Fig.~\ref{fig:robustnessschematic} because sensitivity to non-perturbative effects could be in regions of low $\alpha_s$ sensitivity and vice versa.  Therefore, it is also useful to study the integrand of Eq.~\ref{eq:seppower} as a function of the angularity $\lambda$.
+a number in $[0,1]$ where $\Delta=0$ if and only if $f=g$ i.e.  If $f$ is the nominal probability distribution of some observable and $g$ the distribution of the same observable with a different value of $\alpha_s$, we would like $\Delta(f,g)$ close to 1 (sensitivity).  In contrast, if $g$ is the same as $f$ with some variation in the non-perturbative effects, then we would like $\Delta(f,g)$ to be close to $0$ (robustness).  The plane used to study the tradeoff between sensitivity and robustness is shown in Fig.~\ref{fig:robustnessschematic}.  Not all information about $\alpha_s$ sensitivity is captured by a single point in Fig.~\ref{fig:robustnessschematic} because sensitivity to non-perturbative effects could be in regions of low $\alpha_s$ sensitivity and vice versa.  Therefore, it is also useful to study the integrand of Eq.~\ref{eq:seppower} as a function of the angularity $\lambda$.
 
 \begin{figure}[h!]
 \begin{center}
@@ -99,9 +91,8 @@ The sensitivity-robustness tradeoff is studied using (formally) leading logarith
   mass are on the left.  The blue line uses $\alpha_s=0.118$ while the
   green and orange lines have the value of $\alpha_s$ varied by
   $10\%$.  The lower panels show the ratio with respect to the
-  $\alpha_s=0.118$ curve.\textbf{Maybe cut the x-axis at high values?
-    \gs{Yes, sth like $-\log(e_\alpha)=$11 or 12.}  Maybe comment what
-    the picture looks like for Pythia?}}
+  $\alpha_s=0.118$ curve.}
+  %.\textbf{Maybe cut the x-axis at high values?  \gs{Yes, sth like $-\log(e_\alpha)=$11 or 12.}  Maybe comment what the picture looks like for Pythia?}
 \label{fig:sensitivity}
 \end{figure}
 
@@ -116,8 +107,8 @@ The sensitivity-robustness tradeoff is studied using (formally) leading logarith
   hadronization model.  The red curve has hadronization turned off and
   the green curve is the same as the blue, but with the \herwig model
   for multiple parton interactions (MPI) turned off.  MPI is also off
-  for the red curve.  \textbf{Maybe cut the x-axis at high values?
-    Maybe comment what the picture looks like for Pythia?}}
+  for the red curve. }
+  % \textbf{Maybe cut the x-axis at high values?  Maybe comment what the picture looks like for Pythia?}
 \label{fig:robustness}
 \end{figure}
 
@@ -130,8 +121,7 @@ The sensitivity-robustness tradeoff is studied using (formally) leading logarith
   (right).  Higher values of the mass are on the left.  In $f$ from
   Eq.~\ref{eq:seppower} is the same for red and blue, but for blue
   (sensitivity), $\alpha_s$ is varied by 10\% and for red
-  (robustness), hadronization is turned off. \gs{Is it possible to
-    have the same vertical scale on the two plots?}}
+  (robustness), hadronization is turned off.  Note the different vertical scale in the left and right plots. }
 \label{fig:differentialseparation}
 \end{figure}
 
