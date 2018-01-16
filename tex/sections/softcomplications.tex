@@ -2,14 +2,13 @@
 
 Having defined the observables and grooming procedures of interest, in this section we provide a general discussion of the potential advantages of the use of groomed jet observables for measurements of $\alpha_s$. The grooming procedure significantly simplifies a number of theoretical and experimental issues related to precision calculations and measurements in a $pp$ environment. In particular, grooming provides
 \begin{itemize}
-\item Mitigation of Non perturbative Effects
+\item Mitigation of NP effects
 \item Perturbative simplicity
-\item Improved Detector Resolution \gs{``and reduced pileup sensitivity''}
+\item Improved detector resolution, due in large part to a reduced pileup sensitivity
 \end{itemize}
 Each of these will be discussed in more detail in the following
 sections.  Combined, we believe that they provide a strong case for
-the interest in the measurement of the groomed jet mass \gs{``of the
-  groomed jet observables''}, and the possibility of performing a
+the interest in the measurement of the groomed jet observables, and the possibility of performing a
 precision extraction of $\alpha_s$ using jet substructure at the LHC.
 
 
@@ -20,14 +19,13 @@ precision extraction of $\alpha_s$ using jet substructure at the LHC.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 One of the primary complications of $\alpha_s$ extractions using event
-shapes is the issue of non-perturbative (NP) corrections, which cannot
+shapes is the challenge of NP corrections, which cannot
 currently be calculated from first principles. Since event shape
 observables probe singular regions of the phase space, they are
 necessarily sensitive to non-perturbative corrections.  For $e^+e^-$
 dijet event shapes, such as thrust, these non-perturbative corrections
 can be given operator definitions in the dijet limit. Although these
-operators cannot be calculated, they can be modeled using so called
-shape functions
+operators cannot be calculated, they can be modeled using \textit{shape functions}\footnote{There are other approaches to analytically describe and fit NP effects that have similar features to shape functions.  Another example is the dispersive model~\cite{Dokshitzer:1995qm,Dokshitzer:1995zt} which has also been used to make extractions of $\alpha_s$ using $e^+e^-$ event shapes~\cite{Gehrmann:2012sc}.}
 \cite{Korchemsky:1999kt,Korchemsky:2000kp,Hoang:2007vb,Ligeti:2008ac}. These
 shape functions can be systematically expanded in moments, and for
 moderately large values of the observable, only the first moment,
@@ -35,17 +33,13 @@ $\Omega_1$ is required. This moment can be shown to be universal for a
 wide range of observables \cite{Lee:2006fn,Lee:2007jr}, and can
 therefore be extracted from data along with $\alpha_s$
 \cite{Abbate:2010xh,Abbate:2012jh,Hoang:2015hka}. However, this moment
-is highly correlated with $\alpha_s$, see
-\Fig{fig:correlation_firstmoment} introducing uncertainties into the
-extraction. Furthermore, there is disagreement over whether the use of
-a single shape function moment is applicable in the region where
-$\alpha_s$ fits are performed~\cite{}. Therefore, observables with
+is highly correlated with $\alpha_s$ as shown in \Fig{fig:correlation_firstmoment}. Therefore, observables with
 different, and preferably suppressed non-perturbative effects could
 provide valuable complementary information for $\alpha_s$ extractions.
 %
-\gs{One should also mention the dispersive/renormalon approach from,
-  e.g. hep-ph/9504219,  hep-ph/9512336, used also in arXiv:0706.3157
-  for jets and in arXiv:1210.6945 for $\alpha_S$ extraction.}
+
+  
+  % introducing uncertainties into the extraction. Furthermore, there is disagreement over whether the use of a single shape function moment is applicable in the region where $\alpha_s$ fits are performed~\cite{}
 
 \begin{figure}
 \begin{center}
@@ -57,11 +51,11 @@ provide valuable complementary information for $\alpha_s$ extractions.
 
 
 Using a scaling argument, it is a straightforward exercise to compute the value of the groomed angularities at which non-perturbative effects are expected to be important. This was considered in  \cite{Frye:2016aiz,Dasgupta:2013ihk}
-where it was shown that non-perturbative effects become important when
+where it was shown that non-perturbative effects become important when (for $\alpha \geq 1$)
 \begin{align}
 \left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \left( \frac{\lamqcd}{\zcut Q}  \right)^{\frac{\alpha-1}{1+\beta}}  \frac{\lamqcd}{Q}\,,
 \end{align}
-\noindent where $Q$ is the BLAH.  If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
+\noindent where $Q=p_TR$ is the starting scale of jet fragmentation.  If we consider for concreteness the jet mass, $\alpha=2$, we can learn a number of interesting lessons. First, by taking $\beta\to \infty$, we can obtain the ungroomed result
 \begin{align}
 \left. \ecf{2}{\alpha} \right |_{\text{NP}} \simeq  \frac{\lamqcd}{Q}\,,
 \end{align} 
