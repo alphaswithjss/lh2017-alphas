@@ -155,16 +155,12 @@ robustness have $\alpha=1, z_\text{cut}=0.05$ and $\beta=1$ or $\beta=2$.  These
 
 
 
-While we have illustrated that the groomed jet mass observable provides a sensitivity to $\alpha_s$ particularly for gluon jets, one problem that is immediately clear from \Sec{sec:analytic} is that the leading behavior of the distributions is always dominated by the product $\alpha_s C_i$. While this is broken at higher perturbative orders, it implies that at lowest order there is a complete degeneracy of the value of $\alpha_s$ and the quark vs. gluon fraction of jets. This problem is not faced at $e^+e^-$ colliders.
+While we have illustrated that the groomed jet mass observable provides a sensitivity to $\alpha_s$ particularly for gluon jets, one problem that is immediately clear from \Sec{sec:analytic} is that the leading behavior of the distributions is always dominated by the product $\alpha_s C_i$. While this is broken at higher perturbative orders (or running coupling),  it implies that at lowest order there is a complete degeneracy of the value of $\alpha_s$ and the quark vs. gluon fraction of jets. This problem is not faced at $e^+e^-$ colliders.
 
 There are a variety of different approaches to overcome this problem, each with their own advantages and disadvantages. First, we note that the quark and gluon fractions are perturbatively calculable given the Parton Distribution Functions (PDFs). Therefore, perturbatively calculating the quark and gluon fractions inputs the most possible information, and should correspondingly lead to the best sensitivity for $\alpha_s$. However, it has the downside that it also introduces sensitivity to the PDFs, which in principle should be fitted along with $\alpha_s$~\cite{Accardi:2016ndt}. This difficulty also enters into other extractions at the LHC, for example the $3$-$2$ jet rate or the EEC. However, a hope of using jet substructure was that the sensitivity to the PDFs could be minimized.
 
-\gs{Do we want to comment here that a matching with a fixed-order
-  calculation in order to use also the high-mass region would also
-  introduce a dependence on the PDFs?}
-
 A second approach is to simultaneously fit for the quark (or gluon)
-fraction. Due to the fact that the two fractions must add to unity,
+fraction\footnote{Note that in the resummation regime, the jet mass distribution only depends on $\alpha_s$ and the gluon fraction.  However, at high mass, in the fixed order regime, there is a residual explicit dependence on PDFs as is the case for the total cross-section.}. Due to the fact that the two fractions must add to unity,
 this introduces a single additional parameter (see
 Fig.~\ref{fig:analyticbanana}). The degeneracy between the quark and
 gluon fraction and $\alpha_s$ is broken by higher order
@@ -173,13 +169,7 @@ dependence on $\alpha_s$ and $C_i$ at higher orders. Therefore, the
 measurement of multiple angularities would allow the degeneracy to be
 broken. However, from a theoretical perspective, this significantly
 complicates the analysis, and we do not believe that precise
-predictions will be made in the near future, except for $\alpha=2$,
-and perhaps $\alpha=1$. \gs{I'm not sure about this last sentence: I
-  don't see why we could not do the calculation for any $\alpha$. It's
-  alreadu available at NLL and I suspect that only the hard
-  contribution to the NNLL Sudakov would bring a non-trivial
-  dependence on $\alpha$ (unless you have sth more specific in mind
-  like SCET$_1$ v. SCET$_2$?)} In our study in \Sec{sec:ben_study} we
+predictions will be made in the near future for the joint distribution of multiple angularities. In our study in \Sec{sec:ben_study} we
 will consider both approaches.
 
 It would be interesting to develop other approaches to disentangling the quark and gluon fractions and $\alpha_s$, however, we expect that this will be a limiting aspect of $\alpha_s$ extractions at the LHC.
@@ -215,8 +205,7 @@ One issue with using purely the normalized jet shape is that since the mass dist
 \includegraphics[width = 0.5\columnwidth]{figures/PDFs.pdf}
 \end{center}
 \caption{The fraction of $qg$ and $gg$ initial states for leading
-  order dijet production \gs{What cuts? What jet definition?}
-  simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca}
+  order dijet production with $p_\text{T}>200$ GeV simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca}
   using the NNPDF 2.3~\cite{Ball:2012cx} parton distribution function
   (PDF) set.  The ellipses correspond to the uncertainty from the 100
   error PDF sets.  For the red dashed line, the fraction of out-going
