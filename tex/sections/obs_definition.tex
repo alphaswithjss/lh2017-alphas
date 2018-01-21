@@ -1,28 +1,38 @@
 
-In this section we briefly review the definitions of the observables and grooming procedures that we will focus on in this paper.
-
+In this section, we briefly review the definitions of the observables and grooming procedures that we will focus on in this paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Observables}\label{sec:shape_def}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-The simplest class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions. There has been significant theoretical study of these objects, and their perturbative behavior is understood to relatively high accuracy. For a set of constituents $\{i\}$, in a jet $J$, the two-point correlation functions in $pp$ collisions are defined as
-
-\begin{align}\label{eq:ppe2}
-\left.\ecf{2}{\alpha}\right|_{pp}&=\frac{1}{p_{TJ}^2}\sum_{i<j\in J} p_{Ti} p_{Tj}\left(R_{ij}/R\right)^\alpha\,, 
+A simple class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions~\cite{Banfi:2004yd,Larkoski:2013eya}.
+%
+There has been significant theoretical study of these objects, and their perturbative behavior is understood to relatively high accuracy.
+%
+For a set of constituents $\{i\}$ in a jet $J$, the two-point correlation functions in $pp$ collisions are defined as
+%
+\begin{align}
+\label{eq:ppe2}
+\left.\ecf{2}{\alpha}\right|_{pp}&=\frac{1}{p_{TJ}^2}\sum_{i<j\in J} p_{Ti} \, p_{Tj} \, \left(\frac{R_{ij}}{R}\right)^\alpha\,, 
 \end{align}
-where $R_{ij}$ is the distance between particles $i$
-and $j$ in the rapidity-azimuthal angle plane.   Note that some authors define the correlation functions without the $R^\alpha$ in the denominator.  The angular exponent $\alpha$ in the definition of the two-point correlation functions is a parameter that controls sensitivity to wide-angle emissions. For jets that are central and if all emissions in the jet are nearly collinear, then two-point energy correlation function reduces to a function of the jet mass ($m$) when $\alpha=2$:
+where $p_{Ti}$ is the transverse momentum of particle $i$ with respect to the beam axis, $p_{TJ}$ is the transverse momentum of the jet, $R_{ij}$ is the distance between particles $i$ and $j$ in the rapidity-azimuthal angle plane, and $R$ is the jet radius.
+%
+Note that some authors define the correlation functions without the $R^\alpha$ factor in the denominator.
+%
+The angular exponent $\alpha$ is a parameter that controls sensitivity to wide-angle emissions.
+%
+If all emissions in the jet are nearly collinear, then the two-point energy correlation function reduces to a function of the jet mass ($m$) when $\alpha=2$:
 \begin{equation}
-\ecf{2}{2} \sim \frac{m^2}{R^2p_{T}^2}\,.
+\ecf{2}{2} \sim \frac{m^2}{R^2\, p_{T}^2}\,.
 \end{equation} 
 
-Throughout this paper, we will primarily restrict ourselves to the
-case of $\alpha=2$ as this has been the focus so far from both the theory~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.  However, it is interesting
-to study if other values of $\alpha$ could provide improved
-sensitivity to $\alpha_s$. Another benchmark value is $\alpha=1$,
-which corresponds to $k_T$ (or broadening) instead of mass.
+In this paper, we primarily restrict ourselves to the case of $\alpha=2$ as this has been the focus so far from both the theoretical~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.
+%
+However, it is interesting to study if other values of $\alpha$ could provide improved sensitivity to $\alpha_s$.
+%
+Another benchmark value is $\alpha=1$, which corresponds to $k_T$ (or broadening) instead of mass.
+%
+The two-point correlation functions are closely related to the jet angularities~\cite{Berger:2003iw,Almeida:2008yp,Ellis:2010rwa,Larkoski:2014pca}, with the latter being defined with respect to a jet axis.
 
 %a broadening or $k_T$ type measure.
 
@@ -30,26 +40,33 @@ which corresponds to $k_T$ (or broadening) instead of mass.
 \subsection{Grooming Techniques}\label{sec:groom_tech}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Starting from a jet identified with an IRC safe jet algorithm (such as
-anti-$k_t$ \cite{Cacciari:2008gp}), the soft drop algorithm is defined
-using Cambridge/Aachen (C/A) reclustering
-\cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.  \begin{enumerate}
-
+There are a variety of jet grooming techniques to mitigate soft and wide-angle jet contamination~\cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th,Dasgupta:2013ihk,Larkoski:2014wba}.
+%
+We focus here on the Soft Drop algorithm~\cite{Larkoski:2014wba}, defined using Cambridge/Aachen (C/A) reclustering \cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.
+%
+Starting from a jet identified with an IRC-safe jet algorithm (such as anti-$k_t$ \cite{Cacciari:2008gp}), Soft Drop proceeds as follow:
+%
+\begin{enumerate}
+%
 \item Recluster the jet using the C/A clustering algorithm, producing an angular-ordered branching history for the jet.
-
-\item Step through the branching history of the reclustered jet.  At each step, check the soft drop condition
+%
+\item Step through the branching history of the reclustered jet.  At each step, check the Soft Drop condition
+%
 \begin{align}\label{eq:sd_cut}
-\frac{\min\left[ p_{Ti}, p_{Tj}  \right]}{p_{Ti}+p_{Tj}}> \zcut \left(   \frac{R_{ij}}{R}\right)^\beta \,.
+\frac{\min\left[ p_{Ti}, p_{Tj}  \right]}{p_{Ti}+p_{Tj}}> \zcut \left(   \frac{R_{ij}}{R}\right)^\beta \,,
 \end{align}
-where $\zcut$ is a parameter defining the scale below which soft radiation is removed.  If the soft drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
-
-\item The soft drop procedure terminates once the soft drop condition is satisfied.
-
+%
+where $\zcut$ is a parameter defining the scale below which soft radiation is removed, and $\beta$ is an exponent that controls the angular scale for removal.
+%
+If the Soft Drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
+%
+\item The Soft Drop procedure terminates once the Soft Drop condition is satisfied.
+%
 \end{enumerate}
-
-\noindent This procedure generalizes the modified Mass Drop
-  Tagger (mMDT)~\cite{Dasgupta:2013ihk} which corresponds to $\beta=0$ in the
-  Soft Drop procedure described above.  Note that non-global logarithms are formally removed from the soft drop mass distribution, even when $\beta>0$ (though clearly they are resorted as $\beta\rightarrow\infty$).
+%
+This procedure generalizes the modified Mass Drop Tagger (mMDT)~\cite{Dasgupta:2013ihk}, which corresponds to $\beta=0$ in the Soft Drop procedure described above.
+%
+Note that non-global logarithms~\cite{Dasgupta:2001sh} are formally removed from the soft drop mass distribution, even when $\beta>0$ (though clearly they are resorted as $\beta\rightarrow\infty$).
 
 %Specializingto the case of $\beta=0$, where Soft Drop is equivalent to Modified Mass Drop Tagger~\cite{Dasgupta:2013ihk}, the algorithm proceeds as follows: \gs{The descriptino below is valid for any $\beta$, so I'd just drop the $\beta=0$ part here and mention, below the description ``This generalises the modified Mass Drop Tagger~\cite{Dasgupta:2013ihk} which corresonds to $\beta=0$ in the Soft Drop procedure described above.''}
 
