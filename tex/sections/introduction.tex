@@ -18,7 +18,7 @@ Now that many scattering processes have been calculated to a high perturbative o
 Determinations of $\alpha_s$ probe a wide variety of physical phenomena, and the consistency between methods is both a crucial test of the theory and an important ingredient to make accurate predictions for the LHC and beyond.
 
 The world-average value for $\alpha_s$ at the $Z$ boson mass ($m_Z$) is $0.118\pm 0.0013$, an impressive $1.1\%$ total uncertainty~\cite{Olive:2016xmw}.%
-\footnote{Unless otherwise specified, in this paper $\alpha_s$ is always reported at the $Z$ boson mass in the $\overline{\text{MS}}$ scheme.} 
+\footnote{Unless otherwise specified, we always report $\alpha_s$ at the $Z$ boson mass in the $\overline{\text{MS}}$ scheme.} 
 %
 There have been significant discussions in the community about the challenges and validity of various methods to extract $\alpha_s$ (see for instance \Refs{Bethke:2011tr,Altarelli:2013bpa,Pich:2013sqa,Moch:2014tta,dEnterria:2015kmd,Olive:2016xmw,Salam:2017qdl}).
 %
@@ -38,7 +38,7 @@ These methods are sensitive to very different regimes of QCD and, interestingly,
 \begin{center}
 \includegraphics[width = 0.6\columnwidth]{figures/alphas_propaganda.pdf}
 \end{center}
-\caption{Various values of $\alpha_s$ in the $\overline{\text{MS}}$ scheme, including the world-average shown as a black dashed line with a grey band~\cite{Olive:2016xmw}.
+\caption{Various values of $\alpha_s$ in the $\overline{\text{MS}}$ scheme, including the world-average shown as a black dashed line with a grey uncertainty band~\cite{Olive:2016xmw}.
 %
 The point labeled \textit{Thrust} is from LEP data~\cite{Abbate:2010xh,Hoang:2015hka,Heister:2003aj,Abdallah:2004xe,Abreu:1996mk,Abreu:1999rc,Biebel:1999zt,Adeva:1992gv,Abbiendi:2004qz,Abe:1994mf}.
 %
@@ -57,13 +57,13 @@ using higher-order resummation.
 Figure~\ref{fig:propaganda} shows various values of $\alpha_s$ extracted with next-to-next-to-leading order (NNLO) calculations including various levels of resummation, such as next-to-next-to-next-to-leading logarithmic (N$^3$LL) for the thrust-based extraction.
 %
 Also shown are the values of $\alpha_s$ used as inputs to various Parton Shower (PS) generators.%
-\footnote{Note that these programs implement much more than just the QCD parton shower.  For example, radiated photons are also generated, though the impact here is quite negligible for electroweak processes (as opposed to photons from $\pi^0\rightarrow\gamma\gamma$).}
+\footnote{Note that these programs implement much more than just the QCD parton shower.  For example, radiated photons are also generated, though the impact of those electroweak processes is quite negligible here (as opposed to photons from $\pi^0\rightarrow\gamma\gamma$).}
 %
 The value of $\alpha_s$ in the final-state PS is also sensitive to the soft and collinear regime of QCD (albeit in different ways); interestingly, the values used in the \pythia program~\cite{Sjostrand:2006za,Sjostrand:2007gs}, which are fit to $e^+e^-$ event shape data, suggest a higher value of $\alpha_s$ than the lattice result by about 15\%.
 %
 Another challenge with the event-shape extraction is that non-perturbative (NP) corrections are nearly degenerate with changes to $\alpha_s$ \cite{Abbate:2010xh}.
 %
-This is in part because techniques to parametrically separate NP effects from perturbative effects (i.e.~jet grooming techniques to be discussed below) were not mature at the time of the Large Electron Positron collider (LEP), and because the energy scale at LEP did not allow for a large lever-arm between energy scales.
+This is in part because techniques to parametrically separate NP effects from perturbative effects (i.e.~jet grooming techniques to be discussed below) were not mature at the time of the Large Electron Positron (LEP) collider, and because the energy scale at LEP did not allow for a large lever-arm between energy scales.
 %
 The sensitivity to low-energy scales where QCD is in the NP regime is also a key challenge for the lattice determination.
 %
@@ -77,11 +77,11 @@ As a result, measurements of jet multiplicities, energies, and angles can be use
 %
 Even though these measurements have achieved an uncertainty of around $5\%$, they have not yet been included in the Particle Data Group (PDG) combination~\cite{Olive:2016xmw} since they are using only next-to-leading-order (NLO) theory calculations.
 %
-With recent progress in higher-order calculations, this will likely change soon, and it is noteworthy that an extraction using the recent NNLO $t\bar{t}$ cross-section \jdt{cite needed} is now included (see \Fig{fig:propaganda}).
+With recent progress in higher-order calculations, this will likely change soon, and it is noteworthy that an extraction using the recent NNLO $t\bar{t}$ cross-section \cite{Czakon:2013goa} is now included (see \Fig{fig:propaganda}).
 
 In extractions based on fixed-order perturbation theory, the collinear region defining the internal
 structure of jets is avoided in part due to the lack of precision calculations.%
-\footnote{Logs of the jet radius $R$ may be important when the jet radius is small, and there are techniques to incorporate these corrections into fixed-order calculations~\cite{Dasgupta:2016bnd,Dasgupta:2014yra}.}
+\footnote{Logarithms of the jet radius $R$ may be important when the jet radius is small, and there are techniques to incorporate these corrections into fixed-order calculations~\cite{Dasgupta:2016bnd,Dasgupta:2014yra}.}
 %
 It is important to remember that jets are not in one-to-one correspondence with individual quarks and gluons, but rather to clusters of quarks and gluons; for this reason, the substructure of jets is also governed by $\alpha_s$.
 %
@@ -91,7 +91,7 @@ To date, the focus of jet substructures studies has been mostly on tagging the o
 %
 However, present and future precision may be sufficient to make a useful measurement of $\alpha_s$.
 
-A key tool to facilitate a substructure extraction of $\alpha_s$ is jet grooming, which systematically remove soft and wide-angle radiation from jets \cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th,Dasgupta:2013ihk,Larkoski:2014wba}.
+A key tool to facilitate a substructure extraction of $\alpha_s$ are jet grooming techniques, which systematically removes soft and wide-angle radiation from jets \cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th,Dasgupta:2013ihk,Larkoski:2014wba}.
 %
 Jet grooming can parametrically separate the NP radiation in the jet from the hard perturbatively-described components.
 %
@@ -108,9 +108,9 @@ Similar techniques would of course also be interesting at both a low- and high-e
 We view this work as part of a broader program to apply jet grooming techniques for precision QCD (see also \Ref{Hoang:2017kmk} for
 applications to the top quark mass).
 %
-There are significant experimental and theoretical challenges to achieve success in this program, but with community synergy we believe it is possible.
+There are significant experimental and theoretical challenges to achieve success in this program, but we believe it is possible with community synergy.
 %
-Furthermore, an $\alpha_s$ extraction represents a concrete goal to push the accuracy and understanding of jet substructure calculations in particular and QCD calculations more generally.
+An $\alpha_s$ extraction represents a concrete goal to push the accuracy and understanding of jet substructure calculations in particular and QCD calculations more generally.
 
 This remainder of this work is organized as follows.
 %
@@ -118,7 +118,7 @@ In \Sec{sec:definitions}, we define the observables and grooming strategies that
 %
 In \Sec{sec:softcomplications}, we highlight a number of theoretical and experimental benefits of jet grooming, which make groomed observables particularly interesting for extractions of $\alpha_s$.
 %
-In \Sec{sec:jetmass}, we discuss the sensitivity of groomed jet mass to the value of $\alpha_s$ both using analytic expressions and PS generators.
+In \Sec{sec:jetmass}, we discuss the sensitivity of groomed jet mass to the value of $\alpha_s$ using both analytic expressions and PS generators.
 %
 In \Sec{sec:ben_study}, an idealized setup is used to illustrate how an extraction of $\alpha_s$ might work at the LHC, using realistic estimates of both the theoretical and experimental uncertainties.
 %
