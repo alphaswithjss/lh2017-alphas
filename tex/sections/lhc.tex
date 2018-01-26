@@ -1,90 +1,100 @@
 %\info{Ben, Andrzej, Jesse, Gregory, Grigorios, Frederic}
 
-The purpose of this section is to make some numerical estimates of the $\alpha_s$ extraction from jet substructure at the LHC.
+The purpose of this section is to make some numerical estimates regarding $\alpha_s$ extraction from jet substructure at the LHC.
 %
 Many simplifying assumptions are made, with the goal of motivating a more complete effort within the context of ATLAS and CMS in collaboration with theorists.
 %
-First, we illustrate how $\alpha_s$ and the gluon fraction can be simultaneously extracted from the distribution of various angularities.
+First, we illustrate how $\alpha_s$ and the gluon fraction can be simultaneously extracted from the distribution of various two-point correlators.
 %
 Next, we estimate the needed experimental precision required to make a useful measurement of $\alpha_s$.
 %
-While both the theory and experimental precision will continue to improve over the next years, the community has already demonstrated that the work can begin with the first round of results~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010,Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd}.
+While both the theory and experimental precision will continue to improve over the next years, the community has already demonstrated that the work can begin with the first round of groomed jet mass results~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010,Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd}.
 
 \subsection{Extraction of Theory Templates}
 \label{sec:templates}
 
 A complete extraction of $\alpha_s$ will require matching resummed results to high fixed order and also estimating NP effects.
 %
-The two sets of predictions for dijets thus far have matched to LO~\cite{Frye:2016aiz,Frye:2016okc} and NLO~\cite{Marzani:2017mva,Marzani:2017kqd} and have used hadronization models to study NP corrections~\cite{Marzani:2017mva,Marzani:2017kqd}.
+The two sets of predictions for dijets thus far have been matched to LO~\cite{Frye:2016aiz,Frye:2016okc} and NLO~\cite{Marzani:2017mva,Marzani:2017kqd} and have used hadronization models to study NP corrections~\cite{Marzani:2017mva,Marzani:2017kqd}.
 %
-Performing high-order fixed-order matching is computationally expensive; while this will be required eventually, we focus here on a conceptual demonstration.
+Performing high-order fixed-order matching is conceptually straightforward but computationally expensive; while this will be required eventually, we focus here on a demonstration without matching.
 %
-Therefore, we focus on the resummation regime---$\ecf{2}{\alpha}\gtrsim \left. \ecf{2}{\alpha} \right |_{\text{NP}}$ from \Eq{eq:np} and $\ecf{2}{\alpha}\lesssim z_\text{cut}R^\alpha$---where NLL calculations exist in analytic formulae that can be varied on-the-fly~\cite{Marzani:2017mva,Marzani:2017kqd}.
+Therefore, we isolate the resummation regime,
+\begin{equation}
+\label{eq:e2truncation}
+\left. \ecf{2}{\alpha} \right |_{\text{NP}} \lesssim \ecf{2}{\alpha}\lesssim z_\text{cut}R^\alpha,
+\end{equation}
 %
-Regions of phase space that are highly sensitive to NP or fixed-order effects are removed.
+where $\left. \ecf{2}{\alpha} \right |_{\text{NP}}$ is given in \Eq{eq:np}, such that regions of phase space that are highly sensitive to NP or fixed-order effects are removed.
+%
+In this range, NLL calculations exist in analytic formulae that can be varied on-the-fly~\cite{Marzani:2017mva,Marzani:2017kqd}.
+%
+Figure~\ref{fig:templates} shows the quark and gluon templates for $\alpha=\{1,2\}$ and $\beta=\{0,1\}$, truncated according to \Eq{eq:e2truncation}.
 
-Pseudo-data are then generated from the binned analytic probability distribution $t(\alpha_s,f_g)$.
-%
-These distributions are a superposition of the quark and gluon distributions and depend only on $\alpha_s$.
-%
-The pseudo-dataset has $n$ events and its binned representation is denoted by $h(\alpha_s,f_g,n)$.
-%
-For a given pseudo-dataset, the fitted values of $\alpha_s$ and $f_g$ are determined from a $\chi^2$-like fit:
-%
-\begin{align}
-\label{eq:chi2fit}
-\alpha_s,f_g=\text{argmin} \sum_i (h_i(\alpha_s,f_g,n)-t_i(\alpha_s,f_g))^2/\sigma(h_i(\alpha_s,f_g,n)^2),
-\end{align}
-%
-where $t_i, h_i$ are the bin content of histograms $t$ and $h$ while $\sigma(h_i)$ is the statistical uncertainty in bin $i$ of histogram $h$.
-%
-In practice, there would also be systematic uncertainties (see \Sec{sec:resolution}), but the purpose of this study is to simply illustrate the sensitivity to $\alpha_s$ and $f_g$ for a given number of events.
 
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
 \includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_10zcut1_beta_023451324.pdf}
 \end{center}
-\caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left),
-  $\alpha=1$ (middle), and $\alpha=0.5$ (right).  Note that larger masses are on the left so that the NP regime is on the
+\caption{\jdt{We should decide whether or not it is important to have the plot in the same direction as \Fig{fig:shape_function}.}  The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
+  $\alpha=1$ (right column), with grooming parameters $\zcut = 0.1$ and $\beta = 1$ (top row) and $\beta = 0$ (bottom row).  Note that larger masses are on the left so that the NP regime is on the
   right and the fixed-order regime is on the left.}
 \label{fig:templates}
 \end{figure}
+
+From these NLL distributions, pseudo-data are then generated from the binned analytic probability distribution $t(\alpha_s,f_g)$.
+%
+These distributions are a superposition of the quark and gluon distributions and depend only on $\alpha_s$ \jdt{It also depends on $f_g$, right?}.
+%
+Each pseudo-dataset has $n$ events and its binned representation is denoted by $h(\alpha_s,f_g,n)$.
+%
+For a given pseudo-dataset, the fitted values of $\alpha_s$ and $f_g$ are determined from a $\chi^2$-like fit:
+%
+\begin{align}
+\label{eq:chi2fit}
+\alpha_s,f_g=\text{argmin} \sum_i \frac{\left(h_i(\alpha_s,f_g,n)-t_i(\alpha_s,f_g)\right)^2}{\sigma(h_i(\alpha_s,f_g,n))^2},
+\end{align}
+%
+where $t_i, h_i$ are the bin content of histograms $t$ and $h$, and $\sigma(h_i)$ is the statistical uncertainty in bin $i$ of histogram $h$.
+%
+In practice, there would also be systematic uncertainties (see \Sec{sec:resolution}), but the purpose of this study is to simply illustrate the sensitivity to $\alpha_s$ and $f_g$ for a given number of events.
+
+
 	
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{figures/banana_alpha_20beta_0_zcut_123451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/palpha_alpha_20beta_0_zcut_123451324.pdf}
+\includegraphics[width = 0.49\columnwidth]{figures/banana_alpha_20beta_0_zcut_123451324.pdf}
+\includegraphics[width = 0.49\columnwidth]{figures/palpha_alpha_20beta_0_zcut_123451324.pdf}
 \end{center}
 \caption{Left: the probability of the minimized $\chi^2$ (assuming $n_\text{bins}-1$ degrees of freedom) from \Eq{eq:chi2fit} as a
-  function of $f_g$ and $\alpha_s$ for a sample with 80\% gluons and one with 80\% quarks.  The true value of $\alpha_s$ is 0.1, as indicated by triangle markers.  Right: The right plot marginalized over $f_g$ and normalized to unity.  The three lines correspond to the fit performed on a pure sample of quarks, a pure sample of gluons, or a mixed sample of ($f_g\in\{0.2,0.8\}$) where the fractions are not known a priori.  This is the result from one pseudo-experiment with 100k events.}
+  function of $f_g$ and $\alpha_s$ for one sample with 80\% gluons and another sample with 80\% quarks.  The true value of $\alpha_s$ is 0.1, as indicated by triangle markers.  Right: The right plot marginalized over $f_g$ and normalized to unity.  The three lines correspond to the fit performed on a pure sample of quarks, a pure sample of gluons, or a mixed sample of ($f_g\in\{0.2,0.8\}$) where the fractions are not known a priori.  This is the result from one pseudo-experiment with 100k events.}
 \label{fig:alpha2fit}
 \end{figure}
 
 
-Figure~\ref{fig:templates} shows the quark and gluon templates for $\alpha=1$ and $2$ and $\beta=0$ and $1$.
+
 %
-The $\alpha=2$ fit is demonstrated in \Fig{fig:alpha2fit}.
+An example fit is demonstrated in \Fig{fig:alpha2fit} for the case of $\alpha=2$ and $\beta = 0$.
 %
 The left plot of \Fig{fig:alpha2fit} shows the $\chi^2$ from \Eq{eq:chi2fit} for two samples, one with 20\% gluons and one with 80\% gluons.
 %
-The true value of $\alpha_s=0.1$, and as expected, the $\chi^2$ probability is high for $f_g=0.2$ and $f_g=0.8$.%
+The true value is taken to be $\alpha_s=0.1$, and as expected, the $\chi^2$ probability is high for $f_g=0.2$ and $f_g=0.8$.%
 \footnote{It is not necessarily peaked at this value because this is the result of one pseudo-experiment.  Averaging over many pseudo-experiments results in peaks at $f_g=0.2$ and $0.8$.}
 %
 The banana shapes of the curves are a consequence of the degeneracy due to Casimir scaling discussed in \Sec{sec:casimir}.
 %
 From one sample alone, there is essentially no ability to distinguish between a larger $\alpha_s$ and a smaller $f_g$; the only constraint comes from the fact $0\leq f_g\leq 1$ which results in a crude bound on $\alpha_s$.
 %
-This is shown in the right plot of \Fig{eq:chi2fit} where the distribution is marginalized over $f_g$ and normalized to unity.
+This is shown in the right plot of \Fig{fig:alpha2fit} where the distribution is marginalized over $f_g$ and normalized to unity.
 %
 One can view this as the posterior probability of the fitted $\alpha_s$: the peak is the fitted value of $\alpha_s$ and the width is the uncertainty.
 %
 When $f_g$ is known, the uncertainty in $\alpha_s$ is significantly reduced; this is illustrated with pure quark and gluon samples.
 %
-Due to the larger color factor, the measurement with pure gluon jets is more sensitive to $\alpha_s$ than the fit using pure quark jets.
+Due to the larger color factor, the measurement with pure gluon jets is more sensitive to $\alpha_s$ than the fit using pure quark jets, as anticipated in \Sec{sec:analytic}.
 %
-Using both the $f_g=0.2$ and $f_g=0.8$ samples to fit for $\alpha_s$, one can extract a $\sim 30\%$ measurement of $\alpha_s$.
-%
-However, there is no clear peak at the correct value of $\alpha_s$ due to the Casimir degeneracy.  
+Using both the $f_g=0.2$ and $f_g=0.8$ samples to fit for $\alpha_s$, one can extract a $\sim 30\%$ measurement of $\alpha_s$, but there is no clear peak at the correct value of $\alpha_s$ due to the Casimir degeneracy.  
 
 %   \gs{The legend on the
 %    right plot is potentially misleading, I'd say ``known $f_g=20\%$''
@@ -95,38 +105,45 @@ However, there is no clear peak at the correct value of $\alpha_s$ due to the Ca
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{figures/banana_alpha_10beta_0_zcut_123451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/banana_alpha_10beta_10_zcut_123451324.pdf}\\\includegraphics[width = 0.49\columnwidth]{figures/banana_alpha_20beta_10_zcut_123451324.pdf}
+\includegraphics[width = 0.32\columnwidth]{figures/banana_alpha_20beta_10_zcut_123451324.pdf}
+\includegraphics[width = 0.32\columnwidth]{figures/banana_alpha_10beta_10_zcut_123451324.pdf}
+\includegraphics[width = 0.32\columnwidth]{figures/banana_alpha_10beta_0_zcut_123451324.pdf}
 \end{center}
-\caption{The same as the left plot of \Fig{fig:alpha2fit}, but with $\alpha=0.5$ (left) and $\alpha=1.0$ (right).}
+\caption{The same as the left plot of \Fig{fig:alpha2fit}, but for the remaining three observables from \Fig{fig:templates}.}
 \label{fig:morebananas}
 \end{figure}
+
+
+One way to improve the situation is to combine multiple $\alpha$, $\beta$, and $z_\text{cut}$ values (only $\alpha$ and $\beta$ are varied here).
+%
+Figure~\ref{fig:morebananas} shows the $f_g,\alpha_s$ fit for all of the $\alpha,\beta$ values from \Fig{fig:templates} that were not shown in \Fig{fig:alpha2fit}.
+%
+As in \Fig{fig:alpha2fit}, there are two banana-shaped regions that correspond to the $f_g=20\%$ and $f_g=80\%$ samples.
+%
+The tilt of the bananas is slightly different than the $\alpha=2$, $\beta=0$ case and so there is a possibility to gain from combining the information in the observables.
+%
+In practice, a challenge with a multi-observable extraction strategy is the need to understand correlations between observables.
+%
+At the moment, joint distributions of two-point correlators are only known to NLL accuracy without grooming~\cite{Larkoski:2014pca}.
 
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{figures/combination23451324.pdf}
 %combination23451324
 \end{center}
-\caption{Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines $\alpha=0.5, 1.0$, and $2.0$.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
+\caption{\jdt{Shouldn't the legend say "Known Quark" and "Known Gluon"?}  Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines the four observables from \Fig{fig:templates}.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
 \label{fig:combo}
 \end{figure}
 
-One way to improve the situation is to combine multiple $\alpha$, $\beta$, and $z_\text{cut}$ values (only $\alpha$ and $\beta$ are varied here).
+With that caveat in mind, Figure~\ref{fig:combo} shows the result of a combined fit assuming that all four distributions are statistically (and systematically) independent
 %
-Figure~\ref{fig:morebananas} shows the $f_g,\alpha_s$ fit for the $\alpha,\beta$ values from \Fig{fig:templates} that were not shown in \Fig{fig:alpha2fit}.
+This is a rather strong assumption that is unlikely to be even approximately true in practice.
 %
-As in \Fig{fig:alpha2fit}, there are two banana-shaped regions that correspond to the $f_g=20\%$ and $f_g=80\%$ samples.
+However, the benefit of having different tilts in the $f_g,\alpha_s$ plane is clearly shown and would be a generic feature of a multi-observable fit, even if the size of the gain is not as significant as shown here.
 %
-The tilt of the bananas is slightly different than the $\alpha=2, \beta=0$ case and so there is a possibility to gain from combining the information in the observables.
+It is important to emphasize that the black curve in \Fig{fig:combo} assumes no prior knowledge of the gluon fraction of the event samples.
 %
-In practice, a challenge with this extraction is the need to understand correlations between observables.
-%
-At the moment, there are no available calculations of joint distributions of two-point correlators.
-%
-Figure~\ref{fig:combo} shows the result of a combined fit that assumes all four distributions are statistically independent.
-%
-This is a very strong assumption that is likely not even approximately true.
-%
-However, the fact that having different tilts in the $f_g,\alpha_s$ plane is clearly shown and would be a generic feature of a multi-observable fit, even if the size of the gain is not as significant. 
+The fit can of course be improved by using some knowledge of the gluon fractions from the hard scattering process convolved with PDFs, as discussed in \Sec{subsec:norm}.
 
 %\gs{Varying $z_{\text{cut}}$ and $\beta$ would also change the slope
 %  (maybe not in the 2d maps), so we could add something saying that it
@@ -135,40 +152,53 @@ However, the fact that having different tilts in the $f_g,\alpha_s$ plane is cle
 \subsection{Estimate of Experimental Resolution}
 \label{sec:resolution}
 
+To keep pace with precise theory predictions, the experimental resolution must be well-understood in order to ensure both precision and accuracy of jet substructure measurements.
+%
+To estimate the impact of detector resolution on $\alpha_s$ fit illustrated in \Sec{sec:templates}, a fast simulation from \textsc{Delphes} 3.4.1~\cite{deFavereau:2013fsa} was studied using particle-level input from \pythia.210.
+%
+This setup uses a CMS-like detector with jets built from particle-flow objects.
+%
+There are generically two regimes for determining the experimental resolution.
+%
+At high mass, there are well-resolved hard prongs in the jet, so the resolution is set by the jet energy resolution of those ``sub-jets''.
+%
+At low mass, the groomed jet is defined by nearly collinear splittings at which point the angular resolution can dominate.
+
+
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{figures/experimentaldemo/Resolution_plot_logrho_updated.pdf}
 \end{center}
-\caption{The fractional $\ecf{2}{2}$ distribution determined from dijet events simulated with \pythia + Delphes.  Arrows indicate the mass at given values of the two-point correlator.  The upper bound of the resummation regime is indicated by a dashed line.  Larger masses are to the left.}
+\caption{\jdt{Isn't the region we are fitting to have an upper bound, too?  We should show that as well}  The fractional $\ecf{2}{2}$ distribution determined from dijet events simulated with \pythia plus \textsc{Delphes}.  Arrows indicate the mass at given values of the two-point correlator.  The upper bound of the resummation regime is indicated by a dashed line.  Larger masses are to the left.}
 \label{fig:resolution}
 \end{figure}
-
-To keep pace with precise theory predictions, the experimental resolution must be well-understood in order to ensure both precision and accuracy of the measurement.
-%
-In order to estimate the impact of detector resolutions on the picture illustrated in \Sec{sec:templates}, a fast simulation from Delphes
-3.4.1~\cite{deFavereau:2013fsa} was studied using particle-level input from \pythia.210.
-%
-The setup uses a CMS-like detector with jets built from particle-flow objects.
-%
-There are generically two regimes for determining the experimental resolution.
-%
-At high mass, there are well-resolved hard prongs in the jet and so the resolution is set by the jet energy resolution of those ``sub-jets''.
-%
-In contrast, at low mass, the groomed jet is defined by nearly collinear splittings at which point the angular resolution can dominate.
-%
-Figure~\ref{fig:resolution} shows the fractional $\ecf{2}{2}$ resolution.
-%
-The resolution is smallest at high mass due to the excellent energy resolution of the CMS-like detector.
-%
-The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the limit of $\mathcal{O}(\text{few GeV})$.
 
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{figures/experimentaldemo/Rho_2D.pdf}\includegraphics[width = 0.49\columnwidth]{figures/figaux_03a.pdf}
 \end{center}
-\caption{Left: The migration matrix between particle-level and detector-level using the Delphes simulation (left) and from the ATLAS measurement (Right; reproduced from \Ref{Aaboud:2017qwh}).  Unlike previous plots, larger masses are on the right (shown this way to match the ATLAS result). }
+\caption{Left: The migration matrix between particle-level and detector-level using the Delphes simulation (left) and from the ATLAS measurement (right; reproduced from \Ref{Aaboud:2017qwh}).  Unlike previous plots, larger masses are on the right (shown this way to match the ATLAS result). }
 \label{fig:expres}
 \end{figure}
+
+Figure~\ref{fig:resolution} shows the fractional $\ecf{2}{2}$ resolution estimated from \textsc{Delphes}.
+%
+The resolution is smallest at high mass due to the excellent energy resolution of the CMS-like detector.
+%
+The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the limit of $\mathcal{O}(\text{few GeV})$.
+%
+Encouragingly, the fits in \Sec{sec:templates} relied only on the regime where $\sim 10\%$ resolution seems to be achievable, which gives an indication that a 10\% extraction of $\alpha_s$ should be feasible.
+%
+As a check that this estimated resolution is sensible, \Fig{fig:expres} compares the migration matrix extracted from Delphes to the one published in the recent ATLAS measurement~\cite{Aaboud:2017qwh}.
+%
+Here, the comparison is between the particle-level and detector-level groomed mass values. 
+%
+The migration is qualitatively the same, with an excellent diagonal behavior (low migrations) at high mass and a worse resolution at low mass.
+
+
+
+
+
 
 \begin{figure}[t]
 \begin{center}
@@ -178,21 +208,19 @@ The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the l
 \label{fig:expfit}
 \end{figure}
 
-As a check that the estimate resolution is sensible,  \Fig{fig:expres} compares the migration matrix between particle-level and detector-level between Delphes and the recent ATLAS measurement~\cite{Aaboud:2017qwh}.
+To understand the sensitivity to jet mass scale and resolution uncertainties, we conduct pseudo-experiments by sampling from the templates described in \Sec{sec:templates} and smearing with the migration matrix shown in the left plot of \Fig{fig:expres}.
 %
-The migration is qualitatively the same, with an excellent diagonal behavior (low migrations) at high mass and a worse resolution at low mass.
-%
-To understand the sensitivity to jet mass scale and resolution uncertainties, pseudo-experiments are conducted by sampling from the templates described in \Sec{sec:templates}, smearing with the migration matrix shown in the left plot of \Fig{fig:expres}, and then unfolding with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and then measuring $\alpha_s$ via \Eq{eq:chi2fit} but for fixed and known $f_g=0$.
+We then unfold with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and extract $\alpha_s$ via \Eq{eq:chi2fit} but for fixed and known $f_g=0$.
 %
 The results of this procedure are shown in \Fig{fig:expfit}.
 %
-There is little sensitivity to the jet mass resolution while there is a large uncertainty in the measured $\alpha_s$ from an uncertainty in the jet mass scale that exceeds a few percent.
+There is little sensitivity to the jet mass resolution while there is a large uncertainty in the extracted $\alpha_s$ if the uncertainty in the jet mass scale exceeds a few percent.
 %
 Current jet mass scale uncertainties are below $5\%$ and resolution uncertainties are below 20\%~\cite{ATLAS-CONF-2017-063,CMS-PAS-JME-16-003}.
 %
 The mass scale uncertainty is as small as $2\%$ in various regions of phase space.
 %
-Therefore, it seems like a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as the uncertainty on the jet mass reaches the same level of maturity as the jet energy over the next years.
+This again suggests that a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as the uncertainty on the jet mass scale reaches the same level of maturity as the jet energy scale over the next few years.
 
 
 
