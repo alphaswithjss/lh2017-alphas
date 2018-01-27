@@ -37,7 +37,11 @@ Figure~\ref{fig:templates} shows the quark and gluon templates for $\alpha=\{1,2
 \includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
 \includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.49\columnwidth]{figures/PDFs_alpha_10zcut1_beta_023451324.pdf}
 \end{center}
-\caption{\jdt{We should decide whether or not it is important to have the plot in the same direction as \Fig{fig:shape_function}.}  The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
+
+%\jdt{We should decide whether or not it is important to have the plot in the same direction as \Fig{fig:shape_function}.}
+%BPN: it would be nice if they all went in the same direction, but all of our plots are at least consistent (e.g. Fig. 5-7 and the ones here).  So hopefully it is okay to leave them as is.
+
+\caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
   $\alpha=1$ (right column), with grooming parameters $\zcut = 0.1$ and $\beta = 1$ (top row) and $\beta = 0$ (bottom row).  Note that larger masses are on the left so that the NP regime is on the
   right and the fixed-order regime is on the left.}
 \label{fig:templates}
@@ -45,7 +49,7 @@ Figure~\ref{fig:templates} shows the quark and gluon templates for $\alpha=\{1,2
 
 From these NLL distributions, pseudo-data are then generated from the binned analytic probability distribution $t(\alpha_s,f_g)$.
 %
-These distributions are a superposition of the quark and gluon distributions and depend only on $\alpha_s$ \jdt{It also depends on $f_g$, right?}.
+These distributions are a superposition of the quark and gluon distributions and depend only on $\alpha_s$ and $f_g$.
 %
 Each pseudo-dataset has $n$ events and its binned representation is denoted by $h(\alpha_s,f_g,n)$.
 %
@@ -131,7 +135,7 @@ At the moment, joint distributions of two-point correlators are only known to NL
 \includegraphics[width = 0.49\columnwidth]{figures/combination23451324.pdf}
 %combination23451324
 \end{center}
-\caption{\jdt{Shouldn't the legend say "Known Quark" and "Known Gluon"?}  Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines the four observables from \Fig{fig:templates}.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
+\caption{Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines the four observables from \Fig{fig:templates}.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
 \label{fig:combo}
 \end{figure}
 
@@ -167,9 +171,9 @@ At low mass, the groomed jet is defined by nearly collinear splittings at which 
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{figures/experimentaldemo/Resolution_plot_logrho_updated.pdf}
+\includegraphics[width = 0.49\columnwidth]{figures/experimentaldemo/Resolution_plot_logrho_updated2.pdf}
 \end{center}
-\caption{\jdt{Isn't the region we are fitting to have an upper bound, too?  We should show that as well}  The fractional $\ecf{2}{2}$ distribution determined from dijet events simulated with \pythia plus \textsc{Delphes}.  Arrows indicate the mass at given values of the two-point correlator.  The upper bound of the resummation regime is indicated by a dashed line.  Larger masses are to the left.}
+\caption{The fractional $\ecf{2}{2}$ distribution determined from dijet events simulated with \pythia plus \textsc{Delphes}.  Arrows indicate the mass at given values of the two-point correlator.  The upper bound of the resummation regime is indicated by a dashed line.  Larger masses are to the left.}
 \label{fig:resolution}
 \end{figure}
 

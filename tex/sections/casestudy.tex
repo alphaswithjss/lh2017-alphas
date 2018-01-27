@@ -43,8 +43,10 @@ Due to the larger color charge of gluons, we expect that samples of pure gluon j
 %
 Because $\alpha_s$ is always multiplied by a color factor, though, knowing the precise quark/gluon composition of a sample is essential, as discussed in \Sec{sec:casimir}.
 %
-In practice, the parton shower studies and the analytic studies that follow (see \Sec{sec:ben_study}), also include running-coupling corrections \jdt{I think running coupling still respects Casimir scaling. Can someone confirm?} and subleading terms in the splitting function, the later of which violates strict Casimir scaling.
+In practice, the parton shower studies and the analytic studies that follow (see \Sec{sec:ben_study}) include higher order effects, such as subleading terms in the splitting functions, that violate Casimir scaling.
 
+%also include running-coupling corrections \jdt{I think running coupling still respects Casimir scaling. Can someone confirm?} and subleading terms in the splitting function, the later of which violates strict Casimir scaling.
+%Since the running is the same for quarks and gluons, I think it does preserve Casimir scaling.  However, in Pythia, it turns out the scale for quarks and gluons is different.  I don't want to go into a long discussion about that here so I've just removed the bit about the running coupling.
 
 %\gs{I think that here would be a good place to say that the analytic expressions we would use in practice include running-coupling  corrections --- which violate the strict Casimir scaling --- in which the $e_\alpha$ distribution is expressed as a function of  $\alpha_s(p_tR)$.  And this is what will be used in the studies done in Section~5.}
 
@@ -88,7 +90,7 @@ In practice, the parton shower studies and the analytic studies that follow (see
 \subsection{Parton Shower Study}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\jdt{We switched notation in this section from $\ecf{2}{\alpha}$ to $e_\alpha$.  I am doing my best to stick with the two-point correlator language we introduced before, eliminating ``angularity''.  The plots have not yet been changed to reflect this, though.  It would also be helpful to increase the font size.  While we're at it, can we have the jet mass direction go in the same way as Figure 3?}
+%\jdt{We switched notation in this section from $\ecf{2}{\alpha}$ to $e_\alpha$.  I am doing my best to stick with the two-point correlator language we introduced before, eliminating ``angularity''.  The plots have not yet been changed to reflect this, though.  It would also be helpful to increase the font size.  While we're at it, can we have the jet mass direction go in the same way as Figure 3?}
 
 From the point of view of fitting for $\alpha_s$, a good observable is one whose probability distribution changes significantly with variations in $\alpha_s$.
 %
@@ -124,7 +126,7 @@ Not all information about $\alpha_s$ sensitivity is captured by a single point i
 Therefore, it is also useful to study the integrand of \Eq{eq:seppower} as a function of different observables $\lambda$.
 
 
-This sensitivity-robustness tradeoff is studied using two parton shower generators: \herwig.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \pythia.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune Monash~\cite{Skands:2014pea} \jdt{My understanding is that we will not have Pythia results, right?}.
+This sensitivity-robustness tradeoff is studied using two parton shower generators: \herwig.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \pythia.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune Monash~\cite{Skands:2014pea}.  %\jdt{My understanding is that we will not have Pythia results, right?}.
 %
 These programs are formally LL accurate, though they include effects beyond \Eq{eq:ecf_ll_dsitribution}.
 %
@@ -136,16 +138,16 @@ Additionally, various Soft Drop grooming parameters are studied by varying $\bet
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.99\columnwidth]{figures/sensitivity.pdf}
+\includegraphics[width = 0.49\columnwidth]{figures/sensitivity2a.pdf}\includegraphics[width = 0.48\columnwidth]{figures/sensitivity2b.pdf}
 \end{center}
-\caption{\jdt{From the TODO:  Cut off Fig.~\ref{fig:sensitivity} and Fig.~\ref{fig:robustness} at -12.  Also, add a statement or plot about Pythia.}  The sensitivity to $\alpha_s$ in \herwig.  Shown is the distribution of the normalized squared jet mass ($\ecf{2}{2}$) for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The blue line uses $\alpha_s=0.118$ while the green and orange lines have the value of $\alpha_s$ varied by $10\%$.  The lower panels show the ratio with respect to the $\alpha_s=0.118$ curve.}
+\caption{The sensitivity to $\alpha_s$ in \herwig.  Shown is the distribution of the normalized squared jet mass ($\ecf{2}{2}$) for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The blue line uses $\alpha_s=0.118$ while the green and orange lines have the value of $\alpha_s$ varied by $10\%$.  The lower panels show the ratio with respect to the $\alpha_s=0.118$ curve.}
   %.\textbf{Maybe cut the x-axis at high values?  \gs{Yes, sth like $-\log(e_\alpha)=$11 or 12.}  Maybe comment what the picture looks like for Pythia?}
 \label{fig:sensitivity}
 \end{figure}
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.99\columnwidth]{figures/robustness.pdf}
+\includegraphics[width = 0.48\columnwidth]{figures/robustness2a.pdf}\includegraphics[width = 0.49\columnwidth]{figures/robustness2b.pdf}
 \end{center}
 \caption{The robustness to NP effects in \herwig, with the same distributions as \Fig{fig:sensitivity}.
 %
@@ -160,7 +162,7 @@ MPI is also off for the red curve.}
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.99\columnwidth]{figures/differentialseparation.pdf}
+\includegraphics[width = 0.99\columnwidth]{figures/differentialseparation2.pdf}
 \end{center}
 \caption{The integrand of \Eq{eq:seppower} in \herwig.  Shown is the normalized squared jet mass ($\ecf{2}{2}$)  for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The baseline $f$ function from \Eq{eq:seppower} is the same for the red and blue curves.  For blue (sensitivity) the $g$ function is from varying $\alpha_s$ by 10\%, whereas for red (robustness) the $g$ function hadronization is turned off.  Note the different vertical scale in the left and right plots. }
 \label{fig:differentialseparation}
@@ -237,7 +239,7 @@ Therefore, perturbatively calculating the quark and gluon fractions inputs the m
 %
 This has the downside, however, of also introducing sensitivity to the PDFs, which in principle should be fitted along with $\alpha_s$~\cite{Accardi:2016ndt}.
 %
-This difficulty also enters into other $\alpha_s$ extractions at the LHC, for example the $3$-$2$ jet rate \jdt{cite needed} or the energy-energy correlator \jdt{cite needed}.
+This difficulty also enters into other $\alpha_s$ extractions at the LHC, for example the $3$-$2$ jet rate~\cite{Chatrchyan:2013txa} or the energy-energy correlator~\cite{ATLAS:2015yaa,Aaboud:2017fml}.
 %
 One of the key hopes of using jet substructure was that the sensitivity to the PDFs could be minimized, but that is not the case if the quark and gluon fractions cannot be determined independently.
 
@@ -276,7 +278,7 @@ Without some kind of conceptual breakthrough, though, we expect that the quark/g
 \label{subsec:norm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In addition to the complication of quark and gluon fractions, another issue which appears for the extraction of $\alpha_s$ from jet substructure is the issue of normalization.\footnote{We thank Gavin Salam for interesting discussions on this topic.  \jdt{When we get closer to being done, we need to show him a copy of this study.}}
+In addition to the complication of quark and gluon fractions, another issue which appears for the extraction of $\alpha_s$ from jet substructure is the issue of normalization.\footnote{We thank Gavin Salam for interesting discussions on this topic. }
 %
 Unlike for $e^+e^-$ event shapes, the Born dijet cross section in $pp$ is sensitive to the value of $\alpha_s$.
 %
@@ -322,7 +324,10 @@ The relative proportions can be parameterized by two numbers $f_{qg}$ and $f_{gg
 %
 Fixing $f_g$, which carries all of the PDF sensitivity for the shape measurement, has little effect on the uncertainty in $f_{qg}$ and $f_{gg}$.
 %
-Thus, using unnormalized distributions results in additional PDF sensitivity from also measuring the total cross-section in addition to the shape of the substructure distribution.  \jdt{I tried to reword this last sentence to make it clearer, but I may have gotten the physics wrong.  Please check.}
+Thus, using unnormalized distributions results in additional PDF sensitivity from also measuring the total cross-section in addition to the shape of the substructure distribution. 
+
+%BPN: Reads well to me!
+% \jdt{I tried to reword this last sentence to make it clearer, but I may have gotten the physics wrong.  Please check.}
 
 From the perspective of perturbative accuracy, there is an important issue with using normalized distributions, which is that jet shape observables start at $\cO(\alpha_s)$.
 %
