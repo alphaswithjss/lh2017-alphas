@@ -72,12 +72,6 @@ After the lattice, the most precise determination is from measurements and calcu
 %
 These methods are sensitive to very different regimes of QCD and, interestingly, differ from each other at about the 5\% level, corresponding to a more than $3\sigma$ tension.  
 
-%>>> (0.1123-0.1184)/(0.0006**2+0.0015**2)**0.5
-%-3.7758052096000596
-
-%https://arxiv.org/pdf/1512.05194.pdf
-%http://pdg.lbl.gov/2017/reviews/rpp2017-rev-qcd.pdf
-
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.6\columnwidth]{jetsub_alphas_alphas_propaganda.pdf}
@@ -206,8 +200,6 @@ Another benchmark value is $\alpha=1$, which corresponds to $k_T$ (or broadening
 %
 The two-point correlation functions are closely related to the jet angularities~\cite{Berger:2003iw,Almeida:2008yp,Ellis:2010rwa,Larkoski:2014pca}, with the latter being defined with respect to a jet axis.
 
-%a broadening or $k_T$ type measure.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Grooming Techniques}\label{jetsub_alphas_sec:groom_tech}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -292,9 +284,6 @@ This moment, however, is highly correlated with $\alpha_s$ as shown in Fig.~\ref
 %
 Therefore, observables with different, and preferably suppressed, NP effects could provide valuable complementary information for $\alpha_s$ extractions.
 %
-
-  
-  % introducing uncertainties into the extraction. Furthermore, there is disagreement over whether the use of a single shape function moment is applicable in the region where $\alpha_s$ fits are performed~\cite{}
 
 Using a scaling argument, it is a straightforward exercise to compute the value of the groomed two-point correlators at which NP effects are expected to be important.
 %
@@ -429,39 +418,6 @@ This matching has been performed to (N)NLO for dijets ($V$+jets) \cite{Frye:2016
 %
 Ideally this would be done using $2\to 3$ matrix elements at NNLO, which are just now becoming available~\cite{Gehrmann:2015bfy,Dunbar:2016aux,Badger:2013yda,Badger:2017jhb,Abreu:2017hqn}.
 
-
-
-%\info{IAN}
-%
-%\begin{itemize}
-%\item grooming original purpose: reduce sensitivity to soft-wide angle radiation
-%\item it obviously reduces the impact of UE and pile-up in pp collision
-%\item what about hadronization? at first sight less obvious because we get rid of soft radiation but we also reduce the effective radius. Competing effects?
-%\item however it helps with hadronization too: parametric understanding (here there is some calculation in mMDT paper and Harvard paper too). Some unpublished studies exist on  for $\beta>0$ by Gregory, Lais and SM. 
-%\item Abundant MC evidence that helps
-%\item Open question: any deeper understanding in terms of shape functions?
-%\end{itemize}
-
-%Comparison to shape function in thrust.  Grooming gives different sensitivity to NP effects.
-%
-%In standard thrust fits, whole distribution shifts from NP.  Degenerate with $\alpha_s$ shift, hard to disentangle.
-%
-%Grooming pushes NP effects to separate region.  Separation of NP region, resummation region, fixed order regime (at high enough jet $p_T$).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Process Independence at Hadron Colliders ($pp$)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%\info{IAN}
-%
-%clearly there still is some process-dependence, in terms of q/g fractions as well as hard coefficients. It is however much reduced.
-%compare to issue of PDF, 3-jet over 2-jet, ECF extractions
-%Grooming removes soft correlations: it ``turns the LHC into an e$^+$e$^-$ machine (too strong?)
-%Related:  Grooming remove NGLs and other contamination. It makes things easier to calculate. 
-%
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Pileup Resilience}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -536,52 +492,9 @@ Because $\alpha_s$ is always multiplied by a color factor, though, knowing the p
 %
 In practice, the parton shower studies and the analytic studies that follow (see Sec.~\ref{jetsub_alphas_sec:ben_study}) include higher order effects, such as subleading terms in the splitting functions, that violate Casimir scaling.
 
-%also include running-coupling corrections \jdt{I think running coupling still respects Casimir scaling. Can someone confirm?} and subleading terms in the splitting function, the later of which violates strict Casimir scaling.
-%Since the running is the same for quarks and gluons, I think it does preserve Casimir scaling.  However, in Pythia, it turns out the scale for quarks and gluons is different.  I don't want to go into a long discussion about that here so I've just removed the bit about the running coupling.
-
-%\gs{I think that here would be a good place to say that the analytic expressions we would use in practice include running-coupling  corrections --- which violate the strict Casimir scaling --- in which the $e_\alpha$ distribution is expressed as a function of  $\alpha_s(p_tR)$.  And this is what will be used in the studies done in Section~5.}
-
-%Should try to get to the point where we can say something about where the sensitivity in the distribution comes from (e.g. slope in log scale is proportional to $C_F\times \alpha_s$).  At the very least, it would be good to write down the LL (or even NLL) functional form for the angularities that we used (it is in the code we got from Ian (LL) and Gregory (NLL)).  Could also punt this to Sec.~\ref{jetsub_alphas_sec:templates} where we will show the templates (could then just give a ref).
-%
-%\begin{comment}
-%The Soft Drop grooming procedure~\cite{Larkoski:2014wba} takes a jet
-%with momentum $p_t$ and radius $R$. It re-clusters its constituents
-%using the Cambridge/Aachen (C/A) algorithm \cite{Dokshitzer:1997in,
-%  Wobisch:1998wt} and iteratively performs the following steps:
-%\begin{enumerate}
-% \item it de-clusters the jet into 2 subjets $j \to j_1 + j_2$;
-% \item it checks the condition 
-%\begin{equation}\label{jetsub_alphas_eq:sd-condition}
-%\frac{\min (p_{t1} , p_{t2})}{p_{t1}+p_{t2}} > z_{\mathrm{cut}}  \left(
-%  \frac{\theta_{12}}{R}\right)^\beta\,;
-%\end{equation}
-%\item if the jet passes the condition, the recursion stops; if not the
-%  softer subjet is removed and the algorithms goes back to step 1 with
-%  the hardest of the two subjets. 
-% \end{enumerate}
-%In the case $\beta=0$ Soft Drop essentially reduces to mMDT~\cite{Dasgupta:2013ihk},
-% albeit without any actual mass-drop condition. Moreover, while the
-% original MDT~\cite{Butterworth:2008iy} algorithm imposed a cut on the ratio of angular distances
-% to masses, a so-called $\ycut$, the mMDT variant instead cuts on
-% momentum fractions~\cite{Dasgupta:2013ihk} (see
-% e.g. \cite{Dasgupta:2013ihk,Dasgupta:2016ktv} for a comparison
-% between $\ycut$ and $z_{\mathrm{cut}} $).
-% \end{comment}
-%
-%Notes (order not meaningful): Plot of the two calculations for softdrop mass?  Show plots of the ATLAS and CMS measurements?  Actually, I'm not sure we can show CMS since it is only preliminary.  Say something about mass versus $k_t$?
-%
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Parton Shower Study}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\jdt{We switched notation in this section from $e_2^{(\alpha)}$ to $e_\alpha$.  I am doing my best to stick with the two-point correlator language we introduced before, eliminating ``angularity''.  The plots have not yet been changed to reflect this, though.  It would also be helpful to increase the font size.  While we're at it, can we have the jet mass direction go in the same way as Figure 3?}
 
 From the point of view of fitting for $\alpha_s$, a good observable is one whose probability distribution changes significantly with variations in $\alpha_s$.
 %
@@ -617,7 +530,7 @@ Not all information about $\alpha_s$ sensitivity is captured by a single point i
 Therefore, it is also useful to study the integrand of Eq.~\ref{jetsub_alphas_eq:seppower} as a function of different observables $\lambda$.
 
 
-This sensitivity-robustness tradeoff is studied using two parton shower generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune Monash~\cite{Skands:2014pea}.  %\jdt{My understanding is that we will not have Pythia results, right?}.
+This sensitivity-robustness tradeoff is studied using two parton shower generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune Monash~\cite{Skands:2014pea}.  
 %
 These programs are formally LL accurate, though they include effects beyond Eq.~\ref{jetsub_alphas_eq:ecf_ll_dsitribution}.
 %
@@ -634,7 +547,6 @@ Additionally, various Soft Drop grooming parameters are studied by varying $\bet
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_sensitivity2a.pdf}\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_sensitivity2b.pdf}
 \end{center}
 \caption{The sensitivity to $\alpha_s$ in \textsc{Herwig~7}.  Shown is the distribution of the normalized squared jet mass ($e_2^{(2)}$) for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The blue line uses $\alpha_s=0.118$ while the green and orange lines have the value of $\alpha_s$ varied by $10\%$.  The lower panels show the ratio with respect to the $\alpha_s=0.118$ curve.}
-  %.\mathrmbf{Maybe cut the x-axis at high values?  \gs{Yes, sth like $-\log(e_\alpha)=$11 or 12.}  Maybe comment what the picture looks like for Pythia?}
 \label{jetsub_alphas_fig:sensitivity}
 \end{figure}
 
@@ -649,7 +561,6 @@ The blue line shows the default particle-level simulation that includes the stan
 The red curve has hadronization turned off and the green curve is the same as the blue, but with the \textsc{Herwig~7} model for multiple parton interactions (MPI) turned off.
 %
 MPI is also off for the red curve.}
-  % \mathrmbf{Maybe cut the x-axis at high values?  Maybe comment what the picture looks like for Pythia?}
 \label{jetsub_alphas_fig:robustness}
 \end{figure}
 
@@ -819,9 +730,6 @@ Fixing $f_g$, which carries all of the PDF sensitivity for the shape measurement
 %
 Thus, using unnormalized distributions results in additional PDF sensitivity from also measuring the total cross-section in addition to the shape of the substructure distribution. 
 
-%BPN: Reads well to me!
-% \jdt{I tried to reword this last sentence to make it clearer, but I may have gotten the physics wrong.  Please check.}
-
 From the perspective of perturbative accuracy, there is an important issue with using normalized distributions, which is that jet shape observables start at $\mathcal{O}(\alpha_s)$.
 %
 Specifically, the slope of the groomed mass distribution is $\mathcal{O}(\alpha_s)$.
@@ -872,9 +780,6 @@ Figure~\ref{jetsub_alphas_fig:templates} shows the quark and gluon templates for
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_023451324.pdf}
 \end{center}
-
-%\jdt{We should decide whether or not it is important to have the plot in the same direction as Fig.~\ref{jetsub_alphas_fig:shape_function}.}
-%BPN: it would be nice if they all went in the same direction, but all of our plots are at least consistent (e.g. Fig. 5-7 and the ones here).  So hopefully it is okay to leave them as is.
 
 \caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
   $\alpha=1$ (right column), with grooming parameters $z_{\mathrm{cut}}  = 0.1$ and $\beta = 1$ (top row) and $\beta = 0$ (bottom row).  Note that larger masses are on the left so that the NP regime is on the
@@ -935,13 +840,6 @@ Due to the larger color factor, the measurement with pure gluon jets is more sen
 %
 Using both the $f_g=0.2$ and $f_g=0.8$ samples to fit for $\alpha_s$, one can extract a $\sim 30\%$ measurement of $\alpha_s$, but there is no clear peak at the correct value of $\alpha_s$ due to the Casimir degeneracy.  
 
-%   \gs{The legend on the
-%    right plot is potentially misleading, I'd say ``known $f_g=20\%$''
-%    and ``known $f_g=80\%$''. If easily doable, it might also be good
-%    to have the extracted alphas (central value+uncertainty).} \gs{Why
-%    has the left plot changed that much compared to the previous
-%    version?} 
-
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.32\columnwidth]{jetsub_alphas_banana_alpha_20beta_10_zcut_123451324.pdf}
@@ -968,7 +866,6 @@ At the moment, joint distributions of two-point correlators are only known to NL
 \begin{figure}[t]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_combination23451324.pdf}
-%combination23451324
 \end{center}
 \caption{Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines the four observables from Fig.~\ref{jetsub_alphas_fig:templates}.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
 \label{jetsub_alphas_fig:combo}
@@ -983,10 +880,6 @@ However, the benefit of having different tilts in the $f_g,\alpha_s$ plane is cl
 It is important to emphasize that the black curve in Fig.~\ref{jetsub_alphas_fig:combo} assumes no prior knowledge of the gluon fraction of the event samples.
 %
 The fit can of course be improved by using some knowledge of the gluon fractions from the hard scattering process convolved with PDFs, as discussed in Sec.~\ref{subjetsub_alphas_sec:norm}.
-
-%\gs{Varying $z_{\mathrm{cut}}$ and $\beta$ would also change the slope
-%  (maybe not in the 2d maps), so we could add something saying that it
-%  would be interesting to study those variations as well.} 
 
 \subsection{Estimate of Experimental Resolution}
 \label{jetsub_alphas_sec:resolution}
