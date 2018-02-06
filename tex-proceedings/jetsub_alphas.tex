@@ -2,6 +2,8 @@
 \usepackage{graphicx,epsfig}
 \bibliographystyle{lesHouches}
 
+\usepackage{amsmath}
+
 
 %\author{Suman Chatterjee$^a$, Fr\'{e}d\'{e}ric Dreyer$^b$, Maria Vittoria Garzelli$^c$, Philippe Gras$^d$, Andrew Larkoski$^e$, Simone Marzani$^f$, Ian Moult$^{g,1}$, Ben Nachman$^{g,2}$, Andrzej Si\'{o}dmok$^h$, Andreas Papaefstathiou$^i$, Peter Richardson$^{i,j}$, Tousik Samui$^a$, Gregory Soyez$^{k,3}$, and Jesse Thaler$^{b,4}$}
 %\institute{$^a$Tata Inst. of Fundamental Research, Mumbai, India\\
@@ -398,7 +400,7 @@ The grooming procedure makes this definition IRC safe (see related jet flavor ap
 %
 These fractions are independent of the value of the jet mass observable and can be extracted from fixed-order generators, for example MCFM \cite{Campbell:1999ah,Campbell:2010ff,Campbell:2011bn}.
 
-The formula in Eq.~\ref{jetsub_alphas_eq:fac_pp_e2} has a number of remarkable consequences.
+The formula in Eq.~\eqref{jetsub_alphas_eq:fac_pp_e2} has a number of remarkable consequences.
 %
 In the resummation region, we see that there are no non-global logarithms and there are no global color correlations.
 %
@@ -502,7 +504,7 @@ Here, we study many two-point correlators to quantify the tradeoff between the s
 \begin{center}
 \includegraphics[width = 0.4\columnwidth]{jetsub_alphas_robustnessschematic.pdf}
 \end{center}
-\caption{A schematic diagram to illustrate the sensitivity-robustness plane defined by the separation power in Eq.~\ref{jetsub_alphas_eq:seppower}.}
+\caption{A schematic diagram to illustrate the sensitivity-robustness plane defined by the separation power in Eq.~\eqref{jetsub_alphas_eq:seppower}.}
 \label{jetsub_alphas_fig:robustnessschematic}
 \end{figure}
 
@@ -523,12 +525,12 @@ The plane used to study the tradeoff between sensitivity and robustness is shown
 %
 Not all information about $\alpha_s$ sensitivity is captured by a single point in Fig.~\ref{jetsub_alphas_fig:robustnessschematic}, because sensitivity to NP effects could be in regions of low $\alpha_s$ sensitivity and vice versa.
 %
-Therefore, it is also useful to study the integrand of Eq.~\ref{jetsub_alphas_eq:seppower} as a function of different observables $\lambda$.
+Therefore, it is also useful to study the integrand of Eq.~\eqref{jetsub_alphas_eq:seppower} as a function of different observables $\lambda$.
 
 
 This sensitivity-robustness tradeoff is studied using two parton shower generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune Monash~\cite{Skands:2014pea}.  
 %
-These programs are formally LL accurate, though they include effects beyond Eq.~\ref{jetsub_alphas_eq:ecf_ll_dsitribution}.
+These programs are formally LL accurate, though they include effects beyond Eq.~\eqref{jetsub_alphas_eq:ecf_ll_dsitribution}.
 %
 Results are presented separately for quark and gluon jets, using the $Z+q$ and $Z+g$ hard-scattering processes.
 %
@@ -564,13 +566,13 @@ MPI is also off for the red curve.}
 \begin{center}
 \includegraphics[width = 0.99\columnwidth]{jetsub_alphas_differentialseparation2.pdf}
 \end{center}
-\caption{The integrand of Eq.~\ref{jetsub_alphas_eq:seppower} in \textsc{Herwig~7}.  Shown is the normalized squared jet mass ($e_2^{(2)}$)  for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The baseline $f$ function from Eq.~\ref{jetsub_alphas_eq:seppower} is the same for the red and blue curves.  For blue (sensitivity) the $g$ function is from varying $\alpha_s$ by 10\%, whereas for red (robustness) the $g$ function hadronization is turned off.  Note the different vertical scale in the left and right plots. }
+\caption{The integrand of Eq.~\eqref{jetsub_alphas_eq:seppower} in \textsc{Herwig~7}.  Shown is the normalized squared jet mass ($e_2^{(2)}$)  for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The baseline $f$ function from Eq.~\eqref{jetsub_alphas_eq:seppower} is the same for the red and blue curves.  For blue (sensitivity) the $g$ function is from varying $\alpha_s$ by 10\%, whereas for red (robustness) the $g$ function hadronization is turned off.  Note the different vertical scale in the left and right plots. }
 \label{jetsub_alphas_fig:differentialseparation}
 \end{figure}
 
 The sensitivity to $\alpha_s$ is shown in Fig.~\ref{jetsub_alphas_fig:sensitivity}, in the case of normalized squared jet mass ($e_2^{(2)}$) for quark and gluon jets.
 %
-To the left of the low-mass NP peak, the shape of the $e_2^{(2)}$ distribution is nearly flat for quarks and nearly linear (in the log-space) for gluons, as expected from Eq.~\ref{jetsub_alphas_eq:ecf_ll_dsitribution}.
+To the left of the low-mass NP peak, the shape of the $e_2^{(2)}$ distribution is nearly flat for quarks and nearly linear (in the log-space) for gluons, as expected from Eq.~\eqref{jetsub_alphas_eq:ecf_ll_dsitribution}.
 %
 Increasing $\alpha_s$ shifts the quark distribution up but has nearly no impact on the shape of the distribution below the peak.
 %
@@ -584,9 +586,9 @@ Overall, there is excellent stability in the $e_2^{(2)}$ distribution.
 %
 The low-mass peak for quarks is almost entirely due to hadronization effects.
 %
-According to \textsc{Herwig~7}, the impact of hadronization is much smaller for gluon jets, as expected since perturbative effects push the distribution away from the NP-sensitive region in Eq.~\ref{jetsub_alphas_eq:np}.
+According to \textsc{Herwig~7}, the impact of hadronization is much smaller for gluon jets, as expected since perturbative effects push the distribution away from the NP-sensitive region in Eq.~\eqref{jetsub_alphas_eq:np}.
 
-Fig.~\ref{jetsub_alphas_fig:differentialseparation} shows the distribution of the differential separation power (integrand of Eq.~\ref{jetsub_alphas_eq:seppower}), using the variation with $\alpha_s$ as the sensitivity and the change from turning off hadronization as the robustness.
+Fig.~\ref{jetsub_alphas_fig:differentialseparation} shows the distribution of the differential separation power (integrand of Eq.~\eqref{jetsub_alphas_eq:seppower}), using the variation with $\alpha_s$ as the sensitivity and the change from turning off hadronization as the robustness.
 %
 For quark jets, Figs.~\ref{jetsub_alphas_fig:sensitivity} and \ref{jetsub_alphas_fig:robustness} showed that the biggest variations with $\alpha_s$ occurred at low mass which is also where NP effects are largest.
 %
@@ -764,11 +766,11 @@ Therefore, we isolate the resummation regime,
 \left. e_2^{(\alpha)}\right |_{\mathrm{NP}} \leq e_2^{(\alpha)}\leq z_\mathrm{cut}R^\alpha,
 \end{equation}
 %
-where $\left. e_2^{(\alpha)}\right |_{\mathrm{NP}}$ is given in Eq.~\ref{jetsub_alphas_eq:np}, such that regions of phase space that are highly sensitive to NP or fixed-order effects are removed.
+where $\left. e_2^{(\alpha)}\right |_{\mathrm{NP}}$ is given in Eq.~\eqref{jetsub_alphas_eq:np}, such that regions of phase space that are highly sensitive to NP or fixed-order effects are removed.
 %
 In this range, NLL calculations exist in analytic formulae that can be varied on-the-fly~\cite{Marzani:2017mva,Marzani:2017kqd}.
 %
-Figure~\ref{jetsub_alphas_fig:templates} shows the quark and gluon templates for $\alpha=\{1,2\}$ and $\beta=\{0,1\}$, truncated according to Eq.~\ref{jetsub_alphas_eq:e2truncation}.
+Figure~\ref{jetsub_alphas_fig:templates} shows the quark and gluon templates for $\alpha=\{1,2\}$ and $\beta=\{0,1\}$, truncated according to Eq.~\eqref{jetsub_alphas_eq:e2truncation}.
 
 
 \begin{figure}[t]
@@ -807,14 +809,14 @@ In practice, there would also be systematic uncertainties (see Sec.~\ref{jetsub_
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_banana_alpha_20beta_0_zcut_123451324.pdf}
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_palpha_alpha_20beta_0_zcut_123451324.pdf}
 \end{center}
-\caption{Left: the probability of the minimized $\chi^2$ (assuming $n_\mathrm{bins}-1$ degrees of freedom) from Eq.~\ref{jetsub_alphas_eq:chi2fit} as a
+\caption{Left: the probability of the minimized $\chi^2$ (assuming $n_\mathrm{bins}-1$ degrees of freedom) from Eq.~\eqref{jetsub_alphas_eq:chi2fit} as a
   function of $f_g$ and $\alpha_s$ for one sample with 80\% gluons and another sample with 80\% quarks.  The true value of $\alpha_s$ is 0.1, as indicated by triangle markers.  Right: The right plot marginalized over $f_g$ and normalized to unity.  The three lines correspond to the fit performed on a pure sample of quarks, a pure sample of gluons, or a mixed sample of ($f_g\in\{0.2,0.8\}$) where the fractions are not known a priori.  This is the result from one pseudo-experiment with 100k events.}
 \label{jetsub_alphas_fig:alpha2fit}
 \end{figure}
 
 An example fit is demonstrated in Fig.~\ref{jetsub_alphas_fig:alpha2fit} for the case of $\alpha=2$ and $\beta = 0$.
 %
-The left plot of Fig.~\ref{jetsub_alphas_fig:alpha2fit} shows the $\chi^2$ from Eq.~\ref{jetsub_alphas_eq:chi2fit} for two samples, one with 20\% gluons and one with 80\% gluons.
+The left plot of Fig.~\ref{jetsub_alphas_fig:alpha2fit} shows the $\chi^2$ from Eq.~\eqref{jetsub_alphas_eq:chi2fit} for two samples, one with 20\% gluons and one with 80\% gluons.
 %
 The true value is taken to be $\alpha_s=0.1$, and as expected, the $\chi^2$ probability is high for $f_g=0.2$ and $f_g=0.8$.%
 \footnote{It is not necessarily peaked at this value because this is the result of one pseudo-experiment.  Averaging over many pseudo-experiments results in peaks at $f_g=0.2$ and $0.8$.}
@@ -930,7 +932,7 @@ The migration is qualitatively the same, with an excellent diagonal behavior (lo
 
 To understand the sensitivity to jet mass scale and resolution uncertainties, we conduct pseudo-experiments by sampling from the templates described in Sec.~\ref{jetsub_alphas_sec:templates} and smearing with the migration matrix shown in the left plot of Fig.~\ref{jetsub_alphas_fig:expres}.
 %
-We then unfold with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and extract $\alpha_s$ via Eq.~\ref{jetsub_alphas_eq:chi2fit} but for fixed and known $f_g=0$.
+We then unfold with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and extract $\alpha_s$ via Eq.~\eqref{jetsub_alphas_eq:chi2fit} but for fixed and known $f_g=0$.
 %
 The results of this procedure are shown in Fig.~\ref{jetsub_alphas_fig:expfit}.
 %
