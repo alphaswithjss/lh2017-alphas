@@ -538,7 +538,7 @@ We select jets with transverse momentum $p_\mathrm{T}>500$ GeV and rapidity $|y|
 %
 A variety of two-point correlators (as defined in Sec.~\ref{jetsub_alphas_sec:shape_def}) are studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively. 
 %
-Additionally, various Soft Drop grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\mathrm{cut}\in \{0.05,0.1,0.2\}$.  
+Additionally, various Soft Drop grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\mathrm{cut}\in \{0.05,0.1,0.2\}$.   The plots in this section are shown for \textsc{Herwig~7}.1 but the same qualitative conclusions hold for \textsc{Pythia~8}.2.
 
 \begin{figure}[p]
 \begin{center}
@@ -712,7 +712,7 @@ A key challenge that still remains is to fully understand the correlations in th
 
 Second, the use of normalized distributions minimizes the sensitivity to the PDFs.
 %
-As discussed in Sec.~\ref{jetsub_alphas_sec:pertsimplicity}, grooming renders the quark and gluon two-point-correlator distributions universal.
+As discussed in Sec.~\ref{jetsub_alphas_sec:pertsimplicity}, grooming renders the quark and gluon two-point-correlator distributions universal (in the resummation regime).
 %
 Therefore, the measured distribution only depends on the fraction of gluon jets $f_g$ that pass the event selection.
 %
@@ -866,7 +866,7 @@ At the moment, joint distributions of two-point correlators are only known to NL
 \label{jetsub_alphas_fig:combo}
 \end{figure}
 
-With that caveat in mind, Figure~\ref{jetsub_alphas_fig:combo} shows the result of a combined fit assuming that all four distributions are statistically (and systematically) independent
+With that caveat in mind, Figure~\ref{jetsub_alphas_fig:combo} shows the result of a combined fit assuming that all four distributions are statistically (and systematically) independent.
 %
 This is a rather strong assumption that is unlikely to be even approximately true in practice.
 %
@@ -912,7 +912,7 @@ Figure~\ref{jetsub_alphas_fig:resolution} shows the fractional $e_2^{(2)}$ resol
 %
 The resolution is smallest at high mass due to the excellent energy resolution of the CMS-like detector.
 %
-The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the limit of $\mathcal{O}(\mathrm{few GeV})$.
+The resolution at low mass is about 10\% near 15 GeV and reaches 30\% near the limit of $\mathcal{O}(\mathrm{few\hspace{1mm}GeV})$.
 %
 Encouragingly, the fits in Sec.~\ref{jetsub_alphas_sec:templates} relied only on the regime where $\sim 10\%$ resolution seems to be achievable, which gives an indication that a 10\% extraction of $\alpha_s$ should be feasible.
 %
@@ -932,7 +932,7 @@ The migration is qualitatively the same, with an excellent diagonal behavior (lo
 
 To understand the sensitivity to jet mass scale and resolution uncertainties, we conduct pseudo-experiments by sampling from the templates described in Sec.~\ref{jetsub_alphas_sec:templates} and smearing with the migration matrix shown in the left plot of Fig.~\ref{jetsub_alphas_fig:expres}.
 %
-We then unfold with another migration matrix that has the jet mass scale shifted or smeared by a fixed amount, and extract $\alpha_s$ via Eq.~\eqref{jetsub_alphas_eq:chi2fit} but for fixed and known $f_g=0$.
+We then unfold with another migration matrix~\cite{DAgostini:1994fjx,Adye:2011gm} that has the jet mass scale shifted or smeared by a fixed amount, and extract $\alpha_s$ via Eq.~\eqref{jetsub_alphas_eq:chi2fit} but for fixed and known $f_g=0$.
 %
 The results of this procedure are shown in Fig.~\ref{jetsub_alphas_fig:expfit}.
 %
@@ -1043,7 +1043,7 @@ The uncertainties are validated using the standard ATLAS approach using track-je
 ATLAS validates their approach in a similar manner as CMS, by using the $W$ mass peak from $t\bar{t}$ events.%
 \footnote{This validation does not have the same complete forward-folding machinery as was used by ATLAS for trimmed jets.}
 %
-From \cite{jetsub_alphas_fig:expfit}, it seems that the mass resolution will not be the limiting factor, but it could be if the situation is not improved as the jet mass scale precision improves.
+From \ref{jetsub_alphas_fig:expfit}, it seems that the mass resolution will not be the limiting factor, but it could be if the situation is not improved as the jet mass scale precision improves.
 %
 \item {\bf Pileup Modeling and Mitigation:} Grooming significantly reduces the impact of pileup, but if the Run 3+ data are to be used (pileup levels of 80+), then a significantly better and more detailed understanding of the degradation due to pileup will be required.
 %
