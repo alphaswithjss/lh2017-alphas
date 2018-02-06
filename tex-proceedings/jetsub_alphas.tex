@@ -1,48 +1,45 @@
 \documentclass[11pt]{cernrep}
 \usepackage{graphicx,epsfig}
 \bibliographystyle{lesHouches}
+
+
+%\author{Suman Chatterjee$^a$, Fr\'{e}d\'{e}ric Dreyer$^b$, Maria Vittoria Garzelli$^c$, Philippe Gras$^d$, Andrew Larkoski$^e$, Simone Marzani$^f$, Ian Moult$^{g,1}$, Ben Nachman$^{g,2}$, Andrzej Si\'{o}dmok$^h$, Andreas Papaefstathiou$^i$, Peter Richardson$^{i,j}$, Tousik Samui$^a$, Gregory Soyez$^{k,3}$, and Jesse Thaler$^{b,4}$}
+%\institute{$^a$Tata Inst. of Fundamental Research, Mumbai, India\\
+%$^b$Center for Theoretical Physics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA\\
+%$^c$II. Institute for Theoretical Physics, Hamburg University Luruper Chaussee 149, D-22761 Hamburg, Germany\\
+%$^d$IRFU, CEA, Universit\'{e} Paris-Saclay, Gif-sur-Yvette, France\\
+%$^e$Physics Department, Reed College, Portland, OR 97202, USA\\
+%$^f$Dipartimento di Fisica, Universit\`{a} di Genova and INFN, Sezione di Genova, Via Dodecaneso 33, 16146, Italy\\
+%$^g$Physics Division, Lawrence Berkeley National Laboratory, 1 Cyclotron Rd, Berkeley, CA, 94720, USA\\
+%$^h$The Henryk Niewodniczanski Institute of Nuclear Physics in Cracow, Polish Academy of Sciences\\
+%$^i$Theoretical Physics Department, CERN, CH-1211 Geneva 23, Switzerland\\
+%$^j$IPPP, Department of Physics, Durham University\\
+%$^k$IPhT, CEA Saclay, CNRS UMR 3681, F-91191 Gif-sur-Yvette, France\\
+%$^1$ianmoult@lbl.gov\\
+%$^2$bpnachman@lbl.gov\\
+%$^3$gregory.soyez@ipht.fr\\
+%$^4$jthaler@mit.edu
+%}
+
 \begin{document}
 
+\section{TOWARDS EXTRACTING THE STRONG COUPLING CONSTANT FROM JET SUBSTRUCTURE AT THE LHC\protect\footnote{Section coordinators:  I.~Moult, B.~Nachman, G.~Soyez, J.~Thaler}$^{,}$~\protect\footnote{Contributing authors: S.~Chatterjee, F.~Dreyer, M.~Vittoria Garzelli, P.~Gras, A.~Larkoski, S.~Marzani, A.~Si\'{o}dmok, A.~Papaefstathiou, P.~Richardson, T.~Samui}}
 
-\title{Towards Extracting the Strong Coupling Constant \\ from Jet Substructure at the LHC}
-
-\author{Suman Chatterjee$^a$, Fr\'{e}d\'{e}ric Dreyer$^b$,Maria Vittoria Garzelli$^c$,Philippe Gras$^d$,Andrew Larkoski$^e$,Simone Marzani$^f$,Ian Moult$^{g,2}$,Ben Nachman$^{g,2}$,Andrzej Si\'{o}dmok$^h$,Andreas Papaefstathiou$^i$,Peter Richardson$^{i,j}$,Tousik Samui$^a$,Gregory Soyez$^{k,3}$, and Jesse Thaler$^{b,4}$}
-\institute{$^a$Tata Inst. of Fundamental Research, Mumbai, India\\
-$^b$Center for Theoretical Physics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA\\
-$^c$II. Institute for Theoretical Physics, Hamburg University Luruper Chaussee 149, D-22761 Hamburg, Germany\\
-$^d$IRFU, CEA, Universit\'{e} Paris-Saclay, Gif-sur-Yvette, France\\
-$^e$Physics Department, Reed College, Portland, OR 97202, USA\\
-$^f$Dipartimento di Fisica, Universit\`{a} di Genova and INFN, Sezione di Genova, Via Dodecaneso 33, 16146, Italy\\
-$^g$Physics Division, Lawrence Berkeley National Laboratory, 1 Cyclotron Rd, Berkeley, CA, 94720, USA\\
-$^h$The Henryk Niewodniczanski Institute of Nuclear Physics in Cracow, Polish Academy of Sciences\\
-$^i$Theoretical Physics Department, CERN, CH-1211 Geneva 23, Switzerland\\
-$^j$IPPP, Department of Physics, Durham University\\
-$^k$IPhT, CEA Saclay, CNRS UMR 3681, F-91191 Gif-sur-Yvette, France\\
-$^1$ianmoult@lbl.gov\\
-$^2$bpnachman@lbl.gov\\
-$^3$gregory.soyez@ipht.fr\\
-$^4$jthaler@mit.edu
-}
-
-\maketitle
-
-\begin{abstract}
 Recent advances in jet substructure have led to a new class of jet observables that are amenable to systematically-improvable calculations and are robust to the complex environment of the Large Hadron Collider (LHC).
 %
 These observables exploit grooming to reduce non-perturbative contributions and simplify perturbative calculations.
 %
 With these recent advances in both theory and experiment, we believe it is the appropriate time to begin investigating the possibility of extracting the strong coupling constant $\alpha_s$ from jet substructure.
 %
-In this paper, we perform a proof-of-principle sensitivity study to demonstrate the suitability of such measurements to add useful information to the existing precision extractions of $\alpha_s$.
+In this section, we perform a proof-of-principle sensitivity study to demonstrate the suitability of such measurements to add useful information to the existing precision extractions of $\alpha_s$.
 %
 We highlight a number of theoretical and experimental advantages of using groomed observables for $\alpha_s$ extraction, and we discuss several difficulties of the LHC environment.
 %
 Using a simplified approach, we show that a measurement of $\alpha_s$ with an approximate 10\% uncertainty should be feasible at the LHC.
 %
 This result motivates a complete analysis with a full set of theoretical and experimental considerations, and we present a number of directions where improvements on both the theory and experiment sides could be made in the near future.
-\end{abstract}
 
-\section{Introduction}
+\subsection{Introduction}
 
 In quantum chromodynamics (QCD), the strong coupling constant ($\alpha_s$) is responsible for the strength of interactions between quarks and gluons.
 %
@@ -74,7 +71,7 @@ These methods are sensitive to very different regimes of QCD and, interestingly,
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.6\columnwidth]{jetsub_alphas_alphas_propaganda.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_alphas_propaganda.pdf}
 \end{center}
 \caption{Various values of $\alpha_s$ in the $\overline{\mathrm{MS}}$ scheme, including the world-average shown as a black dashed line with a grey uncertainty band~\cite{Olive:2016xmw}.
 %
@@ -92,7 +89,7 @@ The order at which $\alpha_s$ is utilized is not the same in all cases.}
 Extractions based on $e^+e^-$ event shapes are sensitive to soft and collinear regions of phase space, which are modeled with precision
 using higher-order resummation.
 %
-Figure~\cite{jetsub_alphas_jetsub_alphas_fig:propaganda} shows various values of $\alpha_s$ extracted with next-to-next-to-leading order (NNLO) calculations including various levels of resummation, such as next-to-next-to-next-to-leading logarithmic (N$^3$LL) for the thrust-based extraction.
+Figure~\ref{jetsub_alphas_jetsub_alphas_fig:propaganda} shows various values of $\alpha_s$ extracted with next-to-next-to-leading order (NNLO) calculations including various levels of resummation, such as next-to-next-to-next-to-leading logarithmic (N$^3$LL) for the thrust-based extraction.
 %
 Also shown are the values of $\alpha_s$ used as inputs to various Parton Shower (PS) generators.%
 \footnote{Note that these programs implement much more than just the QCD parton shower.  For example, radiated photons are also generated, though the impact of those electroweak processes is quite negligible here (as opposed to photons from $\pi^0\rightarrow\gamma\gamma$).}
@@ -139,12 +136,11 @@ Theoretical calculations for groomed observables have been performed at NLL~\cit
 %
 Recently, ATLAS~\cite{Aaboud:2017qwh} and CMS~\cite{CMS-PAS-SMP-16-010} demonstrated 5-10\% measurement uncertainties of these calculated quantities using existing technologies.
 
-The purpose of this paper is to study the feasibility of a measurement of $\alpha_s$ using jet substructure at the LHC, using jet shapes that are infrared and collinear (IRC) safe.
+The purpose of this section is to study the feasibility of a measurement of $\alpha_s$ using jet substructure at the LHC, using jet shapes that are infrared and collinear (IRC) safe.
 %
 Similar techniques would of course also be interesting at both a low- and high-energy $e^+e^-$ collider; we focus here on $pp$ since high-quality data are now pouring out of the LHC.
 %
-We view this work as part of a broader program to apply jet grooming techniques for precision QCD (see also \cite{Hoang:2017kmk} for
-applications to the top quark mass).
+We view this work as part of a broader program to apply jet grooming techniques for precision QCD (see also \cite{Hoang:2017kmk} for applications to the top quark mass).
 %
 There are significant experimental and theoretical challenges to achieve success in this program, but we believe it is possible with community synergy.
 %
@@ -152,7 +148,7 @@ An $\alpha_s$ extraction represents a concrete goal to push the accuracy and und
 
 This remainder of this work is organized as follows.
 %
-In Sec.~\ref{jetsub_alphas_sec:definitions}, we define the observables and grooming strategies that will be considered in this paper.
+In Sec.~\ref{jetsub_alphas_sec:definitions}, we define the observables and grooming strategies that will be considered in this study.
 %
 In Sec.~\ref{jetsub_alphas_sec:softcomplications}, we highlight a number of theoretical and experimental benefits of jet grooming, which make groomed observables particularly interesting for extractions of $\alpha_s$.
 %
@@ -162,10 +158,10 @@ In Sec.~\ref{jetsub_alphas_sec:ben_study}, an idealized setup is used to illustr
 %
 We conclude in Sec.~\ref{jetsub_alphas_sec:future} and discuss future directions for improving both the theoretical and experimental uncertainties for $\alpha_s$ extractions from jet substructure.
 
-\section{Observable and Algorithm Definitions}
+\subsection{Observable and Algorithm Definitions}
 \label{jetsub_alphas_sec:definitions}
 
-In this section, we briefly review the definitions of the observables and grooming procedures that we will focus on in this paper.
+In this subsection, we briefly review the definitions of the observables and grooming procedures that we will focus on in this study.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Two-point Correlators}\label{jetsub_alphas_sec:shape_def}
@@ -192,7 +188,7 @@ If all emissions in the jet are nearly collinear, then the two-point energy corr
 e_2^{(2)}\sim \frac{m^2}{R^2\, p_{T}^2}\,.
 \end{equation} 
 
-In this paper, we primarily restrict ourselves to the case of $\alpha=2$ as this has been the focus so far from both the theoretical~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.
+In this study, we primarily restrict ourselves to the case of $\alpha=2$ as this has been the focus so far from both the theoretical~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.
 %
 However, it is interesting to study if other values of $\alpha$ could provide improved sensitivity to $\alpha_s$.
 %
@@ -201,7 +197,7 @@ Another benchmark value is $\alpha=1$, which corresponds to $k_T$ (or broadening
 The two-point correlation functions are closely related to the jet angularities~\cite{Berger:2003iw,Almeida:2008yp,Ellis:2010rwa,Larkoski:2014pca}, with the latter being defined with respect to a jet axis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Grooming Techniques}\label{jetsub_alphas_sec:groom_tech}
+\subsubsection{Grooming Techniques}\label{jetsub_alphas_sec:groom_tech}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 There are a variety of jet grooming techniques to mitigate soft and wide-angle jet contamination~\cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th,Dasgupta:2013ihk,Larkoski:2014wba}.
@@ -232,7 +228,7 @@ This procedure generalizes the modified Mass Drop Tagger (mMDT)~\cite{Dasgupta:2
 %
 Note that non-global logarithms~\cite{Dasgupta:2001sh} are formally removed from the soft drop mass distribution, even when $\beta>0$ (though clearly they are restored as $\beta\rightarrow\infty$).
 
-\section{Grooming Away Soft Complications}
+\subsection{Grooming Away Soft Complications}
 \label{jetsub_alphas_sec:softcomplications}
 
 Having defined the observables and grooming procedures of interest, in this section we provide a general discussion of the potential advantages of using groomed jet observables for extractions of $\alpha_s$.
@@ -252,12 +248,12 @@ Each of these will be discussed in more detail below.
 Combined, we believe that they provide a strong motivation for the measurement of  groomed jet observables, and the possibility of performing a precision extraction of $\alpha_s$ using jet substructure at the LHC.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Mitigating Non-perturbative Effects}
+\subsubsection{Mitigating Non-perturbative Effects}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.6\columnwidth]{jetsub_alphas_correlation_firstmoment.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_correlation_firstmoment.pdf}
 \end{center}
 \caption{An illustration of the correlations between the first NP moment $\Omega_1$ and $\alpha_s$ for the thrust observables.
 %
@@ -329,7 +325,7 @@ We know, however, that for $e_2^{(2)}\geq z_{\mathrm{cut}} $, the distribution i
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.6\columnwidth]{jetsub_alphas_shape_function.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_shape_function.pdf}
 \end{center}
 \caption{A plot showing the effects of NP corrections to the groomed jet mass. This illustrates first that the NP corrections are suppressed over a large range, and second that they take a very different form than for double-logarithmic observables. Figure from Ref.~\cite{Frye:2016aiz}.}
 \label{jetsub_alphas_fig:shape_function}
@@ -357,7 +353,7 @@ This is again a significant benefit of groomed observables.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Perturbative Simplicity}
+\subsubsection{Perturbative Simplicity}
 \label{jetsub_alphas_sec:pertsimplicity}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -419,7 +415,7 @@ This matching has been performed to (N)NLO for dijets ($V$+jets) \cite{Frye:2016
 Ideally this would be done using $2\to 3$ matrix elements at NNLO, which are just now becoming available~\cite{Gehrmann:2015bfy,Dunbar:2016aux,Badger:2013yda,Badger:2017jhb,Abreu:2017hqn}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Pileup Resilience}
+\subsubsection{Pileup Resilience}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Arguably the biggest experimental challenge for precision physics at a high luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.
@@ -444,10 +440,10 @@ Precision track-based substructure observables have been calculated~\cite{Krohn:
 %
 It may be interesting to do a track- and jet-substructure-based extraction of $\alpha_s$, but this is left as a possibility for future work.
 
-\section{Observable Sensitivity to $\alpha_s$}
+\subsection{Observable Sensitivity to $\alpha_s$}
 \label{jetsub_alphas_sec:jetmass}
 
-In this section, we study the sensitivity of the groomed jet mass to variations in the value of $\alpha_s$.
+In this subsection, we study the sensitivity of the groomed jet mass to variations in the value of $\alpha_s$.
 %
 We begin with a discussion based on the analytic formulae at LL accuracy.
 %
@@ -457,7 +453,7 @@ Finally, we discuss the issue of Casimir scaling and the related issue of using 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Analytic Understanding}
+\subsubsection{Analytic Understanding}
 \label{jetsub_alphas_sec:analytic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -493,7 +489,7 @@ Because $\alpha_s$ is always multiplied by a color factor, though, knowing the p
 In practice, the parton shower studies and the analytic studies that follow (see Sec.~\ref{jetsub_alphas_sec:ben_study}) include higher order effects, such as subleading terms in the splitting functions, that violate Casimir scaling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Parton Shower Study}
+\subsubsection{Parton Shower Study}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 From the point of view of fitting for $\alpha_s$, a good observable is one whose probability distribution changes significantly with variations in $\alpha_s$.
@@ -542,7 +538,7 @@ A variety of two-point correlators (as defined in Sec.~\ref{jetsub_alphas_sec:sh
 %
 Additionally, various Soft Drop grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\mathrm{cut}\in \{0.05,0.1,0.2\}$.  
 
-\begin{figure}[t]
+\begin{figure}[p]
 \begin{center}
 \includegraphics[width = 0.49\columnwidth]{jetsub_alphas_sensitivity2a.pdf}\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_sensitivity2b.pdf}
 \end{center}
@@ -550,7 +546,7 @@ Additionally, various Soft Drop grooming parameters are studied by varying $\bet
 \label{jetsub_alphas_fig:sensitivity}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[p]
 \begin{center}
 \includegraphics[width = 0.48\columnwidth]{jetsub_alphas_robustness2a.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_robustness2b.pdf}
 \end{center}
@@ -592,7 +588,7 @@ According to \textsc{Herwig~7}, the impact of hadronization is much smaller for 
 
 Fig.~\ref{jetsub_alphas_fig:differentialseparation} shows the distribution of the differential separation power (integrand of Eq.~\ref{jetsub_alphas_eq:seppower}), using the variation with $\alpha_s$ as the sensitivity and the change from turning off hadronization as the robustness.
 %
-For quark jets, Figs.~\ref{jetsub_alphas_fig:sensitivity} and ~\ref{jetsub_alphas_fig:robustness} showed that the biggest variations with $\alpha_s$ occurred at low mass which is also where NP effects are largest.
+For quark jets, Figs.~\ref{jetsub_alphas_fig:sensitivity} and \ref{jetsub_alphas_fig:robustness} showed that the biggest variations with $\alpha_s$ occurred at low mass which is also where NP effects are largest.
 %
 This corresponds to the peak in the blue and red distributions in Fig.~\ref{jetsub_alphas_fig:differentialseparation} occurring in nearly the same location.
 %
@@ -625,7 +621,7 @@ This study suggests that $k_t$ observables are important to include in future ex
 It would also be interesting to study how the robustness versus sensitivity picture changes when considering only subsets of the available observable range.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Issue of Casimir Scaling}
+\subsubsection{The Issue of Casimir Scaling}
 \label{jetsub_alphas_sec:casimir}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -678,7 +674,7 @@ It would be interesting to develop other approaches to disentangling the quark a
 Without some kind of conceptual breakthrough, though, we expect that the quark/gluon fraction will be a limiting aspect of $\alpha_s$ extractions from jet substructure at the LHC.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Normalized vs.\ Unnormalized Distributions}
+\subsubsection{Normalized vs.\ Unnormalized Distributions}
 \label{subjetsub_alphas_sec:norm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -740,7 +736,7 @@ For the case of $e^+e^-$, this level of accuracy has been achieved, where the NN
 %
 Due to recent progress in the calculation of the relevant amplitudes, we believe this is a realistic target for jet substructure, but clearly requires substantial further work.
 
-\section{Idealized Performance at the LHC}
+\subsection{Idealized Performance at the LHC}
 \label{jetsub_alphas_sec:ben_study}
 
 The purpose of this section is to make some numerical estimates regarding $\alpha_s$ extraction from jet substructure at the LHC.
@@ -753,7 +749,7 @@ Next, we estimate the needed experimental precision required to make a useful me
 %
 While both the theory and experimental precision will continue to improve over the next years, the community has already demonstrated that the work can begin with the first round of groomed jet mass results~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010,Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd}.
 
-\subsection{Extraction of Theory Templates}
+\subsubsection{Extraction of Theory Templates}
 \label{jetsub_alphas_sec:templates}
 
 A complete extraction of $\alpha_s$ will require matching resummed results to high fixed order and also estimating NP effects.
@@ -777,8 +773,8 @@ Figure~\ref{jetsub_alphas_fig:templates} shows the quark and gluon templates for
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_023451324.pdf}
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_023451324.pdf}
 \end{center}
 
 \caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
@@ -816,9 +812,6 @@ In practice, there would also be systematic uncertainties (see Sec.~\ref{jetsub_
 \label{jetsub_alphas_fig:alpha2fit}
 \end{figure}
 
-
-
-%
 An example fit is demonstrated in Fig.~\ref{jetsub_alphas_fig:alpha2fit} for the case of $\alpha=2$ and $\beta = 0$.
 %
 The left plot of Fig.~\ref{jetsub_alphas_fig:alpha2fit} shows the $\chi^2$ from Eq.~\ref{jetsub_alphas_eq:chi2fit} for two samples, one with 20\% gluons and one with 80\% gluons.
@@ -865,7 +858,7 @@ At the moment, joint distributions of two-point correlators are only known to NL
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_combination23451324.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_combination23451324.pdf}
 \end{center}
 \caption{Marginalizing the $f_g,\alpha_s$ fit over the gluon fraction for a fit that combines the four observables from Fig.~\ref{jetsub_alphas_fig:templates}.  The unknown combined mixture uses two samples with $f_g=20\%$ and $f_g=80\%$.}
 \label{jetsub_alphas_fig:combo}
@@ -881,7 +874,7 @@ It is important to emphasize that the black curve in Fig.~\ref{jetsub_alphas_fig
 %
 The fit can of course be improved by using some knowledge of the gluon fractions from the hard scattering process convolved with PDFs, as discussed in Sec.~\ref{subjetsub_alphas_sec:norm}.
 
-\subsection{Estimate of Experimental Resolution}
+\subsubsection{Estimate of Experimental Resolution}
 \label{jetsub_alphas_sec:resolution}
 
 To keep pace with precise theory predictions, the experimental resolution must be well-understood in order to ensure both precision and accuracy of jet substructure measurements.
@@ -899,7 +892,7 @@ At low mass, the groomed jet is defined by nearly collinear splittings at which 
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Resolution_plot_logrho_updated2.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_Resolution_plot_logrho_updated2.pdf}
 \end{center}
 \caption{The fractional $e_2^{(2)}$ distribution determined from dijet events simulated with \textsc{Pythia~8} plus \textsc{Delphes}.  Arrows indicate the mass at given values of the two-point correlator.  The upper bound of the resummation regime is indicated by a dashed line.  Larger masses are to the left.}
 \label{jetsub_alphas_fig:resolution}
@@ -927,14 +920,9 @@ Here, the comparison is between the particle-level and detector-level groomed ma
 %
 The migration is qualitatively the same, with an excellent diagonal behavior (low migrations) at high mass and a worse resolution at low mass.
 
-
-
-
-
-
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_resolution_scan.pdf}
+\includegraphics[width = 0.5\columnwidth]{jetsub_alphas_resolution_scan.pdf}
 \end{center}
 \caption{The impact of jet mass scale and jet mass resolution uncertainties on the uncertainty in the measured value of $\alpha_s$.  See the text for details.}
 \label{jetsub_alphas_fig:expfit}
@@ -954,10 +942,10 @@ The mass scale uncertainty is as small as $2\%$ in various regions of phase spac
 %
 This again suggests that a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as the uncertainty on the jet mass scale reaches the same level of maturity as the jet energy scale over the next few years.
 
-\section{Conclusions and Future Outlook}
+\subsection{Conclusions and Future Outlook}
 \label{jetsub_alphas_sec:future}
 
-In this paper, we performed a preliminary study assessing a possible extraction of the strong coupling constant $\alpha_s$ from groomed jet substructure measurements at the LHC.
+We performed a preliminary study assessing a possible extraction of the strong coupling constant $\alpha_s$ from groomed jet substructure measurements at the LHC.
 %
 This has been made possible by recent advances in the calculation of groomed event shapes, which allow them to be resummed to NNLL accuracy, as well as advances in the understanding of the experimental uncertainties for groomed jet observables.
  
@@ -1022,7 +1010,7 @@ Ideally this could also be performed for groomed observables, placing the groome
 %
 \end{itemize}
 
-Experimentally, there are three broad topics that need to be addressed for a precision extraction of $\alpha_s$:
+Experimentally, there are three broad topics that need to be addressed to achieve a precision extraction of $\alpha_s$:
 %
 \begin{itemize}
 %
@@ -1080,7 +1068,7 @@ That said, only certain moments of the track functions are required for special 
 Significantly more theoretical work is required to see if this is truly a viable possibility, although we believe that this is well motivated.
 
 
-\section*{Acknowledgments}
+\subsection*{Acknowledgments}
 
 The work of GS is supported in part by the French Agence Nationale de la Recherche,
 under grant ANR-15-CE31-0016, and by the ERC Advanced Grant Higgs@LHC
