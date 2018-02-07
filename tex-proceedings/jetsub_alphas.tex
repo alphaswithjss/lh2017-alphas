@@ -25,7 +25,7 @@
 
 \begin{document}
 
-\section{TOWARDS EXTRACTING THE STRONG COUPLING CONSTANT FROM JET SUBSTRUCTURE AT THE LHC\protect\footnote{Section coordinators:  I.~Moult, B.~Nachman, G.~Soyez, J.~Thaler}$^{,}$~\protect\footnote{Contributing authors: S.~Chatterjee, F.~Dreyer, M.~Vittoria Garzelli, P.~Gras, A.~Larkoski, S.~Marzani, A.~Si\'{o}dmok, A.~Papaefstathiou, P.~Richardson, T.~Samui}}
+\section{TOWARDS EXTRACTING THE STRONG COUPLING CONSTANT \\ FROM JET SUBSTRUCTURE AT THE LHC\protect\footnote{Section coordinators:  I.~Moult, B.~Nachman, G.~Soyez, J.~Thaler}$^{,}$~\protect\footnote{Contributing authors: S.~Chatterjee, F.~Dreyer, M.~Vittoria Garzelli, P.~Gras, A.~Larkoski, S.~Marzani, A.~Si\'{o}dmok, A.~Papaefstathiou, P.~Richardson, T.~Samui}}
 
 Recent advances in jet substructure have led to a new class of jet observables that are amenable to systematically-improvable calculations and are robust to the complex environment of the Large Hadron Collider (LHC).
 %
@@ -94,13 +94,13 @@ using higher-order resummation.
 Figure~\ref{jetsub_alphas_jetsub_alphas_fig:propaganda} shows various values of $\alpha_s$ extracted with next-to-next-to-leading order (NNLO) calculations including various levels of resummation, such as next-to-next-to-next-to-leading logarithmic (N$^3$LL) for the thrust-based extraction.
 %
 Also shown are the values of $\alpha_s$ used as inputs to various Parton Shower (PS) generators.%
-\footnote{Note that these programs implement much more than just the QCD parton shower.  For example, radiated photons are also generated, though the impact of those electroweak processes is quite negligible here (as opposed to photons from $\pi^0\rightarrow\gamma\gamma$).}
+\footnote{Note that these programs implement much more than just the QCD shower.  For example, radiated photons are also generated, though the impact of those electroweak processes is quite negligible here (as opposed to photons from $\pi^0\rightarrow\gamma\gamma$).}
 %
 The value of $\alpha_s$ in the final-state PS is also sensitive to the soft and collinear regime of QCD (albeit in different ways); interestingly, the values used in the \textsc{Pythia~8} program~\cite{Sjostrand:2006za,Sjostrand:2007gs}, which are fit to $e^+e^-$ event shape data, suggest a higher value of $\alpha_s$ than the lattice result by about 15\%.
 %
 Another challenge with the event-shape extraction is that non-perturbative (NP) corrections are nearly degenerate with changes to $\alpha_s$ \cite{Abbate:2010xh}.
 %
-This is in part because techniques to parametrically separate NP effects from perturbative effects (i.e.~jet grooming techniques to be discussed below) were not mature at the time of the Large Electron Positron (LEP) collider, and because the energy scale at LEP did not allow for a large lever-arm between energy scales.
+This is in part because techniques to parametrically separate NP effects from perturbative effects (i.e.~jet grooming techniques to be discussed below) were not mature at the time of the Large Electron Positron (LEP) collider, and because the beam energies available at LEP did not allow for a large lever-arm between energy scales.
 %
 The sensitivity to low-energy scales where QCD is in the NP regime is also a key challenge for the lattice determination.
 %
@@ -134,7 +134,7 @@ Jet grooming can parametrically separate the NP radiation in the jet from the ha
 %
 At a hadron collider, grooming also mitigates the contribution from the underlying event and additional nearly simultaneous interactions (pileup).
 %
-Theoretical calculations for groomed observables have been performed at NLL~\cite{Marzani:2017kqd,Marzani:2017mva} and NNLL~\cite{Frye:2016aiz,Frye:2016okc} accuracy and will be extended to higher orders as calculations become available.
+Theoretical calculations for groomed observables have been performed at NNLL~\cite{Frye:2016okc,Frye:2016aiz} and NLL~\cite{Marzani:2017mva,Marzani:2017kqd} accuracy and will be extended to higher orders as calculations become available.
 %
 Recently, ATLAS~\cite{Aaboud:2017qwh} and CMS~\cite{CMS-PAS-SMP-16-010} demonstrated 5-10\% measurement uncertainties of these calculated quantities using existing technologies.
 
@@ -142,7 +142,7 @@ The purpose of this section is to study the feasibility of a measurement of $\al
 %
 Similar techniques would of course also be interesting at both a low- and high-energy $e^+e^-$ collider; we focus here on $pp$ since high-quality data are now pouring out of the LHC.
 %
-We view this work as part of a broader program to apply jet grooming techniques for precision QCD (see also \cite{Hoang:2017kmk} for applications to the top quark mass).
+We view this work as part of a broader program to apply jet grooming techniques for precision QCD (see also Ref.~\cite{Hoang:2017kmk} for applications to the top quark mass).
 %
 There are significant experimental and theoretical challenges to achieve success in this program, but we believe it is possible with community synergy.
 %
@@ -166,7 +166,7 @@ We conclude in Sec.~\ref{jetsub_alphas_sec:future} and discuss future directions
 In this subsection, we briefly review the definitions of the observables and grooming procedures that we will focus on in this study.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Two-point Correlators}\label{jetsub_alphas_sec:shape_def}
+\subsubsection{Two-point Correlators}\label{jetsub_alphas_sec:shape_def}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 A simple class of jet shape observables that have sensitivity to the value of $\alpha_s$ are two-point correlation functions~\cite{Banfi:2004yd,Larkoski:2013eya}.
@@ -190,7 +190,7 @@ If all emissions in the jet are nearly collinear, then the two-point energy corr
 e_2^{(2)}\sim \frac{m^2}{R^2\, p_{T}^2}\,.
 \end{equation} 
 
-In this study, we primarily restrict ourselves to the case of $\alpha=2$ as this has been the focus so far from both the theoretical~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.
+In this study, we primarily restrict ourselves to the case of $\alpha=2$ as this has been the focus so far from both the theoretical~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017mva,Marzani:2017kqd} and experimental~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010} communities.
 %
 However, it is interesting to study if other values of $\alpha$ could provide improved sensitivity to $\alpha_s$.
 %
@@ -204,15 +204,15 @@ The two-point correlation functions are closely related to the jet angularities~
 
 There are a variety of jet grooming techniques to mitigate soft and wide-angle jet contamination~\cite{Butterworth:2008iy,Ellis:2009su,Ellis:2009me,Krohn:2009th,Dasgupta:2013ihk,Larkoski:2014wba}.
 %
-We focus here on the Soft Drop algorithm~\cite{Larkoski:2014wba}, defined using Cambridge/Aachen (C/A) reclustering \cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.
+We focus here on the SoftDrop algorithm~\cite{Larkoski:2014wba}, defined using Cambridge/Aachen (C/A) reclustering \cite{Dokshitzer:1997in,Wobisch:1998wt,Wobisch:2000dk}.
 %
-Starting from a jet identified with an IRC-safe jet algorithm (such as anti-$k_t$ \cite{Cacciari:2008gp}), Soft Drop proceeds as follow:
+Starting from a jet identified with an IRC-safe jet algorithm (such as anti-$k_t$ \cite{Cacciari:2008gp}), SoftDrop proceeds as follow:
 %
 \begin{enumerate}
 %
 \item Recluster the jet using the C/A clustering algorithm, producing an angular-ordered branching history for the jet.
 %
-\item Step through the branching history of the reclustered jet.  At each step, check the Soft Drop condition
+\item Step through the branching history of the reclustered jet.  At each step, check the SoftDrop condition
 %
 \begin{equation}\label{jetsub_alphas_eq:sd_cut}
 \frac{\min\left[ p_{Ti}, p_{Tj}  \right]}{p_{Ti}+p_{Tj}}> z_{\mathrm{cut}} \left(   \frac{R_{ij}}{R}\right)^\beta \,,
@@ -220,20 +220,20 @@ Starting from a jet identified with an IRC-safe jet algorithm (such as anti-$k_t
 %
 where $z_{\mathrm{cut}} $ is a parameter defining the scale below which soft radiation is removed, and $\beta$ is an exponent that controls the angular scale for removal.
 %
-If the Soft Drop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
+If the SoftDrop condition is not satisfied, then the softer of the two branches is removed from the jet.  This process is then iterated on the harder branch.
 %
-\item The Soft Drop procedure terminates once the Soft Drop condition is satisfied.
+\item The SoftDrop procedure terminates once the SoftDrop condition is satisfied.
 %
 \end{enumerate}
 %
-This procedure generalizes the modified Mass Drop Tagger (mMDT)~\cite{Dasgupta:2013ihk}, which corresponds to $\beta=0$ in the Soft Drop procedure described above.
+This procedure generalizes the modified Mass Drop Tagger (mMDT)~\cite{Dasgupta:2013ihk}, which corresponds to $\beta=0$ in the SoftDrop procedure described above.
 %
-Note that non-global logarithms~\cite{Dasgupta:2001sh} are formally removed from the soft drop mass distribution, even when $\beta>0$ (though clearly they are restored as $\beta\rightarrow\infty$).
+Note that non-global logarithms~\cite{Dasgupta:2001sh} are formally removed from the SoftDropped mass distribution, even when $\beta>0$ (though clearly they are restored as $\beta\rightarrow\infty$).
 
 \subsection{Grooming Away Soft Complications}
 \label{jetsub_alphas_sec:softcomplications}
 
-Having defined the observables and grooming procedures of interest, in this section we provide a general discussion of the potential advantages of using groomed jet observables for extractions of $\alpha_s$.
+Having defined the observables and grooming procedures of interest, in this subsection we provide a general discussion of the potential advantages of using groomed jet observables for extractions of $\alpha_s$.
 %
 The grooming procedure significantly simplifies a number of theoretical and experimental issues related to precision calculations and measurements in a $pp$ environment.
 %
@@ -257,7 +257,7 @@ Combined, we believe that they provide a strong motivation for the measurement o
 \begin{center}
 \includegraphics[width = 0.5\columnwidth]{jetsub_alphas_correlation_firstmoment.pdf}
 \end{center}
-\caption{An illustration of the correlations between the first NP moment $\Omega_1$ and $\alpha_s$ for the thrust observables.
+\caption{An illustration of the correlations between the first NP moment $\Omega_1$ and $\alpha_s$ for the thrust observable.
 %
 NP effects for groomed observables have a significantly different structure, providing the possibility for complementary information to the extraction from (ungroomed) event shapes in $e^+e^-$.
 %
@@ -285,7 +285,7 @@ Therefore, observables with different, and preferably suppressed, NP effects cou
 
 Using a scaling argument, it is a straightforward exercise to compute the value of the groomed two-point correlators at which NP effects are expected to be important.
 %
-This was considered in Ref.~\cite{Frye:2016aiz,Dasgupta:2013ihk} where it was shown that NP effects become important when (for $\alpha \geq 1$),
+This was considered in Ref.~\cite{Dasgupta:2013ihk,Frye:2016aiz} where it was shown that NP effects become important when (for $\alpha \geq 1$),
 %
 \begin{equation}
 \label{jetsub_alphas_eq:np}
@@ -349,7 +349,7 @@ This is crucial for achieving a precision measurement in the $pp$ environment, s
 %
 Here, we must rely purely on Monte Carlo model implementations of the underlying event.
 %
-Monte Carlo studies have shown that in the regime where one has perturbative control, underlying event is highly suppressed after mMDT/Soft Drop~\cite{Dasgupta:2013ihk,Larkoski:2014wba}.
+Monte Carlo studies have shown that in the regime where one has perturbative control, underlying event is highly suppressed after mMDT/SoftDrop~\cite{Dasgupta:2013ihk,Larkoski:2014wba}.
 %
 This is again a significant benefit of groomed observables. 
 
@@ -379,11 +379,11 @@ These above two features highlight that the ungroomed jet mass depends significa
 %
 By contrast, the use of grooming can make the jet mass nearly universal.
 
-In Ref.~\cite{Frye:2016aiz}, it was shown that for $e_2^{(\alpha)}\ll z_{\mathrm{cut}}  \ll 1$, one can express the cross section for the groomed two-point correlator as
+In Ref.~\cite{Frye:2016aiz}, it was shown that for $e_2^{(\alpha)}\ll z_{\mathrm{cut}}  \ll 1$, one can express the cross-section for the groomed two-point correlator as
 %
 \begin{equation}
 \label{jetsub_alphas_eq:fac_pp_e2}
-\frac{d\sigma^{pp}}{de_2^{(\alpha)}}=\sum\limits_{k=q,\bar q, g}D_k(p_T^{\mathrm{min}}, y_\mathrm{max}, z_{\mathrm{cut}} , R) S_{C,k}(z_{\mathrm{cut}} , e_2^{(\alpha)})\otimes J_k (e_2^{(\alpha)})\,,
+\frac{d\sigma^{pp}}{de_2^{(\alpha)}}=\sum\limits_{k=q,\bar q, g}D_k(p_T^{\mathrm{min}}, y_\mathrm{max}, z_{\mathrm{cut}} , R) \, S_{C,k}(z_{\mathrm{cut}} , e_2^{(\alpha)})\otimes J_k (e_2^{(\alpha)})\,,
 \end{equation}
 %
 where $S_{C,k}$ is the soft function and $J_k$ is the jet function.
@@ -396,7 +396,7 @@ f_J=\sum\limits_{i\in J_{\mathrm{SD}}} f_i\,,
 \end{equation}
 with $f_q=1$, $f_{\bar q}=-1$, $f_g=0$, and $J_{\mathrm{SD}}$ are the parton-level constituents of the groomed jet.
 %
-The grooming procedure makes this definition IRC safe (see related jet flavor approach in Ref.~\cite{Banfi:2006hf}).
+The grooming procedure makes this definition IRC safe at leading power (see related jet flavor approach in Ref.~\cite{Banfi:2006hf}).
 %
 These fractions are independent of the value of the jet mass observable and can be extracted from fixed-order generators, for example MCFM \cite{Campbell:1999ah,Campbell:2010ff,Campbell:2011bn}.
 
@@ -420,7 +420,7 @@ Ideally this would be done using $2\to 3$ matrix elements at NNLO, which are jus
 \subsubsection{Pileup Resilience}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Arguably the biggest experimental challenge for precision physics at a high luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.
+Arguably the biggest experimental challenge for precision physics at a high-luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.
 %
 Jet shapes are particularly sensitive to pileup; for example, the jet mass scales as $\mathcal{O}(A^2)$~\cite{Salam:2009jx} for the jet catchment area $A$~\cite{Cacciari:2008gn} (whereas the jet $p_\mathrm{T}$ scales linearly with $A$).
 %
@@ -461,7 +461,7 @@ Finally, we discuss the issue of Casimir scaling and the related issue of using 
 
 To get an understanding of the sensitivity of the groomed mass distribution both to the value of $\alpha_s$ as well as to the quark and gluon composition, it is enlightening to study the LL distribution.
 %
-Here, for simplicity, we consider only the leading logs in the observable, in the resummation region; complete expressions can be found in Ref.~\cite{Larkoski:2014wba,Frye:2016aiz,Marzani:2017kqd,Marzani:2017mva}.
+Here, for simplicity, we consider only the leading logs in the observable, in the resummation region; complete expressions can be found in Refs.~\cite{Larkoski:2014wba,Frye:2016aiz,Marzani:2017mva,Marzani:2017kqd}.
 %
 For $\beta=0$, the LL result at fixed coupling for the cumulative distribution in the resummation region takes the schematic form
 %
@@ -484,11 +484,11 @@ In the resummation region, the slope of the distribution when plotted against $\
 %
 We therefore see that the groomed mass is indeed sensitive to the value of $\alpha_s$.
 %
-Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$; this expectation will be born out in our parton shower studies below.
+Due to the larger color charge of gluons, we expect that samples of pure gluon jets would have a significantly higher sensitivity to the value of $\alpha_s$; this expectation will be born out in our PS studies below.
 %
 Because $\alpha_s$ is always multiplied by a color factor, though, knowing the precise quark/gluon composition of a sample is essential, as discussed in Sec.~\ref{jetsub_alphas_sec:casimir}.
 %
-In practice, the parton shower studies and the analytic studies that follow (see Sec.~\ref{jetsub_alphas_sec:ben_study}) include higher order effects, such as subleading terms in the splitting functions, that violate Casimir scaling.
+In practice, the PS studies and the analytic studies that follow (see Sec.~\ref{jetsub_alphas_sec:ben_study}) include higher-order effects, such as subleading terms in the splitting functions, that violate Casimir scaling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Parton Shower Study}
@@ -528,7 +528,7 @@ Not all information about $\alpha_s$ sensitivity is captured by a single point i
 Therefore, it is also useful to study the integrand of Eq.~\eqref{jetsub_alphas_eq:seppower} as a function of different observables $\lambda$.
 
 
-This sensitivity-robustness tradeoff is studied using two parton shower generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C~\cite{Corke:2010yf}.  
+This sensitivity-robustness tradeoff is studied using two PS generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C~\cite{Corke:2010yf}.  
 %
 These programs are formally LL accurate, though they include effects beyond Eq.~\eqref{jetsub_alphas_eq:ecf_ll_dsitribution}.
 %
@@ -538,11 +538,12 @@ We select jets with transverse momentum $p_\mathrm{T}>500$ GeV and rapidity $|y|
 %
 A variety of two-point correlators (as defined in Sec.~\ref{jetsub_alphas_sec:shape_def}) are studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively. 
 %
-Additionally, various Soft Drop grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\mathrm{cut}\in \{0.05,0.1,0.2\}$.   The plots in this section are shown for \textsc{Herwig~7}.1 but the same qualitative conclusions hold for \textsc{Pythia~8}.2.
+Additionally, various SoftDrop grooming parameters are studied by varying $\beta\in\{0,1,2\}$ and $z_\mathrm{cut}\in \{0.05,0.1,0.2\}$.   The plots in this section are shown for \textsc{Herwig~7}.1 but the same qualitative conclusions hold for \textsc{Pythia~8}.2.
 
 \begin{figure}[p]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Sensitivity2a.pdf}\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_Sensitivity2b.pdf}
+\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Sensitivity2a.pdf}
+\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_Sensitivity2b.pdf}
 \end{center}
 \caption{The sensitivity to $\alpha_s$ in \textsc{Herwig~7}.  Shown is the distribution of the normalized squared jet mass ($e_2^{(2)}$) for quark jets (left) and gluon jets (right), with higher values of the mass are on the left.  The blue line uses $\alpha_s=0.118$ while the green and orange lines have the value of $\alpha_s$ varied by $10\%$.  The lower panels show the ratio with respect to the $\alpha_s=0.118$ curve.}
 \label{jetsub_alphas_fig:sensitivity}
@@ -550,7 +551,8 @@ Additionally, various Soft Drop grooming parameters are studied by varying $\bet
 
 \begin{figure}[p]
 \begin{center}
-\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_Robustness2a.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Robustness2b.pdf}
+\includegraphics[width = 0.48\columnwidth]{jetsub_alphas_Robustness2a.pdf}
+\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Robustness2b.pdf}
 \end{center}
 \caption{The robustness to NP effects in \textsc{Herwig~7}, with the same distributions as Fig.~\ref{jetsub_alphas_fig:sensitivity}.
 %
@@ -618,7 +620,7 @@ The choice of $\alpha=1$ correspond to $k_t$ (a.k.a.~width) instead of mass, whi
 %
 Interestingly, $k_t$ with $\beta=0$ has significantly worse sensitivity than $\beta=1$ or $\beta=2$, highlighting the importance of having some double-logarithmic information. 
 %
-This study suggests that $k_t$ observables are important to include in future experimental and theoretical studies. The three-loop anomalous dimensions for the Energy-Energy Correlator (EEC) in $e^+e^-$, which is a $k_t$ sensitive observable, were recently derived \cite{Moult:2018jzp}. This will allow for a study of $k_t$ sensitive observables at N$^3$LL in $e^+e^-$, and a comparison with mass type observables. 
+This study suggests that $k_t$ observables are important to include in future experimental and theoretical studies. The three-loop anomalous dimensions for the Energy-Energy Correlator (EEC) in $e^+e^-$, which is a $k_t$ sensitive observable, were recently derived \cite{Moult:2018jzp}. This will allow for a study of $k_t$ sensitive observables at N$^3$LL in $e^+e^-$, and a comparison with mass-type observables. 
 %
 It would also be interesting to study how the robustness versus sensitivity picture changes when considering only subsets of the available observable range.
 
@@ -659,7 +661,7 @@ In the resummation regime, the jet mass distribution only depends on $\alpha_s$ 
 %
 Due to the fact that the two fractions must add to unity, this introduces a single additional parameter in the fit (see Fig.~\ref{jetsub_alphas_fig:analyticbanana}).
 %
-The degeneracy between the quark/gluon fraction and $\alpha_s$ is broken by higher order effects.
+The degeneracy between the quark/gluon fraction and $\alpha_s$ is broken by higher-order effects.
 %
 Furthermore, different $e_2^{(\alpha)}$ have different dependence on $\alpha_s$ and $C_i$ at higher orders.
 %
@@ -682,7 +684,7 @@ Without some kind of conceptual breakthrough, though, we expect that the quark/g
 
 In addition to the complication of quark and gluon fractions, another issue which appears for the extraction of $\alpha_s$ from jet substructure is the issue of normalization.\footnote{We thank Gavin Salam for interesting discussions on this topic. }
 %
-Unlike for $e^+e^-$ event shapes, the Born dijet cross section in $pp$ is sensitive to the value of $\alpha_s$.
+Unlike for $e^+e^-$ event shapes, the Born dijet cross-section in $pp$ is sensitive to the value of $\alpha_s$.
 %
 This implies that the rate itself, in particular the absolute quark and gluon jet rates, carries information regarding $\alpha_s$. 
 
@@ -706,7 +708,7 @@ A key challenge that still remains is to fully understand the correlations in th
 \begin{center}
 \includegraphics[width = 0.5\columnwidth]{jetsub_alphas_PDFs.pdf}
 \end{center}
-\caption{The fraction of $qg$ and $gg$ initial states for leading-order dijet production with $p_\mathrm{T}>200$ GeV, simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca} using NNPDF 2.3~\cite{Ball:2012cx}.  The ellipses correspond to the uncertainty from the 100 error PDF sets.  For the red dashed line, the fraction of out-going gluon jets $f_g$ is constrained to be the same for all variations (and equal to the nominal PDF set).}
+\caption{The fraction of $qg$ and $gg$ initial states for leading-order dijet production with $p_\mathrm{T}>200$ GeV, simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca} using NNPDF 2.3~\cite{Ball:2012cx}.  The ellipses correspond to the uncertainty from the 100 error PDF sets.  For the red dashed line, the fraction of outgoing gluon jets $f_g$ is constrained to be the same for all variations (and equal to the nominal PDF set).}
 \label{jetsub_alphas_fig:pdf}
 \end{figure}
 
@@ -728,20 +730,20 @@ Fixing $f_g$, which carries all of the PDF sensitivity for the shape measurement
 %
 Thus, using unnormalized distributions results in additional PDF sensitivity from also measuring the total cross-section in addition to the shape of the substructure distribution. 
 
-From the perspective of perturbative accuracy, there is an important issue with using normalized distributions, which is that jet shape observables start at $\mathcal{O}(\alpha_s)$.
+From the perspective of perturbative accuracy, there is an important issue with using normalized distributions, which is that jet-shape observables start at $\mathcal{O}(\alpha_s)$.
 %
 Specifically, the slope of the groomed mass distribution is $\mathcal{O}(\alpha_s)$.
 %
 This implies that to have an $\mathcal{O}(\alpha_s^2)$ uncertainty on the slope (as required to gain entry into the PDG world avarage), one needs to have $\mathcal{O}(\alpha_s^3)$ control, namely the NNLO $2 \to 3$ process for a jet with two constituents.
 %
-For the case of $e^+e^-$, this level of accuracy has been achieved, where the NNLO corrections to $e^+e^-\to 3$ jets are known and indeed used in the extractions of $\alpha_s$.
+For the case of $e^+e^-$, this level of accuracy has been achieved, where the NNLO corrections to $e^+e^-\to 3$ jets are known and indeed used in extractions of $\alpha_s$.
 %
 Due to recent progress in the calculation of the relevant amplitudes, we believe this is a realistic target for jet substructure, but clearly requires substantial further work.
 
 \subsection{Idealized Performance at the LHC}
 \label{jetsub_alphas_sec:ben_study}
 
-The purpose of this section is to make some numerical estimates regarding $\alpha_s$ extraction from jet substructure at the LHC.
+The purpose of this subsection is to make some numerical estimates regarding $\alpha_s$ extraction from jet substructure at the LHC.
 %
 Many simplifying assumptions are made, with the goal of motivating a more complete effort within the context of ATLAS and CMS in collaboration with theorists.
 %
@@ -749,14 +751,14 @@ First, we illustrate how $\alpha_s$ and the gluon fraction can be simultaneously
 %
 Next, we estimate the needed experimental precision required to make a useful measurement of $\alpha_s$.
 %
-While both the theory and experimental precision will continue to improve over the next years, the community has already demonstrated that the work can begin with the first round of groomed jet mass results~\cite{Aaboud:2017qwh,CMS-PAS-SMP-16-010,Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd}.
+While both the theory and experimental precision will continue to improve over the next years, the community has already demonstrated that the work can begin with the first round of groomed jet mass results~\cite{Frye:2016okc,Frye:2016aiz,Marzani:2017mva,Marzani:2017kqd,Aaboud:2017qwh,CMS-PAS-SMP-16-010}.
 
 \subsubsection{Extraction of Theory Templates}
 \label{jetsub_alphas_sec:templates}
 
 A complete extraction of $\alpha_s$ will require matching resummed results to high fixed order and also estimating NP effects.
 %
-The two sets of predictions for dijets thus far have been matched to LO~\cite{Frye:2016aiz,Frye:2016okc} and NLO~\cite{Marzani:2017mva,Marzani:2017kqd} and have used hadronization models to study NP corrections~\cite{Marzani:2017mva,Marzani:2017kqd}.
+The two sets of predictions for dijets thus far have been matched to LO~\cite{Frye:2016okc,Frye:2016aiz} and NLO~\cite{Marzani:2017mva,Marzani:2017kqd} and have used hadronization models to study NP corrections~\cite{Marzani:2017mva,Marzani:2017kqd}.
 %
 Performing high-order fixed-order matching is conceptually straightforward but computationally expensive; while this will be required eventually, we focus here on a demonstration without matching.
 %
@@ -775,8 +777,10 @@ Figure~\ref{jetsub_alphas_fig:templates} shows the quark and gluon templates for
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_1023451324.pdf}\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
-\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_023451324.pdf}\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_023451324.pdf}
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_1023451324.pdf}
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_1023451324.pdf}\\
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_20zcut1_beta_023451324.pdf}
+\includegraphics[width = 0.45\columnwidth]{jetsub_alphas_PDFs_alpha_10zcut1_beta_023451324.pdf}
 \end{center}
 
 \caption{The quark and gluon templates, computed at NLL~\cite{Marzani:2017mva,Marzani:2017kqd} for $\alpha=2$ (left column) and 
@@ -902,7 +906,8 @@ At low mass, the groomed jet is defined by nearly collinear splittings at which 
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Rho_2D.pdf}\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_figaux_03a.pdf}
+\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_Rho_2D.pdf}
+\includegraphics[width = 0.49\columnwidth]{jetsub_alphas_figaux_03a.pdf}
 \end{center}
 \caption{Left: The migration matrix between particle-level and detector-level using the Delphes simulation (left) and from the ATLAS measurement (right; reproduced from Ref.~\cite{Aaboud:2017qwh}).  Unlike previous plots, larger masses are on the right (shown this way to match the ATLAS result). }
 \label{jetsub_alphas_fig:expres}
@@ -947,7 +952,7 @@ This again suggests that a $\sim 10\%$ measurement of $\alpha_s$ is feasible, as
 \subsection{Conclusions and Future Outlook}
 \label{jetsub_alphas_sec:future}
 
-We performed a preliminary study assessing a possible extraction of the strong coupling constant $\alpha_s$ from groomed jet substructure measurements at the LHC.
+In this section, we performed a preliminary study assessing a possible extraction of the strong coupling constant $\alpha_s$ from groomed jet substructure measurements at the LHC.
 %
 This has been made possible by recent advances in the calculation of groomed event shapes, which allow them to be resummed to NNLL accuracy, as well as advances in the understanding of the experimental uncertainties for groomed jet observables.
  
@@ -988,9 +993,9 @@ This has been achieved only for a few select observables using soft-collinear ef
 %
 The extension to N$^3$LL accuracy for the groomed jet mass would require only the calculation of the anomalous dimensions for the groomed soft function to three loops, which is possible using currently available techniques.
 %
-At this level of accuracy, it will also be important to asses perturbative power corrections in $z_{\mathrm{cut}}$.
+At this level of accuracy, it will also be important to assess perturbative power corrections in $z_{\mathrm{cut}}$.
 %
-While \cite{Marzani:2017kqd,Marzani:2017mva} have shown that these corrections are numerically small, they may become important if multiple $z_{\mathrm{cut}}$ values are used that are not much less than one.
+While Refs.~\cite{Marzani:2017kqd,Marzani:2017mva} have shown that these corrections are numerically small, they may become important if multiple $z_{\mathrm{cut}}$ values are used that are not much less than one.
 %
 \item {\bf Fixed-Order Matching:} A key aspect, and a potential complication to achieve theoretical accuracy competitive with $e^+e^-$ determinations, is fixed-order matching.
 %
@@ -1006,9 +1011,9 @@ We believe that this is currently the theoretically most difficult ingredient.
 %
 While it has been shown through PS studies that NP effects are suppressed throughout a large component of the distribution, it will be important to quantify this further.
 %
-In the case of $e^+e^-$ event shapes, operator definitions of soft matrix elements allow for field theoretic definitions of the NP parameters.
+In the case of $e^+e^-$ event shapes, operator definitions of soft matrix elements allow for field-theoretic definitions of the NP parameters.
 %
-Ideally this could also be performed for groomed observables, placing the groomed jet mass on a firmer theoretical footing.
+Ideally, this could also be performed for groomed observables, placing the groomed jet mass on a firmer theoretical footing.
 %
 \end{itemize}
 
@@ -1032,7 +1037,7 @@ By contrast, the ATLAS measurement propagates constituent-based uncertainties th
 %
 These uncertainties are derived from matching tracks to calorimeter-cell clusters and studying the energy and angular matching.
 %
-Studies have shown that this ``bottom-up'' approach works well for reproducing the jet energy scale~\cite{Aaboud:2016hwh}, which has been validated also for groomed jets in \cite{Aaboud:2017qwh}.
+Studies have shown that this ``bottom-up'' approach works well for reproducing the jet energy scale~\cite{Aaboud:2016hwh}, which has been validated also for groomed jets in Ref.~\cite{Aaboud:2017qwh}.
 %
 However, this does not hold exactly for the mass, which is not linear in the constituent energies~\cite{Nachman:2016qyc}.
 %
@@ -1043,7 +1048,7 @@ The uncertainties are validated using the standard ATLAS approach using track-je
 ATLAS validates their approach in a similar manner as CMS, by using the $W$ mass peak from $t\bar{t}$ events.%
 \footnote{This validation does not have the same complete forward-folding machinery as was used by ATLAS for trimmed jets.}
 %
-From \ref{jetsub_alphas_fig:expfit}, it seems that the mass resolution will not be the limiting factor, but it could be if the situation is not improved as the jet mass scale precision improves.
+From Fig.~\ref{jetsub_alphas_fig:expfit}, it seems that the mass resolution will not be the limiting factor, but it could be if the situation is not improved as the jet mass scale precision improves.
 %
 \item {\bf Pileup Modeling and Mitigation:} Grooming significantly reduces the impact of pileup, but if the Run 3+ data are to be used (pileup levels of 80+), then a significantly better and more detailed understanding of the degradation due to pileup will be required.
 %
@@ -1057,7 +1062,7 @@ We are optimistic that these difficulties on both the theory and experiment side
 %
 We also hope that this study motivates additional investigations to broaden the potential toolbox for $\alpha_s$ extraction.
 %
-At minimum, it would be interesting to study in more detail the use of other observables beyond the two-point correlators as well as alternative grooming techniques beyond mMDT/Soft Drop.
+At minimum, it would be interesting to study in more detail the use of other observables beyond the two-point correlators as well as alternative grooming techniques beyond mMDT/SoftDrop.
 %
 More ambitiously, one potentially interesting direction is the use of track-based measurements, since it may be the case that it is ultimately experimental uncertainties that are the limiting factor.
 %
