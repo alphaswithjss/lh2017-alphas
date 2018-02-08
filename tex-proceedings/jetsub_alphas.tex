@@ -422,9 +422,9 @@ Ideally this would be done using $2\to 3$ matrix elements at NNLO, which are jus
 
 Arguably the biggest experimental challenge for precision physics at a high-luminosity $pp$ collider is noise from \textit{pileup}: multiple nearly simultaneous proton-proton collisions.
 %
-Jet shapes are particularly sensitive to pileup; for example, the jet mass scales as $\mathcal{O}(A^2)$~\cite{Salam:2009jx} for the jet catchment area $A$~\cite{Cacciari:2008gn} (whereas the jet $p_\mathrm{T}$ scales linearly with $A$).
+Jet shapes are particularly sensitive to pileup; for example, the jet mass scales as $\mathcal{O}(A^2)$~\cite{Salam:2009jx} for the jet catchment area $A$~\cite{Cacciari:2008gn} (whereas the jet $p_T$ scales linearly with $A$).
 %
-The jet-area subtraction that works well for $p_\mathrm{T}$ has been extended to event shapes~\cite{Soyez:2012hv}, but must be re-calibrated per observable.
+The jet-area subtraction that works well for $p_T$ has been extended to event shapes~\cite{Soyez:2012hv}, but must be re-calibrated per observable.
 %
 Constituent-based pileup subtraction schemes~\cite{Cacciari:2014gra,Krohn:2013lba,Bertolini:2014bba,Berta:2014eza,Komiske:2017ubm} show great promise and are actively being studied and adapted to the actual experimental settings~\cite{CMS-PAS-JME-14-001,CMS-DP-2015-034,ATLAS-CONF-2017-065,ATL-PHYS-PUB-2017-020,Aad:2015ina}.
 %
@@ -528,13 +528,18 @@ Not all information about $\alpha_s$ sensitivity is captured by a single point i
 Therefore, it is also useful to study the integrand of Eq.~\eqref{jetsub_alphas_eq:seppower} as a function of different observables $\lambda$.
 
 
-This sensitivity-robustness tradeoff is studied using two PS generators: \textsc{Herwig~7}.1~\cite{Bellm:2015jjp,Reichelt:2017hts} with the default tune and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C~\cite{Corke:2010yf}.  
+This sensitivity-robustness tradeoff is studied using two PS generators: \textsc{Herwig~7}.1.0~\cite{Bellm:2015jjp,Bellm:2017bvx,Reichelt:2017hts} with its default settings%
+\footnote{This uses the MMHT 2014 PDFs sets~\cite{Harland-Lang:2014zoa},
+the angular-ordered parton shower~\cite{Gieseke:2003rz}, default settings
+for the cluster hadronization model~\cite{Webber:1983if}, a Multiple Parton Interaction model~\cite{Bahr:2008wk,Bahr:2008dy,Gieseke:2016fpz}, and plain color reconnections~\cite{Gieseke:2012ft}.  The factorization and renormalization scale is set to $\mu_R^2=\mu_F^2=(\sum_i p_T^i)^2$ where $p_T^i$ is the transverse momentum of the $i$-th jet.}
+%
+and \textsc{Pythia~8}.223~\cite{Sjostrand:2006za,Sjostrand:2014zea} with the tune 4C~\cite{Corke:2010yf}.  
 %
 These programs are formally LL accurate, though they include effects beyond Eq.~\eqref{jetsub_alphas_eq:ecf_ll_dsitribution}.
 %
 Results are presented separately for quark and gluon jets, using the $Z+q$ and $Z+g$ hard-scattering processes.
 %
-We select jets with transverse momentum $p_\mathrm{T}>500$ GeV and rapidity $|y|<2.5$, clustered with the anti-$k_t$ algorithm~\cite{Cacciari:2008gp} algorithm using a jet radius $R=0.8$.
+We select jets with transverse momentum $p_T>500$ GeV and rapidity $|y|<2.5$, clustered with the anti-$k_t$ algorithm~\cite{Cacciari:2008gp} algorithm using a jet radius $R=0.8$.
 %
 A variety of two-point correlators (as defined in Sec.~\ref{jetsub_alphas_sec:shape_def}) are studied, with $\alpha\in\{0.5,1.0, 2.0\}$ corresponding to the Les Houches Angularity~\cite{Gras:2017jty}, width, and mass, respectively. 
 %
@@ -697,7 +702,7 @@ But there are two other practical concerns that favor using normalized distribut
 
 First, it is currently only possible to perform precise measurements of the groomed mass using normalized distributions.
 %
-Experimentally, the absolute rate is determined by the acceptance from kinematic requirements on the jet $p_\mathrm{T}$.
+Experimentally, the absolute rate is determined by the acceptance from kinematic requirements on the jet $p_T$.
 %
 The sophisticated in-situ jet energy scale and resolution program carried out for small-radius jets~\cite{Aad:2014bia,Aaboud:2017jcu,Khachatryan:2016kdb,CMS-DP-2016-020} has not yet reached the same level of maturity for groomed large-radius jets.
 %
@@ -709,7 +714,7 @@ A key challenge that still remains is to fully understand the correlations in th
 \begin{center}
 \includegraphics[width = 0.5\columnwidth]{jetsub_alphas_PDFs.pdf}
 \end{center}
-\caption{The fraction of $qg$ and $gg$ initial states for leading-order dijet production with $p_\mathrm{T}>200$ GeV, simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca} using NNPDF 2.3~\cite{Ball:2012cx}.  The ellipses correspond to the uncertainty from the 100 error PDF sets.  For the red dashed line, the fraction of outgoing gluon jets $f_g$ is constrained to be the same for all variations (and equal to the nominal PDF set).}
+\caption{The fraction of $qg$ and $gg$ initial states for leading-order dijet production with $p_T>200$ GeV, simulated at leading order with MG5\_aMC 2.6.0~\cite{Alwall:2014hca} using NNPDF 2.3~\cite{Ball:2012cx}.  The ellipses correspond to the uncertainty from the 100 error PDF sets.  For the red dashed line, the fraction of outgoing gluon jets $f_g$ is constrained to be the same for all variations (and equal to the nominal PDF set).}
 \label{jetsub_alphas_fig:pdf}
 \end{figure}
 
@@ -1057,7 +1062,7 @@ From Fig.~\ref{jetsub_alphas_fig:expfit}, it seems that the mass resolution will
 %
 Statistical uncertainties are currently not dominant, so it is conceivable that the higher instantaneous luminosity data will not be required for the precision $\alpha_s$ extraction.
 %
-This may change if one wants to exploit the largest lever-arm possible; to access the highest $p_{\mathrm{T}}$ jets, we will need more data.
+This may change if one wants to exploit the largest lever-arm possible; to access the highest $p_{T}$ jets, we will need more data.
 %
 \end{itemize}
 
